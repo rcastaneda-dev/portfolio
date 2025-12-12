@@ -25,7 +25,7 @@ const Projects = () => {
       ],
       color: 'from-primary to-blue-500',
       githubLink: 'https://github.com/rcastaneda-dev/nanis-essentials-inventory',
-      liveLink: 'https://nanisessentials-management.netlify.app/',
+      liveLink: 'https://nanis-essentials-inventory.vercel.app',
       type: 'Dev',
       automationStatus: 'Pending'
     },
