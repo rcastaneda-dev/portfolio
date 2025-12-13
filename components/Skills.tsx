@@ -9,7 +9,8 @@ import {
   SiCypress, SiSelenium, SiJest,
   SiDocker, SiJenkins, SiGithub,
   SiReact, SiNodedotjs, SiExpress, SiPostman,
-  SiTeamcity, SiPytest
+  SiTeamcity, SiPytest,
+  SiK6
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
 import { VscAzureDevops } from 'react-icons/vsc';
@@ -37,7 +38,8 @@ const Skills = () => {
         { name: 'TestCafe', icon: <TestTube2 className="w-4 h-4" /> }, // Fallback
         { name: 'Jest', icon: <SiJest /> },
         { name: 'Selenium', icon: <SiSelenium /> },
-        { name: 'PyTest', icon: <SiPytest /> }
+        { name: 'PyTest', icon: <SiPytest /> },
+        { name: 'K6', icon: <SiK6 /> }
       ]
     },
     {

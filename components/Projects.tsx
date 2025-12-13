@@ -3,7 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { ExternalLink, Github, Zap, Shield, Code2, TestTube2 } from 'lucide-react';
-import { SiTestcafe } from 'react-icons/si';
+import { SiK6, SiSelenium, SiTestcafe } from 'react-icons/si';
 
 const Projects = () => {
   const ref = useRef(null);
@@ -30,6 +30,21 @@ const Projects = () => {
       automationStatus: 'Pending'
     },
     {
+      title: 'K6/Typescript performance tests against PetStore public Server',
+      year: '2025',
+      description: 'Implements smoke, load, stress, and spike tests against the PetStore public Server to validate the API performance and reliability.',
+      icon: <SiK6 className="w-8 h-8 text-green-400" />,
+      tech: ['K6', 'Typescript', 'Node.js', 'Github'],
+      highlights: [
+        'Smoke, load, stress, and spike tests',
+        'Github action to manually trigger the tests'
+      ],
+      color: 'from-green-400 to-cyan-500',
+      githubLink: 'https://github.com/rcastaneda-dev/k6-typescript-portfolio',
+      liveLink: 'https://github.com/rcastaneda-dev/k6-typescript-portfolio/actions',
+      type: 'Automation'
+    },
+    {
       title: 'Testcafe/Javascript E2E Coding Challenge for Theorem One',
       year: '2021',
       description: 'End-to-end automation solution showcasing advanced TestCafe and JavaScript implementation patterns, originally developed as a technical assessment for the company Theorem One I applied to back on June 2021',
@@ -48,7 +63,7 @@ const Projects = () => {
       title: 'SDET - Coding challenge for Upgrade, Inc.',
       year: '2019',
       description: 'Java/Selenium/TestNG automation challenge involving UI validation of loan offers and API verification of eligible states',
-      icon: <Code2 className="w-8 h-8" />,
+      icon: <SiSelenium className="w-8 h-8" />,
       tech: ['Java', 'Selenium', 'TestNG', 'Maven', 'RestAssured'],
       highlights: [
         'UI Automation: Loan offer validation & borrower flow',
@@ -184,14 +199,19 @@ const Projects = () => {
                     <Github className="w-4 h-4" />
                     <span className="text-sm">View Code</span>
                   </motion.a>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 text-primary hover:text-white transition-colors"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    <span className="text-sm">Live Demo</span>
-                  </motion.button>
+                  {project.liveLink && (
+                    <motion.a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center gap-2 text-primary hover:text-white transition-colors"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      <span className="text-sm">Live Demo</span>
+                    </motion.a>
+                  )}
                 </div>
               </div>
             </motion.div>
