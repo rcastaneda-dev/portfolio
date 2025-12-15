@@ -33,8 +33,8 @@ const About = () => {
 
   const techStack = [
     'TypeScript', 'JavaScript', 'Java', 'Python',
-    'Cypress', 'TestCafe', 'Selenium', 'PyTest', 'Jest', 'Node.js', 
-    'Docker', 'Azure DevOps'
+    'Cypress', 'TestCafe', 'Selenium', 'PyTest', 'Jest', 
+    'Docker', 'Azure DevOps', 'K6', 'Playwright'
   ];
 
   return (
