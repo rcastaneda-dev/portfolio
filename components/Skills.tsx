@@ -14,6 +14,7 @@ import {
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
 import { VscAzureDevops } from 'react-icons/vsc';
+import { FaMasksTheater } from 'react-icons/fa6';
 
 const Skills = () => {
   const ref = useRef(null);
@@ -39,7 +40,8 @@ const Skills = () => {
         { name: 'Jest', icon: <SiJest /> },
         { name: 'Selenium', icon: <SiSelenium /> },
         { name: 'PyTest', icon: <SiPytest /> },
-        { name: 'K6', icon: <SiK6 /> }
+        { name: 'K6', icon: <SiK6 /> },
+        { name: 'Playwright', icon: <FaMasksTheater /> }
       ]
     },
     {
