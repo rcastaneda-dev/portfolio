@@ -10,10 +10,12 @@ import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import { useI18n } from '@/lib/i18n';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const { t } = useI18n();
 
   useEffect(() => {
     // Reduced loading time to improve UX
@@ -54,7 +56,7 @@ export default function Home() {
               transition={{ delay: 0.5 }}
               className="text-xl gradient-text font-bold"
             >
-              Loading Portfolio...
+              {t.loading}
             </motion.p>
           </div>
         </motion.div>

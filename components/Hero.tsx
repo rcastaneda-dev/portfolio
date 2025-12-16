@@ -1,11 +1,15 @@
 'use client';
 
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
+import { Github, Linkedin, Mail, ChevronDown, FileDown } from 'lucide-react';
 import Image from 'next/image';
+import { useI18n } from '@/lib/i18n';
 
 const Hero = () => {
+  const { t, locale } = useI18n();
+
   const particleVariants = {
     animate: {
       y: [-20, 20],
@@ -26,6 +30,11 @@ const Hero = () => {
       }
     }
   };
+
+  // Generate typing animation sequence from translations
+  const typingSequence = useMemo(() => {
+    return t.hero.roles.flatMap((role) => [role, 2000]);
+  }, [t.hero.roles]);
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -87,20 +96,8 @@ const Hero = () => {
             className="text-2xl md:text-3xl text-primary mb-8 h-20"
           >
             <TypeAnimation
-              sequence={[
-                'Senior QA Automation Engineer',
-                2000,
-                'Senior SDET',
-                2000,
-                'Former Java Developer',
-                2000,
-                'Full Stack Developer Enthusiast',
-                2000,
-                'Test Framework Architect',
-                2000,
-                'CI/CD Pipeline Expert',
-                2000,
-              ]}
+              key={locale} // Force re-render on locale change
+              sequence={typingSequence}
               wrapper="span"
               speed={50}
               repeat={Infinity}
@@ -113,44 +110,58 @@ const Hero = () => {
             transition={{ delay: 0.6 }}
             className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto"
           >
-            10+ years bridging development and testing to deliver high-quality solutions
-            across financial services, eCommerce, cybersecurity, maritime and ground transportation logistics.
+            {t.hero.tagline}
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
-            className="flex justify-center space-x-6 mb-12"
+            className="flex flex-col items-center gap-6 mb-12"
           >
+            {/* Download Resume CTA */}
             <motion.a
-              href="https://github.com/rcastaneda-dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, y: -5 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-3 glass-effect rounded-full text-gray-300 hover:text-primary hover:neon-glow transition-all"
+              href="/resume.pdf"
+              download="Ricardo_Castaneda_Resume.pdf"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-secondary text-darker font-semibold rounded-full hover:shadow-lg hover:shadow-primary/30 transition-all"
             >
-              <Github size={24} />
+              <FileDown size={20} />
+              {t.hero.downloadResume}
             </motion.a>
-            <motion.a
-              href="https://www.linkedin.com/in/rcastaneda-dev/"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, y: -5 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-3 glass-effect rounded-full text-gray-300 hover:text-primary hover:neon-glow transition-all"
-            >
-              <Linkedin size={24} />
-            </motion.a>
-            <motion.a
-              href="mailto:hi@rcastaneda.dev"
-              whileHover={{ scale: 1.1, y: -5 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-3 glass-effect rounded-full text-gray-300 hover:text-primary hover:neon-glow transition-all"
-            >
-              <Mail size={24} />
-            </motion.a>
+
+            {/* Social Links */}
+            <div className="flex justify-center space-x-6">
+              <motion.a
+                href="https://github.com/rcastaneda-dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, y: -5 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-3 glass-effect rounded-full text-gray-300 hover:text-primary hover:neon-glow transition-all"
+              >
+                <Github size={24} />
+              </motion.a>
+              <motion.a
+                href="https://www.linkedin.com/in/rcastaneda-dev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, y: -5 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-3 glass-effect rounded-full text-gray-300 hover:text-primary hover:neon-glow transition-all"
+              >
+                <Linkedin size={24} />
+              </motion.a>
+              <motion.a
+                href="mailto:hi@rcastaneda.dev"
+                whileHover={{ scale: 1.1, y: -5 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-3 glass-effect rounded-full text-gray-300 hover:text-primary hover:neon-glow transition-all"
+              >
+                <Mail size={24} />
+              </motion.a>
+            </div>
           </motion.div>
 
           <motion.div

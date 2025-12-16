@@ -4,10 +4,12 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin, Send } from 'lucide-react';
+import { useI18n } from '@/lib/i18n';
 
 const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
+  const { t } = useI18n();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,19 +19,19 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: <Mail className="w-5 h-5" />,
-      label: 'Email',
+      label: t.contact.email,
       value: 'hi@rcastaneda.dev',
       href: 'mailto:hi@rcastaneda.dev'
     },
     {
       icon: <Phone className="w-5 h-5" />,
-      label: 'Phone',
+      label: t.contact.phone,
       value: '+503 7740-7075',
       href: 'tel:+50377407075'
     },
     {
       icon: <MapPin className="w-5 h-5" />,
-      label: 'Location',
+      label: t.contact.location,
       value: 'San Salvador, El Salvador',
       href: '#'
     }
@@ -71,12 +73,11 @@ const Contact = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Get In <span className="gradient-text">Touch</span>
+            {t.contact.title} <span className="gradient-text">{t.contact.titleHighlight}</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-4"></div>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            I&apos;m always interested in discussing new opportunities, innovative projects, 
-            or how I can help improve your testing and development processes.
+            {t.contact.subtitle}
           </p>
         </motion.div>
 
@@ -87,7 +88,7 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-2xl font-bold mb-6">Let&apos;s Connect</h3>
+            <h3 className="text-2xl font-bold mb-6">{t.contact.letsConnect}</h3>
             
             <div className="space-y-4 mb-8">
               {contactInfo.map((info, index) => (
@@ -138,7 +139,7 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Your Name
+                  {t.contact.form.name}
                 </label>
                 <input
                   type="text"
@@ -148,13 +149,13 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 glass-effect rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all"
-                  placeholder="John Doe"
+                  placeholder={t.contact.form.namePlaceholder}
                 />
               </div>
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Your Email
+                  {t.contact.form.email}
                 </label>
                 <input
                   type="email"
@@ -164,13 +165,13 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 glass-effect rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all"
-                  placeholder="john@example.com"
+                  placeholder={t.contact.form.emailPlaceholder}
                 />
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Message
+                  {t.contact.form.message}
                 </label>
                 <textarea
                   id="message"
@@ -180,7 +181,7 @@ const Contact = () => {
                   required
                   rows={5}
                   className="w-full px-4 py-3 glass-effect rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all resize-none"
-                  placeholder="Tell me about your project..."
+                  placeholder={t.contact.form.messagePlaceholder}
                 />
               </div>
 
@@ -191,7 +192,7 @@ const Contact = () => {
                 className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-accent rounded-lg font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all"
               >
                 <Send className="w-5 h-5" />
-                Send Message
+                {t.contact.form.send}
               </motion.button>
             </form>
           </motion.div>

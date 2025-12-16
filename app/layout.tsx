@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { VT323 } from "next/font/google";
 import "./globals.css";
+import { I18nProvider } from "@/lib/i18n";
 
 const vt323 = VT323({ weight: "400", subsets: ["latin"] });
 
@@ -25,11 +26,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={vt323.className}>
-        <div className="min-h-screen bg-gradient-to-br from-darker via-dark to-darker">
-          {children}
-        </div>
+        <I18nProvider>
+          <div className="min-h-screen bg-gradient-to-br from-darker via-dark to-darker">
+            {children}
+          </div>
+        </I18nProvider>
       </body>
     </html>
   );

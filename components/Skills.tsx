@@ -15,14 +15,16 @@ import {
 import { FaJava } from 'react-icons/fa';
 import { VscAzureDevops } from 'react-icons/vsc';
 import { FaMasksTheater } from 'react-icons/fa6';
+import { useI18n } from '@/lib/i18n';
 
 const Skills = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
+  const { t } = useI18n();
 
   const skillCategories = [
     {
-      title: 'Programming Languages',
+      title: t.skills.categories.programming,
       icon: <Code2 className="w-6 h-6" />,
       skills: [
         { name: 'TypeScript', icon: <SiTypescript /> },
@@ -32,11 +34,11 @@ const Skills = () => {
       ]
     },
     {
-      title: 'Testing Frameworks',
+      title: t.skills.categories.testing,
       icon: <TestTube2 className="w-6 h-6" />,
       skills: [
         { name: 'Cypress', icon: <SiCypress /> },
-        { name: 'TestCafe', icon: <TestTube2 className="w-4 h-4" /> }, // Fallback
+        { name: 'TestCafe', icon: <TestTube2 className="w-4 h-4" /> },
         { name: 'Jest', icon: <SiJest /> },
         { name: 'Selenium', icon: <SiSelenium /> },
         { name: 'PyTest', icon: <SiPytest /> },
@@ -45,7 +47,7 @@ const Skills = () => {
       ]
     },
     {
-      title: 'DevOps & Tools',
+      title: t.skills.categories.devops,
       icon: <Cloud className="w-6 h-6" />,
       skills: [
         { name: 'Docker', icon: <SiDocker /> },
@@ -56,7 +58,7 @@ const Skills = () => {
       ]
     },
     {
-      title: 'Frameworks & Libraries',
+      title: t.skills.categories.frameworks,
       icon: <Globe className="w-6 h-6" />,
       skills: [
         { name: 'Node.js', icon: <SiNodedotjs /> },
@@ -65,12 +67,6 @@ const Skills = () => {
         { name: 'Express', icon: <SiExpress /> },
       ]
     }
-  ];
-
-  const certifications = [
-    'MIT xPRO - Professional Certificate in Cybersecurity (2022-2023)',
-    'Currently learning: AI-powered development with Cursor & Claude Code',
-    'Focus areas: Modern React, Full-stack development, Test automation architecture'
   ];
 
   return (
@@ -83,7 +79,7 @@ const Skills = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Technical <span className="gradient-text">Skills</span>
+            {t.skills.title} <span className="gradient-text">{t.skills.titleHighlight}</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
         </motion.div>
@@ -129,10 +125,10 @@ const Skills = () => {
           className="glass-effect rounded-lg p-8"
         >
           <h3 className="text-2xl font-bold mb-6 text-center">
-            Continuous <span className="gradient-text">Learning</span>
+            {t.skills.continuousLearning} <span className="gradient-text">{t.skills.continuousLearningHighlight}</span>
           </h3>
           <div className="space-y-3">
-            {certifications.map((cert, index) => (
+            {t.skills.certifications.map((cert, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -30 }}

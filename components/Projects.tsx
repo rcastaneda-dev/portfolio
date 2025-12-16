@@ -2,77 +2,63 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { ExternalLink, Github, Zap, Shield, Code2, TestTube2 } from 'lucide-react';
+import { ExternalLink, Github, TestTube2 } from 'lucide-react';
 import { SiK6, SiSelenium, SiTestcafe } from 'react-icons/si';
+import { useI18n } from '@/lib/i18n';
 
 const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.2 });
   const [filter, setFilter] = useState<'All' | 'Dev' | 'Automation'>('All');
+  const { t } = useI18n();
 
   const projects = [
     {
-      title: 'SPA Inventory with LocalStorage using React + TypeScript',
+      title: t.projects.items.inventory.title,
       year: '2025',
-      description: 'React 19 + TypeScript SPA (CRA) for inventory, sales, and purchases management. Currently migrating from localStorage to IndexedDB (Dexie) and adding E2E tests with Playwright (Work In Progress)',
+      description: t.projects.items.inventory.description,
       icon: <TestTube2 className="w-8 h-8" />,
       tech: ['React 19', 'TypeScript', 'Playwright', 'Dexie'],
-      highlights: [
-        'Implemented to work with LocalStorage',
-        'Generate CSV reports and download inventory',
-        'Playwright E2E + React Testing Library',
-        'Netlify deployment with Github Actions workflow'
-      ],
+      highlights: t.projects.items.inventory.highlights,
       color: 'from-primary to-blue-500',
       githubLink: 'https://github.com/rcastaneda-dev/nanis-essentials-inventory',
       liveLink: 'https://nanis-essentials-inventory.vercel.app',
-      type: 'Dev',
-      automationStatus: 'Pending'
+      type: 'Dev' as const,
+      automationStatus: 'Pending' as 'Pending' | 'Complete',
     },
     {
-      title: 'K6/Typescript performance tests against PetStore public Server',
+      title: t.projects.items.k6.title,
       year: '2025',
-      description: 'Implements smoke, load, stress, and spike tests against the PetStore public Server to validate the API performance and reliability.',
+      description: t.projects.items.k6.description,
       icon: <SiK6 className="w-8 h-8 text-green-400" />,
       tech: ['K6', 'Typescript', 'Node.js', 'Github'],
-      highlights: [
-        'Smoke, load, stress, and spike tests',
-        'Github action to manually trigger the tests'
-      ],
+      highlights: t.projects.items.k6.highlights,
       color: 'from-green-400 to-cyan-500',
       githubLink: 'https://github.com/rcastaneda-dev/k6-typescript-portfolio',
       liveLink: 'https://github.com/rcastaneda-dev/k6-typescript-portfolio/actions',
-      type: 'Automation'
+      type: 'Automation' as const,
     },
     {
-      title: 'Testcafe/Javascript E2E Coding Challenge for Theorem One',
+      title: t.projects.items.testcafe.title,
       year: '2021',
-      description: 'End-to-end automation solution showcasing advanced TestCafe and JavaScript implementation patterns, originally developed as a technical assessment for the company Theorem One I applied to back on June 2021',
+      description: t.projects.items.testcafe.description,
       icon: <SiTestcafe className="w-8 h-8" />,
       tech: ['JavaScript', 'Node.js', 'Testcafe', 'Github'],
-      highlights: [
-        'Automated 5+ E2E endpoints',
-        'Data-driven test execution',
-        'Faker.js for data generation'
-      ],
+      highlights: t.projects.items.testcafe.highlights,
       color: 'from-accent to-purple-500',
       githubLink: 'https://github.com/rcastaneda-dev/AutomationPractice-Theorem',
-      type: 'Automation'
+      type: 'Automation' as const,
     },
     {
-      title: 'SDET - Coding challenge for Upgrade, Inc.',
+      title: t.projects.items.upgrade.title,
       year: '2019',
-      description: 'Java/Selenium/TestNG automation challenge involving UI validation of loan offers and API verification of eligible states',
+      description: t.projects.items.upgrade.description,
       icon: <SiSelenium className="w-8 h-8" />,
       tech: ['Java', 'Selenium', 'TestNG', 'Maven', 'RestAssured'],
-      highlights: [
-        'UI Automation: Loan offer validation & borrower flow',
-        'API Automation: State eligibility verification',
-        'Page Object Model design pattern'
-      ],
+      highlights: t.projects.items.upgrade.highlights,
       color: 'from-green-400 to-cyan-500',
       githubLink: 'https://github.com/rcastaneda-dev/AutomationChallenge-UpgradeInc',
-      type: 'Automation'
+      type: 'Automation' as const,
     },
   ];
 
@@ -80,6 +66,12 @@ const Projects = () => {
     if (filter === 'All') return true;
     return project.type === filter;
   });
+
+  const filterLabels = {
+    All: t.projects.filterAll,
+    Dev: t.projects.filterDev,
+    Automation: t.projects.filterAutomation,
+  };
 
   return (
     <section id="projects" className="py-20 relative">
@@ -91,23 +83,23 @@ const Projects = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Featured <span className="gradient-text">Projects</span>
+            {t.projects.title} <span className="gradient-text">{t.projects.titleHighlight}</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8"></div>
 
           {/* Filter Toggle */}
           <div className="flex justify-center gap-4 mb-12">
-            {['All', 'Dev', 'Automation'].map((item) => (
+            {(['All', 'Dev', 'Automation'] as const).map((item) => (
               <button
                 key={item}
-                onClick={() => setFilter(item as 'All' | 'Dev' | 'Automation')}
+                onClick={() => setFilter(item)}
                 className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
                   filter === item
                     ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg shadow-primary/25'
                     : 'bg-dark/50 text-gray-400 hover:text-white hover:bg-dark/80'
                 }`}
               >
-                {item}
+                {filterLabels[item]}
               </button>
             ))}
           </div>
@@ -144,13 +136,13 @@ const Projects = () => {
                     }`}>
                       {project.type}
                     </span>
-                    {project.type === 'Dev' && (
+                    {project.type === 'Dev' && 'automationStatus' in project && (
                       <span className={`px-3 py-1 text-xs font-semibold rounded-full border ${
                         project.automationStatus === 'Complete'
                           ? 'bg-green-500/10 border-green-500/50 text-green-400'
                           : 'bg-yellow-500/10 border-yellow-500/50 text-yellow-400'
                       }`}>
-                        {project.automationStatus === 'Complete' ? 'Automation Complete' : 'Automation Pending'}
+                        {project.automationStatus === 'Complete' ? t.projects.automationComplete : t.projects.automationPending}
                       </span>
                     )}
                     <span className="px-3 py-1 text-xs font-semibold rounded-full border bg-gray-500/10 border-gray-500/50 text-gray-400">
@@ -197,9 +189,9 @@ const Projects = () => {
                     onClick={(e) => !project.githubLink && e.preventDefault()}
                   >
                     <Github className="w-4 h-4" />
-                    <span className="text-sm">View Code</span>
+                    <span className="text-sm">{t.projects.viewCode}</span>
                   </motion.a>
-                  {project.liveLink && (
+                  {'liveLink' in project && project.liveLink && (
                     <motion.a
                       href={project.liveLink}
                       target="_blank"
@@ -209,7 +201,7 @@ const Projects = () => {
                       className="flex items-center gap-2 text-primary hover:text-white transition-colors"
                     >
                       <ExternalLink className="w-4 h-4" />
-                      <span className="text-sm">Live Demo</span>
+                      <span className="text-sm">{t.projects.liveDemo}</span>
                     </motion.a>
                   )}
                 </div>
@@ -233,7 +225,7 @@ const Projects = () => {
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-accent rounded-full font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all"
           >
             <Github className="w-5 h-5" />
-            View More on GitHub
+            {t.projects.viewMoreGithub}
           </motion.a>
         </motion.div>
       </div>
