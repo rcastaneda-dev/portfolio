@@ -3,31 +3,33 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Code2, Cpu, GitBranch, Zap } from 'lucide-react';
+import { useI18n } from '@/lib/i18n';
 
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
+  const { t } = useI18n();
 
   const features = [
     {
       icon: <Cpu className="w-6 h-6" />,
-      title: 'Automation Expert',
-      description: 'Specialized in building robust test automation frameworks and CI/CD pipelines'
+      title: t.about.features.automation.title,
+      description: t.about.features.automation.description,
     },
     {
       icon: <Zap className="w-6 h-6" />,
-      title: 'AI-Powered Workflow',
-      description: 'Leveraging modern AI tools to accelerate development and testing'
+      title: t.about.features.ai.title,
+      description: t.about.features.ai.description,
     },
     {
       icon: <Code2 className="w-6 h-6" />,
-      title: 'Full Stack Capable',
-      description: 'Proficient in both frontend and backend development with modern frameworks'
+      title: t.about.features.fullstack.title,
+      description: t.about.features.fullstack.description,
     },
     {
       icon: <GitBranch className="w-6 h-6" />,
-      title: 'Cross-Functional',
-      description: 'Bridge between development and QA teams to ensure quality delivery'
+      title: t.about.features.crossfunctional.title,
+      description: t.about.features.crossfunctional.description,
     },
   ];
 
@@ -47,7 +49,7 @@ const About = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            About <span className="gradient-text">Me</span>
+            {t.about.title} <span className="gradient-text">{t.about.titleHighlight}</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
         </motion.div>
@@ -59,23 +61,21 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h3 className="text-2xl font-bold mb-4 text-primary">
-              Bridging Development & Quality Assurance
+              {t.about.subtitle}
             </h3>
             <p className="text-gray-300 mb-4">
-              I’m a seasoned IT professional with over a decade of experience delivering high-quality solutions across multiple industries, including:
+              {t.about.intro}
             </p>
             <ul className="list-disc list-inside text-gray-300 mb-4 ml-4">
-              <li>Financial Services (Disputes/Claims, Payments, Chargebacks)</li>
-              <li>eCommerce</li>
-              <li>Cybersecurity</li>
-              <li>Maritime</li>
-              <li>Ground Transportation & Logistics</li>
+              {t.about.industries.map((industry, index) => (
+                <li key={index}>{industry}</li>
+              ))}
             </ul>
             <p className="text-gray-300 mb-4">
-              As a Senior QA Automation Engineer with a strong development background, I bring a cross-functional perspective to every project. My core expertise is in JavaScript/TypeScript and Java, with additional experience in Python, and I work confidently across modern tools, frameworks, and architectural patterns.
+              {t.about.description1}
             </p>
             <p className="text-gray-300">
-              Currently, I&apos;m embracing AI-powered tools like Cursor and Claude Code to enhance QA productivity and explore modern development paradigms. I&apos;m also taking the time to explore chaos engineering tools like Gremlin to further strengthen system resilience.
+              {t.about.description2}
             </p>
           </motion.div>
 

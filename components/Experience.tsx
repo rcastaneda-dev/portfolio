@@ -4,25 +4,22 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Briefcase, Calendar, MapPin } from 'lucide-react';
+import { useI18n } from '@/lib/i18n';
 
 const Experience = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.2 });
   const [showDev, setShowDev] = useState(false);
+  const { t } = useI18n();
 
   const experiences = [
     {
-      title: 'Senior QA Automation Engineer',
-      company: 'Lumenalta LLC (formerly Clevertech)',
-      period: '05/2023 - Present',
+      title: t.experience.jobs.lumenalta.title,
+      company: t.experience.jobs.lumenalta.company,
+      period: `05/2023 - ${t.experience.present}`,
       location: 'Remote',
       category: 'QA',
-      description: [
-        'Developed robust automation framework using Cypress and TypeScript',
-        'Configured and optimized E2E pipeline in Azure DevOps',
-        'Implemented Docker containerization for parallel test execution',
-        'Led E2E coverage monitoring and test delegation across team'
-      ],
+      description: t.experience.jobs.lumenalta.description,
       tech: [
         'Azure DevOps', 'JavaScript', 'TypeScript', 'Cypress', 'Performance Testing',
         'Postman', 'Spike Testing', 'Component Testing', 'React Testing Library',
@@ -30,34 +27,24 @@ const Experience = () => {
       ]
     },
     {
-      title: 'Senior QA Automation Engineer',
-      company: 'Avenue Code',
+      title: t.experience.jobs.avenueCode.title,
+      company: t.experience.jobs.avenueCode.company,
       period: '03/2022 - 02/2023',
       location: 'Remote',
       category: 'QA',
-      description: [
-        'Developed API and E2E test cases using TestCafe framework',
-        'Contributed to PyTest framework maintenance',
-        'Enhanced and refactored E2E automation in Jenkins pipeline',
-        'Triaged and validated production bugs'
-      ],
+      description: t.experience.jobs.avenueCode.description,
       tech: [
         'API Testing', 'JIRA', 'Quality Assurance', 'TestCafe', 'JavaScript', 
         'Git', 'Software Quality', 'Node.js', 'Jenkins', 'PyTest', 'Python', 'GitHub', 'GitHub Actions'
       ]
     },
     {
-      title: 'QA Automation Engineer',
-      company: 'Encora (formerly Avantica)',
+      title: t.experience.jobs.encora.title,
+      company: t.experience.jobs.encora.company,
       period: '11/2019 - 03/2022',
       location: 'Remote',
       category: 'QA',
-      description: [
-        'Served as QA Release Captain for bi-weekly production releases',
-        'Developed E2E automation tests using TestCafe',
-        'Managed test cases in TestRail',
-        'Monitored TeamCity CI/CD pipeline health'
-      ],
+      description: t.experience.jobs.encora.description,
       tech: [
         'JavaScript (ES6)', 'TestCafe', 'Node.js', 'ESLint', 'Prettier', 'Gulp', 'Npm',
         'Postman', 'Python', 'PyTest', 'Jest', 'Docker', 'Kubernetes', 'RabbitMQ',
@@ -65,70 +52,44 @@ const Experience = () => {
       ]
     },
     {
-      title: 'PEGA Developer | PEGA System Architect',
-      company: 'Rulesware LLC',
+      title: t.experience.jobs.pegaDev.title,
+      company: t.experience.jobs.pegaDev.company,
       period: '05/2018 - 10/2019',
       location: 'El Salvador (Hybrid)',
       category: 'Dev',
-      description: [
-        'Ability to translate complex business requirement into functional technical requirements using PegaSystems SmartBPM methodology',
-        'Manage technical implementation tasks to ensure work is delivered on-time and on-budget',
-        'Effectively troubleshoot technical issues as they arise during the project lifecycle',
-        'Responsible for Coding and unit testing using Pega OOTB features based on the design provided by the Lead System Architect'
-      ],
+      description: t.experience.jobs.pegaDev.description,
       tech: ['Pega PRPC', 'BPM', 'JAXB', 'JSON', 'Postman', 'XML', 'JSP', 'SoapUI']
     },
     {
-      title: 'QA Automation Engineer',
-      company: 'Rulesware LLC',
+      title: t.experience.jobs.ruleswareQa.title,
+      company: t.experience.jobs.ruleswareQa.company,
       period: '08/2015 - 07/2018',
       location: 'El Salvador (Onsite)',
       category: 'QA',
-      description: [
-        'Developed automation tests using Selenium WebDriver and TestNG',
-        'Implemented data-driven test scripts with Page Object Model',
-        'Created utility classes for RESTful API testing',
-        'Executed and reported test plans progress'
-      ],
+      description: t.experience.jobs.ruleswareQa.description,
       tech: [
         'Java EE', 'Selenium WebDriver', 'API Testing', 'JAXB', 'Quality Assurance', 
         'Postman', 'Java', 'XML', 'Git', 'SoapUI', 'Software Quality', 'SQL', 'Jenkins'
       ]
     },
     {
-      title: 'Java Developer',
-      company: 'Synergyca SA de CV (Project: Davivienda Bank)',
+      title: t.experience.jobs.synergyca.title,
+      company: t.experience.jobs.synergyca.company,
       period: '03/2015 - 07/2015',
       location: 'El Salvador (Onsite)',
       category: 'Dev',
-      description: [
-        'Developed services following SOA (Service-Oriented Architecture) principles',
-        'Analyzed user requirements and delivered secure, scalable solutions',
-        'Provided ongoing application development support',
-        'Wrote, tested, and maintained application code',
-        'Improved and enhanced existing UI/UX',
-        'Created mockups and UI prototypes'
-      ],
+      description: t.experience.jobs.synergyca.description,
       tech: [
         'JPA', 'PrimeFaces', 'JSON', 'Java', 'JSP', 'SQL', 'Bash', '.NET'
       ]
     },
     {
-      title: 'Java EE Developer (Internship)',
-      company: 'Sherwin Williams',
+      title: t.experience.jobs.sherwin.title,
+      company: t.experience.jobs.sherwin.company,
       period: '12/2013 - 03/2015',
       location: 'El Salvador (Onsite)',
       category: 'Dev',
-      description: [
-        'Collaborated with developers, managers, and stakeholders to define software requirements',
-        'Participated in all phases of the software development lifecycle',
-        'Designed and implemented RESTful web services',
-        'Built low-latency, scalable, and reliable Java Enterprise Beans',
-        'Developed Java web components (managed beans, XHTML/HTML5)',
-        'Ensured all designs aligned with specifications and project standards',
-        'Performed thorough testing of developed components',
-        'Implemented client-side and server-side validations'
-      ],
+      description: t.experience.jobs.sherwin.description,
       tech: [
         'Java EE5', 'JPA', 'JMS', 'JSF', 'Icefaces', 'PrimeFaces', 'Knockout.js', 
         'JavaScript', 'HTML5', 'jQuery Mobile', 'JSON', 'PL/SQL', 'Oracle', 
@@ -149,14 +110,14 @@ const Experience = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Work <span className="gradient-text">Experience</span>
+            {t.experience.title} <span className="gradient-text">{t.experience.titleHighlight}</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8"></div>
 
           {/* Toggle Switch */}
           <div className="flex items-center justify-center gap-4 mb-8">
             <span className={`text-sm font-semibold ${!showDev ? 'text-primary' : 'text-gray-400'}`}>
-              QA Automation Experience
+              {t.experience.qaToggle}
             </span>
             <button
               onClick={() => setShowDev(!showDev)}
@@ -171,7 +132,7 @@ const Experience = () => {
               />
             </button>
             <span className={`text-sm font-semibold ${showDev ? 'text-primary' : 'text-gray-400'}`}>
-              Developer Experience
+              {t.experience.devToggle}
             </span>
           </div>
         </motion.div>

@@ -2,9 +2,11 @@
 
 import { motion } from 'framer-motion';
 import { Code2, Heart } from 'lucide-react';
+import { useI18n } from '@/lib/i18n';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useI18n();
 
   return (
     <footer className="py-8 border-t border-white/10">
@@ -17,18 +19,18 @@ const Footer = () => {
         >
           <div className="flex items-center justify-center gap-2 mb-4">
             <Code2 className="w-5 h-5 text-primary" />
-            <span className="text-gray-400">Built with</span>
+            <span className="text-gray-400">{t.footer.builtWith}</span>
             <motion.div
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
               <Heart className="w-5 h-5 text-accent fill-accent" />
             </motion.div>
-            <span className="text-gray-400">using Next.js & TypeScript</span>
+            <span className="text-gray-400">{t.footer.using}</span>
           </div>
           
           <p className="text-sm text-gray-500">
-            © {currentYear} Ricardo Castaneda. All rights reserved.
+            © {currentYear} Ricardo Castaneda. {t.footer.rights}
           </p>
         </motion.div>
       </div>
