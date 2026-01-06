@@ -226,6 +226,7 @@ export const en = {
     email: 'Email',
     phone: 'Phone',
     location: 'Location',
+    supportMessage: 'If you find my work helpful, consider supporting me!',
     form: {
       name: 'Your Name',
       namePlaceholder: 'John Doe',
