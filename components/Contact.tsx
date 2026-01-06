@@ -5,6 +5,7 @@ import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin, Send } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
+import Image from 'next/image';
 
 const Contact = () => {
   const ref = useRef(null);
@@ -89,7 +90,7 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h3 className="text-2xl font-bold mb-6">{t.contact.letsConnect}</h3>
-            
+
             <div className="space-y-4 mb-8">
               {contactInfo.map((info, index) => (
                 <motion.a
@@ -197,6 +198,33 @@ const Contact = () => {
             </form>
           </motion.div>
         </div>
+
+        {/* Buy Me a Coffee Widget */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mt-16 text-center"
+        >
+          <p className="text-gray-400 mb-4">{t.contact.supportMessage}</p>
+          <motion.a
+            href="https://www.buymeacoffee.com/rcastaneda.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05, y: -5 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-block transition-all hover:neon-glow rounded-lg"
+          >
+            <Image
+              src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=rcastaneda.dev&button_colour=40DCA5&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00"
+              alt="Buy Me A Coffee"
+              width={217}
+              height={60}
+              className="h-12 md:h-14 w-auto"
+              unoptimized
+            />
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );

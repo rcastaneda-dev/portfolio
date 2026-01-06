@@ -228,6 +228,7 @@ export const es: Translations = {
     email: 'Correo',
     phone: 'Teléfono',
     location: 'Ubicación',
+    supportMessage: '¡Si encuentras útil mi trabajo, considera apoyarme!',
     form: {
       name: 'Tu Nombre',
       namePlaceholder: 'Juan Pérez',
