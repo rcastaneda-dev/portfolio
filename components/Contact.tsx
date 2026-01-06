@@ -38,19 +38,6 @@ const Contact = () => {
     }
   ];
 
-  const socialLinks = [
-    {
-      icon: <Github className="w-6 h-6" />,
-      href: 'https://github.com/rcastaneda-dev',
-      label: 'GitHub'
-    },
-    {
-      icon: <Linkedin className="w-6 h-6" />,
-      href: 'https://www.linkedin.com/in/rcastaneda-dev/',
-      label: 'LinkedIn'
-    }
-  ];
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission here
@@ -108,24 +95,6 @@ const Contact = () => {
                     <p className="text-xs md:text-sm text-gray-400">{info.label}</p>
                     <p className="text-sm md:text-base text-gray-200">{info.value}</p>
                   </div>
-                </motion.a>
-              ))}
-            </div>
-
-            <div className="flex gap-3 md:gap-4">
-              {socialLinks.map((link, index) => (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                  whileHover={{ scale: 1.1, y: -5 }}
-                  className="p-2.5 md:p-3 glass-effect rounded-full text-gray-300 hover:text-primary hover:neon-glow transition-all"
-                >
-                  {link.icon}
                 </motion.a>
               ))}
             </div>
