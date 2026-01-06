@@ -27,13 +27,13 @@ const Navigation = () => {
       transition={{ duration: 0.5 }}
       className="absolute w-full z-50 py-6"
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="flex items-center space-x-2"
           >
-            <div className="relative w-32 h-32">
+            <div className="relative w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32">
               <Image
                 src="/icon.png"
                 alt="Logo"

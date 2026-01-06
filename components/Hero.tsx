@@ -37,7 +37,7 @@ const Hero = () => {
   }, [t.hero.roles]);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 md:pt-32">
       {/* Animated Background Particles */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(5)].map((_, i) => (
@@ -55,17 +55,17 @@ const Hero = () => {
         ))}
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="mb-4"
+            className="mb-6 md:mb-4"
           >
-            <div className="inline-block p-2 glass-effect rounded-full mb-2">
+            <div className="inline-block p-1.5 md:p-2 glass-effect rounded-full mb-2">
               <div
-                className="w-32 h-32 bg-gradient-to-r from-primary via-secondary to-accent rounded-full p-1"
+                className="w-28 h-28 md:w-32 md:h-32 bg-gradient-to-r from-primary via-secondary to-accent rounded-full p-1"
               >
                 <div className="w-full h-full bg-darker rounded-full flex items-center justify-center overflow-hidden relative">
                   <Image
@@ -84,7 +84,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-3 md:mb-4 px-2"
           >
             Ricardo Castaneda
           </motion.h1>
@@ -93,7 +93,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-2xl md:text-3xl text-primary mb-8 h-20"
+            className="text-xl sm:text-2xl md:text-3xl text-primary mb-6 md:mb-8 h-16 md:h-20 px-2"
           >
             <TypeAnimation
               key={locale} // Force re-render on locale change
@@ -108,7 +108,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto"
+            className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 md:mb-12 max-w-2xl mx-auto px-4"
           >
             {t.hero.tagline}
           </motion.p>
@@ -117,7 +117,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
-            className="flex flex-col items-center gap-6 mb-12"
+            className="flex flex-col items-center gap-4 md:gap-6 mb-8 md:mb-12 px-4"
           >
             {/* Download Resume CTA */}
             <motion.a
@@ -125,23 +125,23 @@ const Hero = () => {
               download="Ricardo_Castaneda_Resume.pdf"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-secondary text-darker font-semibold rounded-full hover:shadow-lg hover:shadow-primary/30 transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 bg-gradient-to-r from-primary to-secondary text-darker font-semibold rounded-full hover:shadow-lg hover:shadow-primary/30 transition-all text-sm md:text-base"
             >
-              <FileDown size={20} />
+              <FileDown size={18} className="md:w-5 md:h-5" />
               {t.hero.downloadResume}
             </motion.a>
 
             {/* Social Links */}
-            <div className="flex justify-center space-x-6">
+            <div className="flex justify-center space-x-4 md:space-x-6">
               <motion.a
                 href="https://github.com/rcastaneda-dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -5 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-3 glass-effect rounded-full text-gray-300 hover:text-primary hover:neon-glow transition-all"
+                className="p-2.5 md:p-3 glass-effect rounded-full text-gray-300 hover:text-primary hover:neon-glow transition-all"
               >
-                <Github size={24} />
+                <Github size={20} className="md:w-6 md:h-6" />
               </motion.a>
               <motion.a
                 href="https://www.linkedin.com/in/rcastaneda-dev/"
@@ -149,17 +149,17 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -5 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-3 glass-effect rounded-full text-gray-300 hover:text-primary hover:neon-glow transition-all"
+                className="p-2.5 md:p-3 glass-effect rounded-full text-gray-300 hover:text-primary hover:neon-glow transition-all"
               >
-                <Linkedin size={24} />
+                <Linkedin size={20} className="md:w-6 md:h-6" />
               </motion.a>
               <motion.a
                 href="mailto:hi@rcastaneda.dev"
                 whileHover={{ scale: 1.1, y: -5 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-3 glass-effect rounded-full text-gray-300 hover:text-primary hover:neon-glow transition-all"
+                className="p-2.5 md:p-3 glass-effect rounded-full text-gray-300 hover:text-primary hover:neon-glow transition-all"
               >
-                <Mail size={24} />
+                <Mail size={20} className="md:w-6 md:h-6" />
               </motion.a>
             </div>
           </motion.div>
