@@ -6,6 +6,7 @@ import { TypeAnimation } from 'react-type-animation';
 import { Github, Linkedin, Mail, ChevronDown, FileDown } from 'lucide-react';
 import Image from 'next/image';
 import { useI18n } from '@/lib/i18n';
+import { SocialIcon } from 'react-social-icons';
 
 const Hero = () => {
   const { t, locale } = useI18n();
@@ -133,34 +134,9 @@ const Hero = () => {
 
             {/* Social Links */}
             <div className="flex justify-center space-x-4 md:space-x-6">
-              <motion.a
-                href="https://github.com/rcastaneda-dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -5 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2.5 md:p-3 glass-effect rounded-full text-gray-300 hover:text-primary hover:neon-glow transition-all"
-              >
-                <Github size={20} className="md:w-6 md:h-6" />
-              </motion.a>
-              <motion.a
-                href="https://www.linkedin.com/in/rcastaneda-dev/"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -5 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2.5 md:p-3 glass-effect rounded-full text-gray-300 hover:text-primary hover:neon-glow transition-all"
-              >
-                <Linkedin size={20} className="md:w-6 md:h-6" />
-              </motion.a>
-              <motion.a
-                href="mailto:hi@rcastaneda.dev"
-                whileHover={{ scale: 1.1, y: -5 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2.5 md:p-3 glass-effect rounded-full text-gray-300 hover:text-primary hover:neon-glow transition-all"
-              >
-                <Mail size={20} className="md:w-6 md:h-6" />
-              </motion.a>
+              <SocialIcon url="https://github.com/rcastaneda-dev" />
+              <SocialIcon url="https://www.linkedin.com/in/rcastaneda-dev/" />
+              <SocialIcon url="mailto:hi@rcastaneda.dev" />
             </div>
           </motion.div>
 
