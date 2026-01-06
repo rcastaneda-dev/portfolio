@@ -101,37 +101,37 @@ const Experience = () => {
   const filteredExperiences = experiences.filter(exp => showDev || exp.category === 'QA');
 
   return (
-    <section id="experience" className="py-20 relative">
-      <div className="container mx-auto px-6" ref={ref}>
+    <section id="experience" className="py-12 md:py-20 relative">
+      <div className="container mx-auto px-4 md:px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             {t.experience.title} <span className="gradient-text">{t.experience.titleHighlight}</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8"></div>
+          <div className="w-20 md:w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 md:mb-8"></div>
 
           {/* Toggle Switch */}
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <span className={`text-sm font-semibold ${!showDev ? 'text-primary' : 'text-gray-400'}`}>
+          <div className="flex items-center justify-center gap-3 md:gap-4 mb-6 md:mb-8 px-4">
+            <span className={`text-xs md:text-sm font-semibold ${!showDev ? 'text-primary' : 'text-gray-400'}`}>
               {t.experience.qaToggle}
             </span>
             <button
               onClick={() => setShowDev(!showDev)}
-              className={`relative w-14 h-7 rounded-full transition-colors duration-300 focus:outline-none ${
+              className={`relative w-12 h-6 md:w-14 md:h-7 rounded-full transition-colors duration-300 focus:outline-none ${
                 showDev ? 'bg-primary' : 'bg-gray-600'
               }`}
             >
               <motion.div
-                className="absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow-md"
-                animate={{ x: showDev ? 28 : 0 }}
+                className="absolute top-0.5 left-0.5 md:top-1 md:left-1 w-5 h-5 bg-white rounded-full shadow-md"
+                animate={{ x: showDev ? 24 : 0 }}
                 transition={{ type: "spring", stiffness: 500, damping: 30 }}
               />
             </button>
-            <span className={`text-sm font-semibold ${showDev ? 'text-primary' : 'text-gray-400'}`}>
+            <span className={`text-xs md:text-sm font-semibold ${showDev ? 'text-primary' : 'text-gray-400'}`}>
               {t.experience.devToggle}
             </span>
           </div>
@@ -139,7 +139,7 @@ const Experience = () => {
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-primary to-accent"></div>
+          <div className="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-primary to-accent"></div>
 
           {filteredExperiences.map((exp, index) => (
             <motion.div
@@ -147,36 +147,36 @@ const Experience = () => {
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className={`relative mb-12 ${
+              className={`relative mb-8 md:mb-12 ${
                 index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8 md:ml-auto'
               } md:w-1/2`}
             >
               {/* Timeline dot */}
               <motion.div
                 whileHover={{ scale: 1.2 }}
-                className={`absolute left-8 md:left-auto md:right-[-2.5rem] transform md:translate-x-1/2 w-4 h-4 rounded-full border-4 border-darker ${
+                className={`absolute left-6 md:left-auto md:right-[-2.5rem] transform md:translate-x-1/2 w-3 h-3 md:w-4 md:h-4 rounded-full border-2 md:border-4 border-darker ${
                   exp.category === 'Dev' ? 'bg-accent' : 'bg-primary'
                 }`}
               ></motion.div>
 
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className={`glass-effect rounded-lg p-6 ml-16 md:ml-0 hover:neon-glow transition-all ${
+                className={`glass-effect rounded-lg p-4 md:p-6 ml-12 md:ml-0 hover:neon-glow transition-all ${
                   exp.category === 'Dev' ? 'border-l-4 border-accent' : ''
                 }`}
               >
                 <div className={`flex items-center gap-2 mb-2 ${
                   index % 2 === 0 ? 'md:justify-end' : ''
                 }`}>
-                  <Briefcase className={`w-4 h-4 ${exp.category === 'Dev' ? 'text-accent' : 'text-primary'}`} />
-                  <h3 className={`text-xl font-bold ${exp.category === 'Dev' ? 'text-accent' : 'text-primary'}`}>
+                  <Briefcase className={`w-3 h-3 md:w-4 md:h-4 ${exp.category === 'Dev' ? 'text-accent' : 'text-primary'}`} />
+                  <h3 className={`text-base md:text-lg lg:text-xl font-bold ${exp.category === 'Dev' ? 'text-accent' : 'text-primary'}`}>
                     {exp.title}
                   </h3>
                 </div>
-                
-                <h4 className="text-lg font-semibold mb-2">{exp.company}</h4>
-                
-                <div className={`flex items-center gap-4 text-sm text-gray-400 mb-4 ${
+
+                <h4 className="text-sm md:text-base lg:text-lg font-semibold mb-2">{exp.company}</h4>
+
+                <div className={`flex flex-wrap items-center gap-2 md:gap-4 text-xs md:text-sm text-gray-400 mb-3 md:mb-4 ${
                   index % 2 === 0 ? 'md:justify-end' : ''
                 }`}>
                   <span className="flex items-center gap-1">
@@ -189,25 +189,25 @@ const Experience = () => {
                   </span>
                 </div>
 
-                <ul className={`space-y-2 mb-4 ${
+                <ul className={`space-y-1.5 md:space-y-2 mb-3 md:mb-4 ${
                   index % 2 === 0 ? 'md:text-right' : ''
                 }`}>
                   {exp.description.map((item, i) => (
-                    <li key={i} className="text-sm text-gray-300">
+                    <li key={i} className="text-xs md:text-sm text-gray-300">
                       • {item}
                     </li>
                   ))}
                 </ul>
 
-                <div className={`flex flex-wrap gap-2 ${
+                <div className={`flex flex-wrap gap-1.5 md:gap-2 ${
                   index % 2 === 0 ? 'md:justify-end' : ''
                 }`}>
                   {exp.tech.map((tech) => (
                     <span
                       key={tech}
-                      className={`px-2 py-1 text-xs border rounded ${
-                        exp.category === 'Dev' 
-                          ? 'bg-accent/10 border-accent/30 text-accent-light' 
+                      className={`px-2 py-0.5 md:py-1 text-[10px] md:text-xs border rounded ${
+                        exp.category === 'Dev'
+                          ? 'bg-accent/10 border-accent/30 text-accent-light'
                           : 'bg-primary/10 border-primary/30 text-primary-light'
                       }`}
                     >
