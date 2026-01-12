@@ -87,6 +87,7 @@ export const es: Translations = {
           'Contribuí al mantenimiento del framework PyTest',
           'Mejoré y refactoricé la automatización E2E en el pipeline de Jenkins',
           'Clasifiqué y validé bugs de producción',
+          'Entregué un Proof of Concept (PoC) para automatización E2E con Playwright',
         ],
       },
       encora: {
@@ -180,6 +181,15 @@ export const es: Translations = {
     automationComplete: 'Automatización Completa',
     automationPending: 'Automatización Pendiente',
     items: {
+      'playwright-platzi-challenge2': {
+        title: 'Desafío de Código E2E Playwright/Typescript para Platzi',
+        description: 'Desafío de automatización end-to-end que muestra patrones avanzados de implementación en Playwright y Typescript, desarrollado originalmente como evaluación técnica para la escuela de Platzi en diciembre de 2025',
+        highlights: [
+          'Automatización E2E con Playwright',
+          'Patrón de diseño Page Object Model',
+          'Refactorización y mejora del código base del desafío',
+        ],
+      },
       inventory: {
         title: 'SPA de Inventario con LocalStorage usando React + TypeScript',
         description: 'SPA React 19 + TypeScript (CRA) para gestión de inventario, ventas y compras. Actualmente migrando de localStorage a IndexedDB (Dexie) y agregando pruebas E2E con Playwright (Trabajo en Progreso)',
