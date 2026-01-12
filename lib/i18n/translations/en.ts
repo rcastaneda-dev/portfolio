@@ -85,6 +85,7 @@ export const en = {
           'Contributed to PyTest framework maintenance',
           'Enhanced and refactored E2E automation in Jenkins pipeline',
           'Triaged and validated production bugs',
+          'Delivered a Proof of Concept (PoC) for end-to-end automation using Playwright',
         ],
       },
       encora: {
@@ -178,6 +179,15 @@ export const en = {
     automationComplete: 'Automation Complete',
     automationPending: 'Automation Pending',
     items: {
+      'playwright-platzi-challenge2': {
+        title: 'Playwright/Typescript E2E Course Challenge for Platzi',
+        description: 'Coding challenge for the Course: Automation Testing with Playwright/Typescript I took back on December 2025 from Platzi school',
+        highlights: [
+          'Playwright E2E tests',
+          'Page Object Model design pattern',
+          'Refactored and improved the challenge codebase from the course',
+        ],
+      },
       inventory: {
         title: 'SPA Inventory with LocalStorage using React + TypeScript',
         description: 'React 19 + TypeScript SPA (CRA) for inventory, sales, and purchases management. Currently migrating from localStorage to IndexedDB (Dexie) and adding E2E tests with Playwright (Work In Progress)',

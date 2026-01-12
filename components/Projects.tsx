@@ -5,6 +5,7 @@ import { useRef, useState } from 'react';
 import { ExternalLink, Github, TestTube2 } from 'lucide-react';
 import { SiK6, SiSelenium, SiTestcafe } from 'react-icons/si';
 import { useI18n } from '@/lib/i18n';
+import { FaMasksTheater } from 'react-icons/fa6';
 
 const Projects = () => {
   const ref = useRef(null);
@@ -25,6 +26,17 @@ const Projects = () => {
       liveLink: 'https://nanis-essentials-inventory.vercel.app',
       type: 'Dev' as const,
       automationStatus: 'Pending' as 'Pending' | 'Complete',
+    },
+    {
+      title: t.projects.items['playwright-platzi-challenge2'].title,
+      year: '2025',
+      description: t.projects.items['playwright-platzi-challenge2'].description,
+      icon: <FaMasksTheater className="w-8 h-8" />,
+      tech: ['Playwright', 'Typescript', 'Node.js', 'Github'],
+      highlights: t.projects.items['playwright-platzi-challenge2'].highlights,
+      color: 'from-primary to-blue-500',
+      githubLink: 'https://github.com/rcastaneda-dev/curso-automatizacion-pruebas-playwright-reto2/tree/fix/existing-docs-tests',
+      type: 'Automation' as const,
     },
     {
       title: t.projects.items.k6.title,
