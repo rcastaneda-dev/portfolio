@@ -25,25 +25,23 @@ const Navigation = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="absolute w-full z-50 py-6"
+      className="absolute w-full z-50 pt-8 pb-6 md:pt-10"
     >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between">
+      <div className="container mx-auto px-4 md:px-6 relative">
+        {/* Language Switcher - Always top-right */}
+        <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-6">
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
           >
-            <div className="relative w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32">
-              <Image
-                src="/icon.png"
-                alt="Logo"
-                fill
-                className="object-contain"
-              />
-            </div>
+            <LanguageSwitcher />
           </motion.div>
+        </div>
 
-          {/* Desktop Menu */}
+        {/* Centered Navigation */}
+        <div className="flex items-center justify-center">
+          {/* Desktop Menu - Centered */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item, index) => (
               <motion.a
@@ -52,29 +50,30 @@ const Navigation = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -2 }}
-                className="text-base text-gray-300 hover:text-primary transition-colors relative group"
+                whileHover={{ 
+                  y: -3, 
+                  scale: 1.05,
+                  transition: { duration: 0.2 }
+                }}
+                className="text-base text-gray-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(139,92,246,0.5)] transition-all duration-300 relative group px-2 py-1"
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-purple-400 group-hover:w-full transition-all duration-300 ease-out shadow-[0_0_8px_rgba(139,92,246,0.6)]"></span>
               </motion.a>
             ))}
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: navItems.length * 0.1 }}
-            >
-              <LanguageSwitcher />
-            </motion.div>
           </div>
 
-          {/* Mobile Menu Button & Language Switcher */}
-          <div className="md:hidden flex items-center gap-3">
-            <LanguageSwitcher />
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
             <motion.button
+              whileHover={{ 
+                scale: 1.1,
+                rotate: isOpen ? 90 : 0,
+                transition: { duration: 0.2 }
+              }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-300 hover:text-primary"
+              className="text-gray-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(139,92,246,0.5)] transition-colors duration-300"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </motion.button>
@@ -99,7 +98,13 @@ const Navigation = () => {
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: index * 0.1 }}
                     onClick={() => setIsOpen(false)}
-                    className="block py-2 text-base text-gray-300 hover:text-primary transition-colors"
+                    whileHover={{ 
+                      x: 8,
+                      scale: 1.02,
+                      transition: { duration: 0.2 }
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    className="block py-3 px-3 -mx-3 rounded-md text-base text-gray-300 hover:text-primary hover:bg-primary/10 hover:drop-shadow-[0_0_6px_rgba(139,92,246,0.3)] transition-all duration-300"
                   >
                     {item.name}
                   </motion.a>
