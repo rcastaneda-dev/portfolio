@@ -21,9 +21,9 @@ const Experience = () => {
       category: 'QA',
       description: t.experience.jobs.lumenalta.description,
       tech: [
-        'Azure DevOps', 'JavaScript', 'TypeScript', 'Cypress', 'Performance Testing',
+        'Cypress', 'JavaScript', 'TypeScript', 'Azure DevOps', 'Performance Testing',
         'Postman', 'Spike Testing', 'Component Testing', 'React Testing Library',
-        'Docker', 'Docker Compose', 'Bash', 'XML', 'JSON', 'GitHub', 'GitHub Actions', 'Nx', 'Monorepo', 'Jenkins', 'PyTest', 'Python'
+        'Docker', 'Docker Compose', 'Bash', 'JSON', 'Azure Repos', 'Nx', 'Monorepo', 'Azure Pipelines', 'Cursor', 'Claude'
       ]
     },
     {
@@ -34,8 +34,8 @@ const Experience = () => {
       category: 'QA',
       description: t.experience.jobs.avenueCode.description,
       tech: [
-        'API Testing', 'JIRA', 'Quality Assurance', 'TestCafe', 'JavaScript', 
-        'Git', 'Software Quality', 'Node.js', 'Jenkins', 'PyTest', 'Python', 'GitHub', 'GitHub Actions'
+        'Playwright', 'TestCafe', 'JavaScript', 'TypeScript',  'Node.js', 'API Testing', 'JIRA',   
+        'Jenkins', 'PyTest', 'Python', 'GitHub', 'GitHub Actions', 'Github Copilot'
       ]
     },
     {
@@ -46,7 +46,7 @@ const Experience = () => {
       category: 'QA',
       description: t.experience.jobs.encora.description,
       tech: [
-        'JavaScript (ES6)', 'TestCafe', 'Node.js', 'ESLint', 'Prettier', 'Gulp', 'Npm',
+        'TestCafe', 'JavaScript', 'Node.js', 'ESLint', 'Prettier', 'Gulp', 'Npm',
         'Postman', 'Python', 'PyTest', 'Jest', 'Docker', 'Kubernetes', 'RabbitMQ',
         'TeamCity', 'TestRail', 'BDD', 'JIRA', 'Datadog', 'Splunk', 'VSCode', 'PyCharm'
       ]

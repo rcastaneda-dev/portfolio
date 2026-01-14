@@ -71,31 +71,35 @@ export const en = {
         title: 'Senior QA Automation Engineer',
         company: 'Lumenalta LLC (formerly Clevertech)',
         description: [
-          'Developed robust automation framework using Cypress and TypeScript',
-          'Configured and optimized E2E pipeline in Azure DevOps',
-          'Implemented Docker containerization for parallel test execution',
-          'Led E2E coverage monitoring and test delegation across team',
+          'Designed and built a scalable E2E automation framework from scratch using Cypress with TypeScript.',
+          'Implemented robust test data strategies using Cypress fixtures, faker.js, and Factory patterns using Fishery.js',
+          'Expanded framework capabilities with Cypress plugins, including conditional testing, data mocking, and test filtering.',
+          'Enabled component testing and authored E2E test scenarios and test plans in collaboration with PMs and QA teams.',
+          'Containerized the framework with Docker, enabled parallel execution via Docker Compose, and integrated it into Azure Pipelines with enhanced reporting.',
+          'Monitored CI pipelines, stabilized flaky tests, contributed to performance testing with Postman, and validated data using SQL and Databricks.'
         ],
       },
       avenueCode: {
         title: 'Senior QA Automation Engineer',
         company: 'Avenue Code',
         description: [
-          'Developed API and E2E test cases using TestCafe framework',
-          'Contributed to PyTest framework maintenance',
-          'Enhanced and refactored E2E automation in Jenkins pipeline',
-          'Triaged and validated production bugs',
-          'Delivered a Proof of Concept (PoC) for end-to-end automation using Playwright',
+          'Joined an established team to accelerate automated test development and improve overall software quality through cross-functional collaboration.',
+          'Developed automated test cases using Playwright and TestCafe, leveraging JavaScript/TypeScript for reliable UI testing.',
+          'Maintained and refactored existing automation suites integrated into Jenkins CI pipelines to support quality releases.',
+          'Actively participated in bug reporting, validation, and verification across multiple environments.',
+          'Conducted GitHub pull request reviews to enforce coding standards and improve code quality.',
         ],
       },
       encora: {
         title: 'QA Automation Engineer',
         company: 'Encora (formerly Avantica)',
         description: [
-          'Served as QA Release Captain for bi-weekly production releases',
-          'Developed E2E automation tests using TestCafe',
-          'Managed test cases in TestRail',
-          'Monitored TeamCity CI/CD pipeline health',
+          'Joined a rapidly expanding team to test a new platform during development, collaborating closely with cross-functional stakeholders.',
+          'Developed and maintained scalable UI automation using TestCafe (JavaScript) and API automation using Python/PyTest and Postman.',
+          'Enhanced, refactored, and maintained automation suites, while enforcing coding standards through GitHub pull request reviews.',
+          'Triaged, validated, and documented defects across development, testing, and production environments, managing test cases and plans in TestRail.',
+          'Monitored and optimized TeamCity CI pipelines to ensure stable automation and fast feedback cycles.',
+          'Served as QA Release Captain, leading bi-weekly releases, validating RabbitMQ-based workflows, and adopting Docker and Kubernetes to improve QA efficiency.'
         ],
       },
       pegaDev: {
@@ -112,10 +116,11 @@ export const en = {
         title: 'QA Automation Engineer',
         company: 'Rulesware LLC',
         description: [
-          'Developed automation tests using Selenium WebDriver and TestNG',
-          'Implemented data-driven test scripts with Page Object Model',
-          'Created utility classes for RESTful API testing',
-          'Executed and reported test plans progress',
+          'Developed and maintained automated test suites using Selenium WebDriver and TestNG for Java-based and Pega applications.',
+          'Implemented data-driven testing using Excel and TestNG data providers to improve reusability and scalability.',
+          'Refactored YAML configurations and Page Object Model (POM) structures to enhance maintainability and reduce code duplication.',
+          'Built utility classes to consume, parse, and validate RESTful APIs, supporting UI and backend automation.',
+          'Authored comprehensive test plans and test cases, ensuring traceability to business and functional requirements.'
         ],
       },
       synergyca: {
@@ -190,12 +195,12 @@ export const en = {
       },
       inventory: {
         title: 'SPA Inventory with LocalStorage using React + TypeScript',
-        description: 'React 19 + TypeScript SPA (CRA) for inventory, sales, and purchases management. Currently migrating from localStorage to IndexedDB (Dexie) and adding E2E tests with Playwright (Work In Progress)',
+        description: 'React 19 + TypeScript SPA (CRA) for inventory, sales, and purchases management. Currently adding E2E tests with Playwright (Work In Progress)',
         highlights: [
           'Implemented to work with LocalStorage',
           'Generate CSV reports and download inventory',
           'Playwright E2E + React Testing Library',
-          'Netlify deployment with Github Actions workflow',
+          'Vercel deployment with Github Actions workflow',
         ],
       },
       k6: {
