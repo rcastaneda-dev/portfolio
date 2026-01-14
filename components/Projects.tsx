@@ -20,7 +20,6 @@ const Projects = () => {
       description: t.projects.items.inventory.description,
       icon: <TestTube2 className="w-8 h-8" />,
       tech: ['React 19', 'TypeScript', 'Playwright'],
-      highlights: t.projects.items.inventory.highlights,
       color: 'from-primary to-blue-500',
       githubLink: 'https://github.com/rcastaneda-dev/nanis-essentials-inventory',
       liveLink: 'https://nanis-essentials-inventory.vercel.app',
@@ -33,7 +32,6 @@ const Projects = () => {
       description: t.projects.items['playwright-platzi-challenge2'].description,
       icon: <FaMasksTheater className="w-8 h-8" />,
       tech: ['Playwright', 'Typescript', 'Node.js', 'Github'],
-      highlights: t.projects.items['playwright-platzi-challenge2'].highlights,
       color: 'from-primary to-blue-500',
       githubLink: 'https://github.com/rcastaneda-dev/curso-automatizacion-pruebas-playwright-reto2/tree/fix/existing-docs-tests',
       type: 'Automation' as const,
@@ -44,7 +42,6 @@ const Projects = () => {
       description: t.projects.items.k6.description,
       icon: <SiK6 className="w-8 h-8 text-green-400" />,
       tech: ['K6', 'Typescript', 'Node.js', 'Github'],
-      highlights: t.projects.items.k6.highlights,
       color: 'from-green-400 to-cyan-500',
       githubLink: 'https://github.com/rcastaneda-dev/k6-typescript-portfolio',
       liveLink: 'https://github.com/rcastaneda-dev/k6-typescript-portfolio/actions',
@@ -56,7 +53,6 @@ const Projects = () => {
       description: t.projects.items.testcafe.description,
       icon: <SiTestcafe className="w-8 h-8" />,
       tech: ['JavaScript', 'Node.js', 'Testcafe', 'Github'],
-      highlights: t.projects.items.testcafe.highlights,
       color: 'from-accent to-purple-500',
       githubLink: 'https://github.com/rcastaneda-dev/AutomationPractice-Theorem',
       type: 'Automation' as const,
@@ -67,7 +63,6 @@ const Projects = () => {
       description: t.projects.items.upgrade.description,
       icon: <SiSelenium className="w-8 h-8" />,
       tech: ['Java', 'Selenium', 'TestNG', 'Maven', 'RestAssured'],
-      highlights: t.projects.items.upgrade.highlights,
       color: 'from-green-400 to-cyan-500',
       githubLink: 'https://github.com/rcastaneda-dev/AutomationChallenge-UpgradeInc',
       type: 'Automation' as const,
@@ -164,16 +159,7 @@ const Projects = () => {
                 </div>
 
                 <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3">{project.title}</h3>
-                <p className="text-sm md:text-base text-gray-300 mb-3 md:mb-4">{project.description}</p>
-                
-                <div className="space-y-1.5 md:space-y-2 mb-3 md:mb-4">
-                  {project.highlights.map((highlight, i) => (
-                    <div key={i} className="flex items-start gap-2">
-                      <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-primary rounded-full mt-1.5 flex-shrink-0"></div>
-                      <span className="text-xs md:text-sm text-gray-400">{highlight}</span>
-                    </div>
-                  ))}
-                </div>
+                <p className="text-sm md:text-base text-gray-300 mb-4 md:mb-5 leading-relaxed">{project.description}</p>
 
                 <div className="flex flex-wrap gap-1.5 md:gap-2 mb-3 md:mb-4">
                   {project.tech.map((tech) => (

@@ -16,14 +16,14 @@ const Experience = () => {
     {
       title: t.experience.jobs.lumenalta.title,
       company: t.experience.jobs.lumenalta.company,
-      period: `05/2023 - ${t.experience.present}`,
+      period: `05/2023 - 11/2025`,
       location: 'Remote',
       category: 'QA',
       description: t.experience.jobs.lumenalta.description,
       tech: [
-        'Cypress', 'JavaScript', 'TypeScript', 'Azure DevOps', 'Performance Testing',
-        'Postman', 'Spike Testing', 'Component Testing', 'React Testing Library',
-        'Docker', 'Docker Compose', 'Bash', 'JSON', 'Azure Repos', 'Nx', 'Monorepo', 'Azure Pipelines', 'Cursor', 'Claude'
+        'Cypress', 'TypeScript', 'Azure DevOps', 'Docker', 'Docker Compose', 'Postman','Performance Testing',
+        'Spike Testing', 'Component Testing', 'E2E Testing', 'React Testing Library', 'Fishery', 'Cypress Plugins',
+        'Bash', 'JSON', 'Nx', 'SQL', 'Cursor', 'Claude'
       ]
     },
     {
@@ -34,8 +34,8 @@ const Experience = () => {
       category: 'QA',
       description: t.experience.jobs.avenueCode.description,
       tech: [
-        'Playwright', 'TestCafe', 'JavaScript', 'TypeScript',  'Node.js', 'API Testing', 'JIRA',   
-        'Jenkins', 'PyTest', 'Python', 'GitHub', 'GitHub Actions', 'Github Copilot'
+        'Playwright', 'TestCafe', 'TypeScript', 'Node.js', 'API Testing', 'E2E Testing', 'JIRA', 
+        'Jenkins', 'GitHub', 'GitHub Actions', 'Github Copilot', 'VSCode'
       ]
     },
     {
@@ -58,7 +58,7 @@ const Experience = () => {
       location: 'El Salvador (Hybrid)',
       category: 'Dev',
       description: t.experience.jobs.pegaDev.description,
-      tech: ['Pega PRPC', 'BPM', 'JAXB', 'JSON', 'Postman', 'XML', 'JSP', 'SoapUI']
+      tech: ['Pega PRPC', 'BPM', 'JAXB', 'JSON', 'Postman', 'XML', 'JSP', 'SoapUI', 'Java', 'Unit Testing']
     },
     {
       title: t.experience.jobs.ruleswareQa.title,
@@ -68,8 +68,8 @@ const Experience = () => {
       category: 'QA',
       description: t.experience.jobs.ruleswareQa.description,
       tech: [
-        'Java EE', 'Selenium WebDriver', 'API Testing', 'JAXB', 'Quality Assurance', 
-        'Postman', 'Java', 'XML', 'Git', 'SoapUI', 'Software Quality', 'SQL', 'Jenkins'
+        'Selenium WebDriver', 'Java', 'TestNG', 'JAXB', 'E2E Testing', 'API Testing', 'Regression Testing',
+        'Postman', 'Git', 'SoapUI', 'SQL', 'Jenkins'
       ]
     },
     {
@@ -80,7 +80,7 @@ const Experience = () => {
       category: 'Dev',
       description: t.experience.jobs.synergyca.description,
       tech: [
-        'JPA', 'PrimeFaces', 'JSON', 'Java', 'JSP', 'SQL', 'Bash', '.NET'
+        'Java', 'JPA', 'PrimeFaces', 'JSON', 'JSP', 'SQL', 'Bash', '.NET'
       ]
     },
     {
@@ -189,15 +189,12 @@ const Experience = () => {
                   </span>
                 </div>
 
-                <ul className={`space-y-1.5 md:space-y-2 mb-3 md:mb-4 ${
-                  index % 2 === 0 ? 'md:text-right' : ''
-                }`}>
-                  {exp.description.map((item, i) => (
-                    <li key={i} className="text-xs md:text-sm text-gray-300">
-                      • {item}
-                    </li>
-                  ))}
-                </ul>
+                <p 
+                  className={`text-xs md:text-sm text-gray-300 mb-3 md:mb-4 leading-relaxed whitespace-pre-line ${
+                    index % 2 === 0 ? 'md:text-right' : ''
+                  }`}
+                  dangerouslySetInnerHTML={{ __html: exp.description }}
+                />
 
                 <div className={`flex flex-wrap gap-1.5 md:gap-2 ${
                   index % 2 === 0 ? 'md:justify-end' : ''
