@@ -19,7 +19,7 @@ const Projects = () => {
       year: '2025',
       description: t.projects.items.inventory.description,
       icon: <TestTube2 className="w-8 h-8" />,
-      tech: ['React 19', 'TypeScript', 'Playwright', 'Dexie'],
+      tech: ['React 19', 'TypeScript', 'Playwright'],
       highlights: t.projects.items.inventory.highlights,
       color: 'from-primary to-blue-500',
       githubLink: 'https://github.com/rcastaneda-dev/nanis-essentials-inventory',
