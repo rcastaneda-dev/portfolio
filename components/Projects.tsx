@@ -15,6 +15,16 @@ const Projects = () => {
 
   const projects = [
     {
+      title: t.projects.items['playwright-assessment'].title,
+      year: '2026',
+      description: t.projects.items['playwright-assessment'].description,
+      icon: <FaMasksTheater className="w-8 h-8" />,
+      tech: ['TypeScript', 'Playwright'],
+      color: 'from-primary to-blue-500',
+      githubLink: 'https://github.com/rcastaneda-dev/playwright-assessment',
+      type: 'Automation' as const,
+    },
+    {
       title: t.projects.items.inventory.title,
       year: '2025',
       description: t.projects.items.inventory.description,

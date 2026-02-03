@@ -143,6 +143,10 @@ export const en = {
     automationComplete: 'Automation Complete',
     automationPending: 'Automation Pending',
     items: {
+      'playwright-assessment': {
+        title: 'Playwright/Typescript Assessment for Software Mind',
+        description: '4-hour assessment project to evaluate my skills in Playwright and TypeScript for a Senior QA Automation Engineer position',
+      },
       'playwright-platzi-challenge2': {
         title: 'Playwright/Typescript E2E Course Challenge for Platzi',
         description: 'Coding challenge for the Course: Automation Testing with Playwright/Typescript I took back on December 2025 from Platzi school',
