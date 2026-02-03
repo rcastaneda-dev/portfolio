@@ -17,7 +17,7 @@ const Projects = () => {
     {
       title: t.projects.items['playwright-assessment'].title,
       year: '2026',
-      description: t.projects.items.inventory.description,
+      description: t.projects.items['playwright-assessment'].description,
       icon: <FaMasksTheater className="w-8 h-8" />,
       tech: ['TypeScript', 'Playwright'],
       color: 'from-primary to-blue-500',
