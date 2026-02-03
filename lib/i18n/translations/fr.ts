@@ -139,6 +139,10 @@ export const fr: Translations = {
     automationComplete: 'Automatisation Complète',
     automationPending: 'Automatisation en Attente',
     items: {
+      'playwright-assessment': {
+        title: 'Évaluation Playwright/Typescript pour Software Mind',
+        description: 'Évaluation technique de 4 heures pour la position de Ingénieur Senior de Automatisation QA pour la société Software Mind',
+      },
       'playwright-platzi-challenge2': {
         title: 'Challenge de Code E2E Playwright/Typescript pour Platzi',
         description: 'Challenge d\'automatisation end-to-end montrant des patterns d\'implémentation avancés en Playwright et Typescript, développée originellement comme évaluation technique pour l\'école de Platzi en décembre 2025',
