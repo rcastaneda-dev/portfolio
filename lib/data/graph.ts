@@ -2,7 +2,7 @@
 // stretches horizontally to its container; labels are HTML, positioned with the
 // same percentages, so text never stretches.
 
-import { chronologicalRoles, monthIndex, type Role } from './career';
+import { chronologicalRoles, monthIndex, type Role, type RoleId } from './career';
 
 export const VIEW_W = 1000;
 export const VIEW_H = 160;
@@ -45,6 +45,34 @@ export function rolePath(role: Role): string {
 export function segmentPx(role: Role, areaPx: number): number {
   const { x0, x1 } = segmentOf(role);
   return ((x1 - x0) / VIEW_W) * areaPx;
+}
+
+/** Gap between a node's centre and its label's left edge, in CSS pixels. */
+export const LABEL_OFFSET = 10;
+
+/**
+ * Left edge, in CSS pixels, of each role's label in a graph area `areaPx` wide.
+ * A label starts LABEL_OFFSET right of its node; on narrow screens a label that
+ * would run into the previous label on the same lane is pushed right instead.
+ */
+export function labelLefts(
+  areaPx: number,
+  widthOf: (role: Role) => number,
+  gap = 4,
+): Record<RoleId, number> {
+  const lefts = {} as Record<RoleId, number>;
+  (['dev', 'qa'] as const).forEach((lane) => {
+    let previousRight = -Infinity;
+    chronologicalRoles
+      .filter((role) => role.kind === lane)
+      .forEach((role) => {
+        const nodeX = (segmentOf(role).x0 / VIEW_W) * areaPx;
+        const left = Math.max(nodeX + LABEL_OFFSET, previousRight + gap);
+        lefts[role.id] = left;
+        previousRight = left + widthOf(role);
+      });
+  });
+  return lefts;
 }
 
 export const yearTicks = [2014, 2016, 2018, 2020, 2022, 2024].map((year) => ({

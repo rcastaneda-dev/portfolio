@@ -3,10 +3,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { useI18n } from '@/lib/i18n';
 import { chronologicalRoles, formatMonth, versionById, type RoleId } from '@/lib/data/career';
-import { LANE_Y, VIEW_H, VIEW_W, rolePath, segmentOf, segmentPx, yearTicks } from '@/lib/data/graph';
+import { LABEL_OFFSET, LANE_Y, VIEW_H, VIEW_W, labelLefts, rolePath, segmentOf, segmentPx, yearTicks } from '@/lib/data/graph';
 
-// Gap between a node and its label, and the room a label keeps before the next node.
-const LABEL_OFFSET = 10;
+// The room a label keeps before the end of its segment, and the gap before the company name.
 const LABEL_MARGIN = 8;
 const NAME_GAP = 8;
 
@@ -47,6 +46,28 @@ const BranchGraph = () => {
     if (!role) return '';
     return `${versionById[id]}, ${role.shortName}, ${t.experience.jobs[id].title}, ${formatMonth(role.start)} ${t.experience.to} ${formatMonth(role.end)}`;
   };
+
+  // Re-clicking a node whose hash is already in the URL fires no hashchange, so
+  // announce it again: Experience reopens collapsed development roles on hashchange.
+  const revisit = (event: React.MouseEvent, id: RoleId) => {
+    if (window.location.hash !== `#exp-${id}`) return;
+    event.preventDefault();
+    window.dispatchEvent(new HashChangeEvent('hashchange'));
+    document.getElementById(`exp-${id}`)?.scrollIntoView();
+  };
+
+  // Names show only where the measured label fits inside the role's segment.
+  const showName = (role: (typeof chronologicalRoles)[number]) =>
+    measure !== null &&
+    LABEL_OFFSET + measure(versionById[role.id]) + NAME_GAP + measure(role.shortName) + LABEL_MARGIN <=
+      segmentPx(role, areaWidth);
+  // Once fonts are measured, labels are laid out so neighbours on a lane never overlap.
+  const lefts =
+    measure !== null && areaWidth > 0
+      ? labelLefts(areaWidth, (role) =>
+          measure(versionById[role.id]) + (showName(role) ? NAME_GAP + measure(role.shortName) : 0),
+        )
+      : null;
 
   return (
     <div className="mt-16 rounded-[2px] bg-panel p-4 text-panel-ink md:mt-20 md:p-6">
@@ -97,9 +118,7 @@ const BranchGraph = () => {
               const { x0, y } = segmentOf(role);
               const left = `${(x0 / VIEW_W) * 100}%`;
               const tag = versionById[role.id];
-              const showName =
-                measure !== null &&
-                LABEL_OFFSET + measure(tag) + NAME_GAP + measure(role.shortName) + LABEL_MARGIN <= segmentPx(role, areaWidth);
+              const nameShown = showName(role);
               const dimmed = activeId !== null && activeId !== role.id;
 
               return (
@@ -108,14 +127,18 @@ const BranchGraph = () => {
                     data-graph-label
                     aria-hidden
                     className={`pointer-events-none absolute whitespace-nowrap text-[0.6875rem] font-medium transition-opacity md:text-[0.75rem] ${dimmed ? 'opacity-40' : ''}`}
-                    style={{ left: `calc(${left} + ${LABEL_OFFSET}px)`, top: role.kind === 'dev' ? y - 22 : y + 8 }}
+                    style={{
+                      left: lefts ? `${lefts[role.id]}px` : `calc(${left} + ${LABEL_OFFSET}px)`,
+                      top: role.kind === 'dev' ? y - 22 : y + 8,
+                    }}
                   >
                     {tag}
-                    {showName && <span className="ml-2 font-normal text-panel-muted">{role.shortName}</span>}
+                    {nameShown && <span className="ml-2 font-normal text-panel-muted">{role.shortName}</span>}
                   </span>
                   <a
                     href={`#exp-${role.id}`}
                     aria-label={describe(role.id)}
+                    onClick={(event) => revisit(event, role.id)}
                     onMouseEnter={() => setActiveId(role.id)}
                     onFocus={() => setActiveId(role.id)}
                     onBlur={() => setActiveId(null)}
