@@ -6,10 +6,13 @@ import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import { loadCiBundle } from '@/lib/data/ci-load';
 
-// Content renders straight into the static HTML, with no loading gate, so
-// crawlers and slow connections see the full page immediately.
+// Content renders straight into the static HTML. Pipeline runs come from
+// lib/data/ci-build.json (written by the prebuild step) or the committed snapshot.
 export default function Home() {
+  const ci = loadCiBundle();
+
   return (
     <>
       <Navigation />
@@ -18,7 +21,7 @@ export default function Home() {
         <About />
         <Experience />
         <Skills />
-        <Projects />
+        <Projects ci={ci.projects} />
         <Contact />
       </main>
       <Footer />

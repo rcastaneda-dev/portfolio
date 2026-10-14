@@ -223,6 +223,17 @@ export const en = {
     newTab: 'opens in a new tab',
     inProgress: 'In progress',
     moreOnGithub: 'More on GitHub',
+    pipeline: {
+      label: 'Pipeline runs',
+      status: {
+        passed: 'Passed',
+        failed: 'Failed',
+        running: 'Running',
+        cancelled: 'Cancelled',
+      },
+      fetched: 'From GitHub Actions, fetched',
+      snapshot: 'Saved snapshot from GitHub Actions,',
+    },
     items: {
       'playwright-assessment': {
         title: 'Playwright/Typescript Assessment for Software Mind',

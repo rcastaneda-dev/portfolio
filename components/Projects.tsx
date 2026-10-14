@@ -3,11 +3,13 @@
 import { useI18n } from '@/lib/i18n';
 import { projects } from '@/lib/data/projects';
 import { profile } from '@/lib/data/profile';
+import type { CiBundle } from '@/lib/data/ci';
+import PipelinePanel from './PipelinePanel';
 import Section from './Section';
 
 const linkClass = 'link inline-flex min-h-11 items-center';
 
-const Projects = () => {
+const Projects = ({ ci }: { ci: CiBundle['projects'] }) => {
   const { t } = useI18n();
   const newTab = <span className="sr-only"> ({t.projects.newTab})</span>;
 
@@ -16,6 +18,7 @@ const Projects = () => {
       <ol className="[&>li:first-child]:border-t-0 [&>li:first-child]:pt-0">
         {projects.map((project) => {
           const item = t.projects.items[project.id];
+          const panel = ci[project.id];
           return (
             <li
               key={project.id}
@@ -36,28 +39,19 @@ const Projects = () => {
                     {t.projects.inProgress}
                   </p>
                 )}
+                {panel && <PipelinePanel data={panel} />}
               </div>
 
               <ul className="flex flex-wrap gap-x-6 text-[0.9375rem] md:flex-col md:gap-x-0">
                 <li>
-                  <a
-                    href={project.codeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={linkClass}
-                  >
+                  <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
                     {t.projects.code}
                     {newTab}
                   </a>
                 </li>
                 {project.live && (
                   <li>
-                    <a
-                      href={project.live.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={linkClass}
-                    >
+                    <a href={project.live.url} target="_blank" rel="noopener noreferrer" className={linkClass}>
                       {project.live.kind === 'demo' ? t.projects.liveDemo : t.projects.ciRuns}
                       {newTab}
                     </a>

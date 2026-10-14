@@ -213,6 +213,17 @@ export const es: Translations = {
     newTab: 'se abre en una pestaña nueva',
     inProgress: 'En progreso',
     moreOnGithub: 'Más en GitHub',
+    pipeline: {
+      label: 'Ejecuciones del pipeline',
+      status: {
+        passed: 'Exitosa',
+        failed: 'Fallida',
+        running: 'En curso',
+        cancelled: 'Cancelada',
+      },
+      fetched: 'De GitHub Actions, obtenido el',
+      snapshot: 'Instantánea guardada de GitHub Actions,',
+    },
     items: {
       'playwright-assessment': {
         title: 'Evaluación Playwright/Typescript para Software Mind',
