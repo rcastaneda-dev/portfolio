@@ -76,6 +76,11 @@ export const es: Translations = {
     to: 'a',
     showDev: 'Mostrar roles de desarrollo',
     hideDev: 'Ocultar roles de desarrollo',
+    groups: {
+      added: 'Añadido',
+      changed: 'Cambiado',
+      fixed: 'Corregido',
+    },
     workMode: {
       remote: 'Remoto',
       hybrid: 'Híbrido',
@@ -85,66 +90,99 @@ export const es: Translations = {
       lumenalta: {
         title: 'Ingeniero Senior de Automatización QA',
         company: 'Lumenalta LLC (anteriormente Clevertech)',
-        highlights: [
-          'Construí una plataforma de automatización end-to-end con Cypress y TypeScript, que cubre pruebas E2E y de componentes para aplicaciones React críticas para el negocio.',
-          'Definí la estrategia de datos de prueba y agregué integraciones para pruebas condicionales, simulación de datos y filtrado de pruebas.',
-          'Containericé el framework y lo ejecuté en Azure Pipelines con ejecución en paralelo y reportes consolidados. Estabilicé pipelines inestables.',
-          'Contribuí a pruebas de rendimiento con Postman y validé la consistencia de datos entre sistemas nuevos y heredados con SQL y Databricks, en una plataforma grande de transporte y logística.',
-        ],
+        changes: {
+          added: [
+            'Plataforma de automatización end-to-end con Cypress y TypeScript, que cubre pruebas E2E y de componentes para aplicaciones React críticas para el negocio.',
+            'Estrategia de datos de prueba, con integraciones para pruebas condicionales, simulación de datos y filtrado de pruebas.',
+            'Contribuciones a pruebas de rendimiento con Postman y verificación de la consistencia de datos entre sistemas nuevos y heredados con SQL y Databricks, en una plataforma grande de transporte y logística.',
+          ],
+          changed: [
+            'Framework containerizado y trasladado a Azure Pipelines con ejecución en paralelo y reportes consolidados.',
+          ],
+          fixed: ['Pipelines inestables estabilizados.'],
+        },
       },
       avenueCode: {
         title: 'Ingeniero Senior de Automatización QA',
         company: 'Avenue Code',
-        highlights: [
-          'Me uní a un equipo establecido para elevar la madurez de la automatización y la confianza en los releases en un entorno de comercio electrónico de ritmo rápido.',
-          'Diseñé, amplié y mantuve suites automatizadas confiables con Playwright y TestCafe.',
-          'Estabilicé pipelines de CI en Jenkins para sostener releases consistentes.',
-          'Hice triaje de defectos en distintos entornos y apliqué estándares de automatización y calidad de código mediante revisiones de pull request.',
-        ],
+        changes: {
+          added: [
+            'Suites automatizadas confiables con Playwright y TestCafe, que elevaron la madurez de la automatización y la confianza en los releases de un equipo de comercio electrónico establecido.',
+          ],
+          changed: ['Estándares de automatización y calidad de código aplicados mediante revisiones de pull request.'],
+          fixed: [
+            'Pipelines de CI en Jenkins estabilizados para sostener releases consistentes.',
+            'Triaje de defectos en distintos entornos.',
+          ],
+        },
       },
       encora: {
         title: 'Ingeniero de Automatización QA',
         company: 'Encora (anteriormente Avantica)',
-        highlights: [
-          'Apoyé la estrategia de calidad de una nueva plataforma de ciberseguridad crítica para producción, trabajando con ingeniería, producto y DevOps.',
-          'Diseñé y escalé automatización de UI y API con TestCafe, PyTest y Postman, y refactoricé las suites continuamente para mejorar su confiabilidad y mantenibilidad.',
-          'Mantuve planes y casos de prueba, estabilicé y optimicé pipelines de TeamCity, y validé flujos asíncronos entre servicios distribuidos.',
-          'Fui capitán de release de QA en despliegues quincenales a producción, aplicando puertas de calidad, e incorporé Docker y Kubernetes para mejorar los entornos de prueba.',
-        ],
+        changes: {
+          added: [
+            'Automatización de UI y API con TestCafe, PyTest y Postman para una nueva plataforma de ciberseguridad crítica para producción, junto a ingeniería, producto y DevOps.',
+            'Planes y casos de prueba para asegurar cobertura y trazabilidad.',
+            'Validación de flujos asíncronos entre servicios distribuidos.',
+            'Puertas de calidad para despliegues quincenales a producción, como capitán de release de QA.',
+            'Docker y Kubernetes, incorporados para mejorar los entornos de prueba.',
+          ],
+          changed: [
+            'Suites de automatización refactorizadas continuamente para mejorar su confiabilidad y mantenibilidad.',
+            'Pipelines de TeamCity optimizados para un feedback rápido y confiable.',
+          ],
+          fixed: ['Pipelines de TeamCity estabilizados.'],
+        },
       },
       pegaDev: {
         title: 'Desarrollador PEGA | Arquitecto de Sistemas PEGA',
         company: 'Rulesware LLC',
-        highlights: [
-          'Traduje requisitos de negocio en requisitos técnicos funcionales con la metodología SmartBPM de PegaSystems y gestioné las tareas de implementación para entregar a tiempo y dentro del presupuesto.',
-          'Resolví problemas técnicos durante todo el ciclo de vida del proyecto, y programé y probé unitariamente funcionalidades con capacidades estándar de Pega según los diseños del Arquitecto de Sistemas Líder.',
-        ],
+        changes: {
+          added: [
+            'Requisitos técnicos funcionales a partir de requisitos de negocio, con la metodología SmartBPM de PegaSystems, y tareas de implementación gestionadas para entregar a tiempo y dentro del presupuesto.',
+            'Funcionalidades programadas y probadas unitariamente con capacidades estándar de Pega, según los diseños del Arquitecto de Sistemas Líder.',
+          ],
+          changed: [],
+          fixed: ['Problemas técnicos resueltos durante todo el ciclo de vida del proyecto.'],
+        },
       },
       ruleswareQa: {
         title: 'Ingeniero de Automatización QA',
         company: 'Rulesware LLC',
-        highlights: [
-          'Construí y mantuve suites de regresión automatizadas con Selenium WebDriver y TestNG para aplicaciones Java y basadas en Pega.',
-          'Introduje pruebas basadas en datos y refactoricé el Page Object Model y las capas de configuración para reducir la duplicación.',
-          'Redacté planes y casos de prueba trazables, alineados con requisitos funcionales y de negocio, en plataformas de disputas y pagos digitales.',
-        ],
+        changes: {
+          added: [
+            'Suites de regresión automatizadas con Selenium WebDriver y TestNG para aplicaciones Java y basadas en Pega.',
+            'Pruebas basadas en datos.',
+            'Planes y casos de prueba trazables, alineados con requisitos funcionales y de negocio, para plataformas de disputas y pagos digitales.',
+          ],
+          changed: ['Page Object Model y capas de configuración refactorizados para reducir la duplicación.'],
+          fixed: [],
+        },
       },
       synergyca: {
         title: 'Desarrollador Java',
         company: 'Synergyca SA de CV (Proyecto: Banco Davivienda)',
-        highlights: [
-          'Desarrollé y probé unitariamente aplicaciones Java para un banco sobre una arquitectura SOA, en múltiples entornos.',
-          'Trabajé con líderes de equipo y gerentes de proyecto para analizar requisitos y producir mockups funcionales.',
-        ],
+        changes: {
+          added: [
+            'Aplicaciones Java para un banco sobre una arquitectura SOA, desarrolladas y probadas unitariamente en múltiples entornos.',
+            'Mockups funcionales, elaborados con líderes de equipo y gerentes de proyecto a partir del análisis de requisitos.',
+          ],
+          changed: [],
+          fixed: [],
+        },
       },
       sherwin: {
         title: 'Desarrollador Java EE (Pasantía)',
         company: 'Sherwin Williams',
-        highlights: [
-          'Participé en todas las fases del ciclo de vida del software junto a desarrolladores, gerentes y stakeholders.',
-          'Implementé servicios web RESTful, Enterprise Beans Java de baja latencia y componentes web Java (managed beans, XHTML/HTML5), con validaciones del lado del cliente y del servidor.',
-          'Probé los componentes que desarrollé y mantuve los diseños alineados con las especificaciones.',
-        ],
+        changes: {
+          added: [
+            'Participación en todas las fases del ciclo de vida del software, junto a desarrolladores, gerentes y stakeholders.',
+            'Servicios web RESTful, Enterprise Beans Java de baja latencia y componentes web Java (managed beans, XHTML/HTML5), con validaciones del lado del cliente y del servidor.',
+            'Pruebas de los componentes que desarrollé, alineadas con las especificaciones.',
+          ],
+          changed: [],
+          fixed: [],
+        },
       },
     },
   },

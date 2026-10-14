@@ -2,9 +2,11 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useI18n } from '@/lib/i18n';
-import { qaRoles, devRoles, formatMonth, type Role } from '@/lib/data/career';
+import { qaRoles, devRoles, formatMonth, versionById, type Role } from '@/lib/data/career';
+import { visibleGroups } from '@/lib/data/changelog';
 import Section from './Section';
 
+// One release entry: version and branch, dates, then Added / Changed / Fixed.
 const RoleRow = ({ role }: { role: Role }) => {
   const { t } = useI18n();
   const job = t.experience.jobs[role.id];
@@ -17,7 +19,15 @@ const RoleRow = ({ role }: { role: Role }) => {
       className="grid gap-3 border-t border-rule py-8 md:grid-cols-[11rem_1fr] md:gap-10"
     >
       <div className="text-[0.9375rem] tabular-nums text-graphite">
-        <p>
+        <p className="flex items-center gap-2">
+          <span className="font-display text-[1.125rem] font-semibold text-ink">
+            {versionById[role.id]}
+          </span>
+          <span className="rounded-[2px] border border-rule px-1.5 text-[0.75rem] leading-5">
+            {role.kind}
+          </span>
+        </p>
+        <p className="mt-2">
           {formatMonth(role.start)} {t.experience.to} {formatMonth(role.end)}
         </p>
         <p className="mt-1">{place}</p>
@@ -26,11 +36,22 @@ const RoleRow = ({ role }: { role: Role }) => {
       <div className="min-w-0">
         <h3 className="font-display text-[1.125rem] font-semibold leading-snug">{job.title}</h3>
         <p className="mt-0.5 text-[0.9375rem] font-medium">{job.company}</p>
-        <ul className="mt-4 max-w-[62ch] list-disc space-y-2 pl-5 font-serif text-[1.0625rem] leading-[1.65] marker:text-graphite">
-          {job.highlights.map((highlight) => (
-            <li key={highlight}>{highlight}</li>
+        <dl className="mt-4 grid max-w-[68ch] gap-y-3 sm:grid-cols-[6.5rem_1fr] sm:gap-x-4">
+          {visibleGroups(job.changes).map((group) => (
+            <div key={group} className="contents">
+              <dt className="pt-0.5 text-[0.875rem] font-medium text-graphite">
+                {t.experience.groups[group]}
+              </dt>
+              <dd>
+                <ul className="space-y-2 font-serif text-[1.0625rem] leading-[1.65]">
+                  {job.changes[group].map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </dd>
+            </div>
           ))}
-        </ul>
+        </dl>
         <p className="mt-4 text-[0.875rem] text-graphite">{role.stack.join(', ')}</p>
       </div>
     </li>
@@ -45,7 +66,7 @@ const Experience = () => {
   const [showDev, setShowDev] = useState(false);
   const pendingScrollId = useRef<string | null>(null);
 
-  // Timeline bars link to `#exp-<id>`. Development roles start collapsed, so
+  // Graph nodes link to `#exp-<id>`. Development roles start collapsed, so
   // open them when the URL hash points at one.
   useEffect(() => {
     const openFromHash = () => {

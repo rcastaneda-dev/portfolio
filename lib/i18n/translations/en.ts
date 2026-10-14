@@ -1,3 +1,113 @@
+import type { RoleId } from '../../data/career';
+import type { Changes } from '../../data/changelog';
+
+interface Job {
+  title: string;
+  company: string;
+  changes: Changes;
+}
+
+// Typed explicitly so a role can have an empty group in any language.
+const jobs: Record<RoleId, Job> = {
+  lumenalta: {
+    title: 'Senior QA Automation Engineer',
+    company: 'Lumenalta LLC (formerly Clevertech)',
+    changes: {
+      added: [
+        'End-to-end automation platform with Cypress and TypeScript, covering E2E and component tests for business-critical React applications.',
+        'Test data strategy, with integrations for conditional testing, data mocking and test filtering.',
+        'Contributions to performance testing with Postman, and data consistency checks between new and legacy systems with SQL and Databricks, on a large transportation and logistics platform.',
+      ],
+      changed: [
+        'Containerized the framework and moved it into Azure Pipelines with parallel execution and consolidated reporting.',
+      ],
+      fixed: ['Flaky pipelines stabilized.'],
+    },
+  },
+  avenueCode: {
+    title: 'Senior QA Automation Engineer',
+    company: 'Avenue Code',
+    changes: {
+      added: [
+        'Reliable automated suites with Playwright and TestCafe, raising automation maturity and release confidence for an established e-commerce team.',
+      ],
+      changed: ['Automation and code quality standards enforced through pull-request reviews.'],
+      fixed: [
+        'Jenkins-based CI pipelines stabilized to support consistent releases.',
+        'Defects triaged across environments.',
+      ],
+    },
+  },
+  encora: {
+    title: 'QA Automation Engineer',
+    company: 'Encora (formerly Avantica)',
+    changes: {
+      added: [
+        'UI and API automation with TestCafe, PyTest and Postman for a new, production-critical cybersecurity platform, working with engineering, product and DevOps.',
+        'Test plans and test cases for coverage and traceability.',
+        'Validation of asynchronous workflows across distributed services.',
+        'Quality gates for bi-weekly production deployments, as QA release captain.',
+        'Docker and Kubernetes, introduced to improve test environments.',
+      ],
+      changed: [
+        'Automation suites refactored continuously for reliability and maintainability.',
+        'TeamCity pipelines optimized for fast, reliable feedback.',
+      ],
+      fixed: ['TeamCity pipelines stabilized.'],
+    },
+  },
+  pegaDev: {
+    title: 'PEGA Developer | PEGA System Architect',
+    company: 'Rulesware LLC',
+    changes: {
+      added: [
+        'Functional technical requirements from business requirements, using the PegaSystems SmartBPM methodology, with implementation tasks managed for on-time, on-budget delivery.',
+        'Features coded and unit-tested with Pega out-of-the-box capabilities, from the Lead System Architect’s designs.',
+      ],
+      changed: [],
+      fixed: ['Technical issues troubleshot across the project lifecycle.'],
+    },
+  },
+  ruleswareQa: {
+    title: 'QA Automation Engineer',
+    company: 'Rulesware LLC',
+    changes: {
+      added: [
+        'Automated regression suites with Selenium WebDriver and TestNG for Java and Pega-based applications.',
+        'Data-driven testing.',
+        'Traceable test plans and test cases aligned with functional and business requirements, for disputes and digital payments platforms.',
+      ],
+      changed: ['Page Object Model and configuration layers refactored to cut duplication.'],
+      fixed: [],
+    },
+  },
+  synergyca: {
+    title: 'Java Developer',
+    company: 'Synergyca SA de CV (Project: Davivienda Bank)',
+    changes: {
+      added: [
+        'Java applications for a bank on an SOA architecture, developed and unit-tested across multiple environments.',
+        'Functional mockups, produced with team leads and project managers from analyzed requirements.',
+      ],
+      changed: [],
+      fixed: [],
+    },
+  },
+  sherwin: {
+    title: 'Java EE Developer (Internship)',
+    company: 'Sherwin Williams',
+    changes: {
+      added: [
+        'Work across every phase of the software lifecycle, with developers, managers and stakeholders.',
+        'RESTful web services, low-latency Java Enterprise Beans and Java web components (managed beans, XHTML/HTML5), with client-side and server-side validation.',
+        'Tests for the components I built, kept aligned with specifications.',
+      ],
+      changed: [],
+      fixed: [],
+    },
+  },
+};
+
 export const en = {
   // Navigation and site chrome
   nav: {
@@ -74,77 +184,17 @@ export const en = {
     to: 'to',
     showDev: 'Show development roles',
     hideDev: 'Hide development roles',
+    groups: {
+      added: 'Added',
+      changed: 'Changed',
+      fixed: 'Fixed',
+    },
     workMode: {
       remote: 'Remote',
       hybrid: 'Hybrid',
       onsite: 'On-site',
     },
-    jobs: {
-      lumenalta: {
-        title: 'Senior QA Automation Engineer',
-        company: 'Lumenalta LLC (formerly Clevertech)',
-        highlights: [
-          'Built an end-to-end automation platform with Cypress and TypeScript, covering E2E and component tests for business-critical React applications.',
-          'Set the test data strategy and added integrations for conditional testing, data mocking and test filtering.',
-          'Containerized the framework and ran it in Azure Pipelines with parallel execution and consolidated reporting. Stabilized flaky pipelines.',
-          'Contributed to performance testing with Postman and validated data consistency between new and legacy systems with SQL and Databricks, on a large transportation and logistics platform.',
-        ],
-      },
-      avenueCode: {
-        title: 'Senior QA Automation Engineer',
-        company: 'Avenue Code',
-        highlights: [
-          'Joined an established team to raise automation maturity and release confidence in a fast-paced e-commerce environment.',
-          'Designed, extended and maintained reliable automated suites with Playwright and TestCafe.',
-          'Stabilized Jenkins-based CI pipelines to support consistent releases.',
-          'Triaged defects across environments and enforced automation and code quality standards through pull-request reviews.',
-        ],
-      },
-      encora: {
-        title: 'QA Automation Engineer',
-        company: 'Encora (formerly Avantica)',
-        highlights: [
-          'Supported the quality strategy of a new, production-critical cybersecurity platform, working with engineering, product and DevOps.',
-          'Designed and scaled UI and API automation with TestCafe, PyTest and Postman, and kept refactoring suites for reliability and maintainability.',
-          'Maintained test plans and test cases, stabilized and optimized TeamCity pipelines, and validated asynchronous workflows across distributed services.',
-          'Served as QA release captain for bi-weekly production deployments, enforcing quality gates, and introduced Docker and Kubernetes to improve test environments.',
-        ],
-      },
-      pegaDev: {
-        title: 'PEGA Developer | PEGA System Architect',
-        company: 'Rulesware LLC',
-        highlights: [
-          'Translated business requirements into functional technical requirements with the PegaSystems SmartBPM methodology, and managed implementation tasks for on-time, on-budget delivery.',
-          'Troubleshot technical issues across the project lifecycle, and coded and unit-tested features with Pega out-of-the-box capabilities from the Lead System Architect’s designs.',
-        ],
-      },
-      ruleswareQa: {
-        title: 'QA Automation Engineer',
-        company: 'Rulesware LLC',
-        highlights: [
-          'Built and maintained automated regression suites with Selenium WebDriver and TestNG for Java and Pega-based applications.',
-          'Introduced data-driven testing and refactored the Page Object Model and configuration layers to cut duplication.',
-          'Wrote traceable test plans and test cases aligned with functional and business requirements, within disputes and digital payments platforms.',
-        ],
-      },
-      synergyca: {
-        title: 'Java Developer',
-        company: 'Synergyca SA de CV (Project: Davivienda Bank)',
-        highlights: [
-          'Developed and unit-tested Java applications for a bank on an SOA architecture, across multiple environments.',
-          'Worked with team leads and project managers to analyze requirements and produce functional mockups.',
-        ],
-      },
-      sherwin: {
-        title: 'Java EE Developer (Internship)',
-        company: 'Sherwin Williams',
-        highlights: [
-          'Took part in every phase of the software lifecycle with developers, managers and stakeholders.',
-          'Implemented RESTful web services, low-latency Java Enterprise Beans and Java web components (managed beans, XHTML/HTML5), with client-side and server-side validation.',
-          'Tested the components I built and kept designs aligned with specifications.',
-        ],
-      },
-    },
+    jobs,
   },
 
   // Skills
