@@ -1,0 +1,112 @@
+{
+  "rcastaneda-dev/k6-typescript-portfolio": {
+    "fetchedAt": "2026-10-14T23:22:52.400Z",
+    "runs": [
+      {
+        "id": 20185849428,
+        "workflow": "Trigger K6 Tests Manually",
+        "runNumber": 6,
+        "branch": "main",
+        "status": "passed",
+        "durationSec": 65,
+        "startedAt": "2025-12-13T03:06:50Z",
+        "url": "https://github.com/rcastaneda-dev/k6-typescript-portfolio/actions/runs/20185849428"
+      },
+      {
+        "id": 20184979861,
+        "workflow": "Trigger K6 Tests Manually",
+        "runNumber": 5,
+        "branch": "main",
+        "status": "failed",
+        "durationSec": 282,
+        "startedAt": "2025-12-13T02:53:11Z",
+        "url": "https://github.com/rcastaneda-dev/k6-typescript-portfolio/actions/runs/20184979861"
+      },
+      {
+        "id": 20184574674,
+        "workflow": "Manual K6 Tests",
+        "runNumber": 4,
+        "branch": "main",
+        "status": "passed",
+        "durationSec": 514,
+        "startedAt": "2025-12-13T01:23:56Z",
+        "url": "https://github.com/rcastaneda-dev/k6-typescript-portfolio/actions/runs/20184574674"
+      },
+      {
+        "id": 20184479226,
+        "workflow": "Manual K6 Tests",
+        "runNumber": 3,
+        "branch": "main",
+        "status": "passed",
+        "durationSec": 67,
+        "startedAt": "2025-12-13T01:16:42Z",
+        "url": "https://github.com/rcastaneda-dev/k6-typescript-portfolio/actions/runs/20184479226"
+      },
+      {
+        "id": 20184278697,
+        "workflow": "Manual K6 Tests",
+        "runNumber": 2,
+        "branch": "main",
+        "status": "failed",
+        "durationSec": 65,
+        "startedAt": "2025-12-13T01:02:26Z",
+        "url": "https://github.com/rcastaneda-dev/k6-typescript-portfolio/actions/runs/20184278697"
+      }
+    ]
+  },
+  "rcastaneda-dev/AutomationPractice-Theorem": {
+    "fetchedAt": "2026-10-14T23:22:53.221Z",
+    "runs": [
+      {
+        "id": 19584067465,
+        "workflow": "TestCafe E2E Tests",
+        "runNumber": 4,
+        "branch": "main",
+        "status": "failed",
+        "durationSec": 43,
+        "startedAt": "2025-11-21T21:31:18Z",
+        "url": "https://github.com/rcastaneda-dev/AutomationPractice-Theorem/actions/runs/19584067465"
+      },
+      {
+        "id": 19584067457,
+        "workflow": "Code Quality",
+        "runNumber": 4,
+        "branch": "main",
+        "status": "passed",
+        "durationSec": 28,
+        "startedAt": "2025-11-21T21:31:18Z",
+        "url": "https://github.com/rcastaneda-dev/AutomationPractice-Theorem/actions/runs/19584067457"
+      },
+      {
+        "id": 19584035806,
+        "workflow": "Code Quality",
+        "runNumber": 3,
+        "branch": "feat/improvements-for-portfolio",
+        "status": "passed",
+        "durationSec": 27,
+        "startedAt": "2025-11-21T21:29:56Z",
+        "url": "https://github.com/rcastaneda-dev/AutomationPractice-Theorem/actions/runs/19584035806"
+      },
+      {
+        "id": 19584035805,
+        "workflow": "TestCafe E2E Tests",
+        "runNumber": 3,
+        "branch": "feat/improvements-for-portfolio",
+        "status": "failed",
+        "durationSec": 37,
+        "startedAt": "2025-11-21T21:29:56Z",
+        "url": "https://github.com/rcastaneda-dev/AutomationPractice-Theorem/actions/runs/19584035805"
+      },
+      {
+        "id": 19584007268,
+        "workflow": "TestCafe E2E Tests",
+        "runNumber": 2,
+        "branch": "feat/improvements-for-portfolio",
+        "status": "failed",
+        "durationSec": 32,
+        "startedAt": "2025-11-21T21:28:38Z",
+        "url": "https://github.com/rcastaneda-dev/AutomationPractice-Theorem/actions/runs/19584007268"
+      }
+    ]
+  }
+}

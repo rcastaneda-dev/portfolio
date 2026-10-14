@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/fetch-ci.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "ci:snapshot": "node scripts/fetch-ci.mjs --refresh-snapshot"
   },
   "dependencies": {
     "lucide-react": "^0.303.0",

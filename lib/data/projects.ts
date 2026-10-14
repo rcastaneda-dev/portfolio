@@ -14,6 +14,8 @@ export interface Project {
   year: string;
   stack: string[];
   codeUrl: string;
+  /** GitHub repo whose Actions runs appear in a pipeline panel, as owner/name. */
+  ciRepo?: string;
   /** Second link, when there is one. `ci` points at workflow runs, not a deployed app. */
   live?: { url: string; kind: 'demo' | 'ci' };
   inProgress?: boolean;
@@ -46,6 +48,7 @@ export const projects: Project[] = [
     year: '2025',
     stack: ['K6', 'TypeScript', 'Node.js', 'GitHub'],
     codeUrl: 'https://github.com/rcastaneda-dev/k6-typescript-portfolio',
+    ciRepo: 'rcastaneda-dev/k6-typescript-portfolio',
     live: {
       url: 'https://github.com/rcastaneda-dev/k6-typescript-portfolio/actions',
       kind: 'ci',
@@ -56,6 +59,7 @@ export const projects: Project[] = [
     year: '2021',
     stack: ['JavaScript', 'Node.js', 'TestCafe', 'GitHub'],
     codeUrl: 'https://github.com/rcastaneda-dev/AutomationPractice-Theorem',
+    ciRepo: 'rcastaneda-dev/AutomationPractice-Theorem',
   },
   {
     id: 'upgrade',

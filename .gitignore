@@ -29,6 +29,9 @@ yarn-error.log*
 .env*.local
 .env
 
+# CI runs fetched before each build (scripts/fetch-ci.mjs)
+lib/data/ci-build.json
+
 # vercel
 .vercel
 
