@@ -31,7 +31,7 @@ const PipelinePanel = ({ data }: { data: CiPanelData }) => {
           return (
             <li
               key={run.id}
-              className="grid gap-x-4 gap-y-1 border-t border-panel-edge py-3 first:border-t-0 first:pt-0 sm:grid-cols-[7.5rem_1fr_auto] sm:items-baseline"
+              className="grid gap-x-4 gap-y-1 border-t border-panel-edge py-3 first:border-t-0 first:pt-0 xl:grid-cols-[7.5rem_1fr_auto] xl:items-baseline"
             >
               <span className={`inline-flex items-center gap-2 text-[0.875rem] font-medium ${className}`}>
                 <Icon size={16} aria-hidden className="shrink-0 self-center" />
