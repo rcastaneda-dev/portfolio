@@ -14,14 +14,15 @@ const BUILD_STATUS: Record<RunStatus, { Icon: LucideIcon; className: string }> =
 
 interface FooterProps {
   version: string;
-  /** Latest run of this repo's CI workflow on main; null until it has run once. */
+  /** Latest finished run of this repo's ci.yml workflow on main; null until it has run once. */
   siteCi: CiPanelData | null;
 }
 
 const Footer = ({ version, siteCi }: FooterProps) => {
   const { t } = useI18n();
   const year = new Date().getFullYear();
-  const latest = siteCi?.runs[0];
+  // Only a status fetched for this build is shown; a saved snapshot could be stale.
+  const latest = siteCi?.source === 'github' ? siteCi.runs[0] : undefined;
   const status = latest ? BUILD_STATUS[latest.status] : null;
 
   return (

@@ -37,6 +37,8 @@ for (const source of ci.ciSources()) {
   const panel = await ci.resolveRuns(source.repo, {
     snapshot,
     branch: source.branch,
+    workflow: source.workflow,
+    completedOnly: source.completedOnly,
     perPage: source.perPage,
     token: process.env.GITHUB_TOKEN || undefined,
     apiBase: process.env.CI_API_BASE || undefined,

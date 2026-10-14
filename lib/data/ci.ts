@@ -33,6 +33,10 @@ export interface CiSource {
   repo: string;
   projectId?: ProjectId;
   branch?: string;
+  /** Workflow file to read runs from (e.g. 'ci.yml'); all workflows when omitted. */
+  workflow?: string;
+  /** Only finished runs, so a build never reports its own in-progress run. */
+  completedOnly?: boolean;
   perPage: number;
 }
 
@@ -43,12 +47,12 @@ export interface CiBundle {
 
 export const SITE_REPO = 'rcastaneda-dev/portfolio';
 
-/** Every project with a `ciRepo` (last 5 runs), then the site itself (latest run on main). */
+/** Every project with a `ciRepo` (last 5 runs), then the site itself (latest finished ci.yml run on main). */
 export function ciSources(): CiSource[] {
   const fromProjects: CiSource[] = projects
     .filter((p) => p.ciRepo)
     .map((p) => ({ repo: p.ciRepo as string, projectId: p.id, perPage: 5 }));
-  return [...fromProjects, { repo: SITE_REPO, branch: 'main', perPage: 1 }];
+  return [...fromProjects, { repo: SITE_REPO, workflow: 'ci.yml', branch: 'main', completedOnly: true, perPage: 1 }];
 }
 
 interface RawRun {
@@ -124,6 +128,8 @@ interface ResolveOptions {
   fetchImpl?: typeof fetch;
   token?: string;
   branch?: string;
+  workflow?: string;
+  completedOnly?: boolean;
   perPage?: number;
   now?: Date;
   apiBase?: string;
@@ -136,6 +142,8 @@ export async function resolveRuns(repo: string, options: ResolveOptions): Promis
     fetchImpl = fetch,
     token,
     branch,
+    workflow,
+    completedOnly,
     perPage = 5,
     now = new Date(),
     apiBase = 'https://api.github.com',
@@ -143,6 +151,8 @@ export async function resolveRuns(repo: string, options: ResolveOptions): Promis
 
   const query = new URLSearchParams({ per_page: String(perPage) });
   if (branch) query.set('branch', branch);
+  if (completedOnly) query.set('status', 'completed');
+  const runsPath = workflow ? `actions/workflows/${workflow}/runs` : 'actions/runs';
   const headers: Record<string, string> = {
     Accept: 'application/vnd.github+json',
     'X-GitHub-Api-Version': '2022-11-28',
@@ -150,7 +160,7 @@ export async function resolveRuns(repo: string, options: ResolveOptions): Promis
   if (token) headers.Authorization = `Bearer ${token}`;
 
   try {
-    const response = await fetchImpl(`${apiBase}/repos/${repo}/actions/runs?${query.toString()}`, { headers });
+    const response = await fetchImpl(`${apiBase}/repos/${repo}/${runsPath}?${query.toString()}`, { headers });
     if (response.ok) {
       const runs = parseRuns(await response.json());
       if (runs && runs.length > 0) return { repo, source: 'github', fetchedAt: now.toISOString(), runs };
