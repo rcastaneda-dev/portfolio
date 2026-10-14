@@ -1,15 +1,31 @@
 # Ricardo Castaneda - Portfolio Website
 
-A modern, animated portfolio website built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion. Features subtle anime-inspired animations and a professional design showcasing QA Automation and Full Stack development expertise.
+A single-page portfolio for a senior QA automation engineer, built with Next.js 14, TypeScript and Tailwind CSS. The design reads like a quality-engineering document: a light "inspection report" look, a career timeline strip, and ledger-style experience and project lists.
 
 ## 🚀 Features
 
-- **Modern Tech Stack**: Next.js 14, TypeScript, Tailwind CSS, Framer Motion
-- **Responsive Design**: Fully responsive across all devices
-- **Anime-Inspired Animations**: Subtle and professional animations throughout
-- **Performance Optimized**: Server-side rendering with Next.js
-- **Dark Theme**: Modern dark theme with gradient accents
-- **Interactive Sections**: Hero, About, Experience, Skills, Projects, Contact
+- **Tech Stack**: Next.js 14 (static export), TypeScript, Tailwind CSS
+- **Typography**: Archivo (variable width axis) for structure and Source Serif 4 for reading text, loaded with `next/font`
+- **Responsive and accessible**: skip link, visible keyboard focus, reduced-motion support
+- **Three languages**: English, Spanish and French, typed so every dictionary must stay in sync
+- **Content in the HTML**: no loading screen, so crawlers and slow connections see the full page
+- **Contact form**: posts to Formspree, with an email button as a fallback
+- **Sections**: Hero, About, Experience, Skills, Projects, Contact
+
+## 🔐 Environment variables
+
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_FORMSPREE_ID` | Formspree form ID (the part after `/f/`). When empty, the contact section shows an email button instead of the form. |
+
+Copy `.env.example` to `.env.local` for local testing, and set the same variable in the Vercel project. It is inlined at build time, so redeploy after changing it.
+
+## ✏️ Editing content
+
+- Role dates, locations and tech lists: `lib/data/career.ts` (the career strip reads the same data)
+- Projects: `lib/data/projects.ts`
+- Contact details and skill lists: `lib/data/profile.ts`
+- All visible text: `lib/i18n/translations/` (`en.ts` is the source of truth; `es.ts` and `fr.ts` must match its shape)
 
 ## 📦 Installation
 

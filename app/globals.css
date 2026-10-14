@@ -1,56 +1,99 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  color-scheme: light;
+}
+
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
   body {
-    @apply bg-darker text-gray-100;
+    @apply bg-bench font-sans text-ink antialiased;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme('colors.pass');
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    @apply bg-ink text-bench;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      animation-delay: 0ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
 @layer components {
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  /* One page width and gutter, used by every section, the header and the footer. */
+  .wrap {
+    @apply mx-auto w-full max-w-[1200px] px-6 md:px-12;
   }
-  
-  .glass-effect {
-    @apply backdrop-blur-lg bg-white/5 border border-white/10;
+
+  /* The hero statement: condensed, heavy Archivo in sentence case. */
+  .display {
+    font-family: var(--font-archivo), system-ui, sans-serif;
+    font-stretch: 78%;
+    font-weight: 800;
+    font-size: clamp(2.75rem, 1.6rem + 5vw, 5.25rem);
+    line-height: 0.98;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
   }
-  
-  .neon-glow {
-    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+
+  /* Reading text: serif with extra leading and a capped measure. */
+  .prose-serif {
+    @apply max-w-[62ch] font-serif text-[1.125rem];
+    line-height: 1.65;
   }
-  
-  .code-block {
-    @apply font-mono text-sm bg-dark/50 rounded-lg p-4 border border-white/10;
+
+  .link {
+    @apply underline decoration-pass decoration-2 underline-offset-4 hover:decoration-ink;
+  }
+
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-[2px] px-6 text-[0.9375rem] font-medium transition-colors;
+  }
+
+  .btn-solid {
+    @apply bg-ink text-bench hover:bg-pass;
+  }
+
+  .btn-outline {
+    @apply border-[1.5px] border-ink text-ink hover:bg-sheet;
+  }
+
+  /* The career strip: each bar draws in once, left to right, on load. */
+  .strip-bar {
+    animation: strip-draw 700ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+    animation-delay: calc(var(--i, 0) * 80ms + 200ms);
   }
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-darker;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-primary/20 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary/40;
-}
-
-/* Selection color */
-::selection {
-  @apply bg-primary/30 text-white;
+@keyframes strip-draw {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
 }

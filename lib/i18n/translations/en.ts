@@ -1,147 +1,178 @@
 export const en = {
-  // Navigation
+  // Navigation and site chrome
   nav: {
-    home: 'Home',
+    skip: 'Skip to content',
     about: 'About',
     experience: 'Experience',
     skills: 'Skills',
     projects: 'Projects',
     contact: 'Contact',
+    resume: 'Résumé',
+    menu: 'Menu',
+    closeMenu: 'Close menu',
+    language: 'Language',
   },
 
   // Hero
   hero: {
-    roles: [
-      'Senior QA Automation Engineer',
-      'Senior SDET',
-      'Former Java Developer',
-      'Full Stack Developer Enthusiast',
-      'Expert in CI/CD Pipelines',
-      'Consultant in Quality Engineering',
-    ],
-    tagline: 'Senior Quality Engineering Consultant helping remote teams scale automation, stabilize CI/CD, and ship with confidence.',
-    downloadResume: 'Download Resume',
+    title: 'Senior QA automation engineer',
+    lede: 'Quality engineering consultant helping remote teams scale test automation, stabilize CI/CD and ship with confidence.',
+    emailMe: 'Email me',
+    downloadResume: 'Download résumé',
+    sheet: {
+      focus: 'Focus',
+      focusValue: 'E2E and component test automation, CI/CD stabilization',
+      frameworks: 'Frameworks',
+      pipelines: 'Pipelines',
+      industries: 'Industries',
+      industriesValue: 'Financial services, eCommerce, cybersecurity, maritime, logistics',
+      basedIn: 'Based in',
+      basedInValue: 'San Salvador, El Salvador, working remotely',
+      status: 'Status',
+      statusValue: 'Open to remote roles and consulting',
+    },
+    strip: {
+      label: 'Career timeline, 2013 to 2025',
+      summary: 'From Java developer to senior QA automation engineer, 2013 to 2025. Hover or focus a bar for the role.',
+      qa: 'QA automation',
+      dev: 'Development',
+    },
   },
 
   // About
   about: {
     title: 'About',
-    titleHighlight: 'Me',
-    subtitle: 'Engineering Quality into Scalable Software Systems',
-
-    intro: "I help engineering teams build reliable and scalable software. With over a decade of experience, I’ve helped teams deliver production-critical solutions across complex and regulated industries such as:",
-    
-    industries: [
-      'Financial Services (Disputes, Claims, Payments, Chargebacks)',
-      'eCommerce & Retail',
-      'Cybersecurity',
-      'Maritime Systems',
-      'Ground Transportation & Logistics',
+    lede: 'I help engineering teams build reliable, scalable software. Over a decade, I have delivered production-critical work in financial services, eCommerce, cybersecurity, maritime systems, and ground transportation and logistics.',
+    paragraphs: [
+      'I work as a quality engineering consultant with distributed teams, designing, scaling and operating test automation for complex systems. I partner with product and engineering leaders for reliable delivery, fast feedback and confidence in production, without slowing teams down.',
+      'My background combines software development, automation architecture and CI/CD enablement. I build automation frameworks from scratch, modernize legacy test suites and stabilize flaky pipelines, using Cypress, Playwright, TypeScript, Selenium, Docker and cloud CI/CD platforms.',
+      'I use AI tools such as Cursor and Claude Code to speed up development and QA work, and I explore practices like chaos engineering with Gremlin to strengthen resilience and production readiness.',
     ],
-    
-    description1: "I’m a Senior Quality Engineering Consultant helping distributed teams design, scale, and operationalize test automation for complex software systems. I partner with product and engineering leaders to enable reliable delivery, fast feedback, and confidence in production—without slowing teams down.\n\nMy background combines hands-on software development, automation architecture, and CI/CD enablement. I specialize in building automation frameworks from scratch, modernizing legacy test suites, stabilizing flaky pipelines, and embedding quality deeply into development workflows using tools such as Cypress, Playwright, TypeScript, Selenium,Docker, and cloud-based CI/CD platforms.",
-    
-    description2: "I actively adopt AI-powered tools like Cursor and Claude Code to improve development and QA productivity, while exploring modern engineering practices such as chaos engineering with tools like Gremlin to proactively strengthen system resilience and production readiness.",
-    
-    features: {
+    capabilities: {
       automation: {
-        title: 'Automation Architecture',
-        description: 'Design and implementation of scalable automation frameworks and production-grade CI/CD pipelines',
+        title: 'Automation architecture',
+        description: 'Scalable automation frameworks and production-grade CI/CD pipelines.',
       },
       ai: {
-        title: 'AI-Enabled Engineering',
-        description: 'Applying AI-assisted workflows to accelerate development, testing, and debugging',
+        title: 'AI-enabled engineering',
+        description: 'AI-assisted workflows that speed up development, testing and debugging.',
       },
       fullstack: {
-        title: 'Engineering Background',
-        description: 'Strong foundation in both frontend and backend development for end-to-end system validation',
+        title: 'Engineering background',
+        description: 'Frontend and backend development experience for end-to-end system validation.',
       },
       crossfunctional: {
-        title: 'Cross-Functional Partner',
-        description: 'Trusted bridge between product, engineering, and QA teams to align quality with business risk',
+        title: 'Cross-functional partner',
+        description: 'A bridge between product, engineering and QA that ties quality to business risk.',
       },
     },
-    
-    techStack: 'Tech Stack',
   },
 
   // Experience
   experience: {
-    title: 'Work',
-    titleHighlight: 'Experience',
-    qaToggle: 'QA Automation Experience',
-    devToggle: 'Developer Experience',
-    present: 'Present',
+    title: 'Experience',
+    to: 'to',
+    showDev: 'Show development roles',
+    hideDev: 'Hide development roles',
+    workMode: {
+      remote: 'Remote',
+      hybrid: 'Hybrid',
+      onsite: 'On-site',
+    },
     jobs: {
       lumenalta: {
         title: 'Senior QA Automation Engineer',
         company: 'Lumenalta LLC (formerly Clevertech)',
-        description: 'Designed and delivered a scalable end-to-end automation platform using Cypress and TypeScript, enabling reliable E2E and component testing for business-critical React applications. Established a robust test data strategy and extended the framework with targeted integrations for conditional testing, data mocking, and test filtering to improve signal and maintainability. \n\n Partnered with product and QA stakeholders to define risk-focused test scenarios and validation strategies. Containerized and integrated the framework into Azure Pipelines with parallel execution and consolidated reporting, significantly improving CI reliability and feedback speed. Stabilized flaky pipelines, contributed to performance testing with Postman, and validated data consistency across new and legacy systems using SQL and Databricks within a large-scale transportation and logistics platform.' 
+        highlights: [
+          'Built an end-to-end automation platform with Cypress and TypeScript, covering E2E and component tests for business-critical React applications.',
+          'Set the test data strategy and added integrations for conditional testing, data mocking and test filtering.',
+          'Containerized the framework and ran it in Azure Pipelines with parallel execution and consolidated reporting. Stabilized flaky pipelines.',
+          'Contributed to performance testing with Postman and validated data consistency between new and legacy systems with SQL and Databricks, on a large transportation and logistics platform.',
+        ],
       },
-        avenueCode: {
+      avenueCode: {
         title: 'Senior QA Automation Engineer',
         company: 'Avenue Code',
-        description: 'Joined an established engineering team to accelerate automation maturity and improve release confidence within a fast-paced e-commerce environment. Designed, enhanced, and maintained reliable automated test suites using Playwright and TestCafe, while stabilizing Jenkins-based CI pipelines to support consistent, high-quality releases. Acted as a quality partner across teams by triaging defects across environments and enforcing automation and code quality standards through rigorous pull-request reviews.',
+        highlights: [
+          'Joined an established team to raise automation maturity and release confidence in a fast-paced e-commerce environment.',
+          'Designed, extended and maintained reliable automated suites with Playwright and TestCafe.',
+          'Stabilized Jenkins-based CI pipelines to support consistent releases.',
+          'Triaged defects across environments and enforced automation and code quality standards through pull-request reviews.',
+        ],
       },
       encora: {
         title: 'QA Automation Engineer',
         company: 'Encora (formerly Avantica)',
-        description: 'Partnered with a fast-growing engineering organization to support the quality strategy for a new, production-critical platform. Collaborated closely with engineering, product, and DevOps to align testing with system architecture and business risk. Designed and scaled UI and API automation using TestCafe, PyTest, and Postman, while continuously refactoring automation suites to improve reliability and maintainability. \n\nCreated and maintained test plans and test cases to ensure coverage and traceability for new and existing features. Monitored, stabilized, and optimized TeamCity CI pipelines to deliver fast, reliable automated feedback, and validated complex asynchronous workflows across distributed services. Served as QA Release Captain for bi-weekly production deployments, coordinating stakeholders and enforcing quality gates. Evaluated and adopted modern DevOps practices, including Docker and Kubernetes, to improve test environments and delivery reliability within a cybersecurity platform.' 
-},
+        highlights: [
+          'Supported the quality strategy of a new, production-critical cybersecurity platform, working with engineering, product and DevOps.',
+          'Designed and scaled UI and API automation with TestCafe, PyTest and Postman, and kept refactoring suites for reliability and maintainability.',
+          'Maintained test plans and test cases, stabilized and optimized TeamCity pipelines, and validated asynchronous workflows across distributed services.',
+          'Served as QA release captain for bi-weekly production deployments, enforcing quality gates, and introduced Docker and Kubernetes to improve test environments.',
+        ],
+      },
       pegaDev: {
         title: 'PEGA Developer | PEGA System Architect',
         company: 'Rulesware LLC',
-        description: 'Translated complex business requirements into functional technical requirements using PegaSystems SmartBPM methodology while managing technical implementation tasks to ensure on-time and on-budget delivery. Effectively troubleshot technical issues throughout the project lifecycle and was responsible for coding and unit testing using Pega OOTB features based on designs provided by the Lead System Architect.',
+        highlights: [
+          'Translated business requirements into functional technical requirements with the PegaSystems SmartBPM methodology, and managed implementation tasks for on-time, on-budget delivery.',
+          'Troubleshot technical issues across the project lifecycle, and coded and unit-tested features with Pega out-of-the-box capabilities from the Lead System Architect’s designs.',
+        ],
       },
       ruleswareQa: {
         title: 'QA Automation Engineer',
         company: 'Rulesware LLC',
-        description: 'Designed and maintained reliable automated regression suites using Selenium WebDriver and TestNG for Java and Pega-based applications, ensuring consistent coverage of critical business flows. Implemented scalable, data-driven testing strategies and refactored Page Object Model and configuration layers to reduce duplication and improve maintainability. Created clear, traceable test plans and test cases aligned with functional and business requirements to support high-quality delivery within disputes and digital payments platforms.' 
+        highlights: [
+          'Built and maintained automated regression suites with Selenium WebDriver and TestNG for Java and Pega-based applications.',
+          'Introduced data-driven testing and refactored the Page Object Model and configuration layers to cut duplication.',
+          'Wrote traceable test plans and test cases aligned with functional and business requirements, within disputes and digital payments platforms.',
+        ],
       },
       synergyca: {
         title: 'Java Developer',
         company: 'Synergyca SA de CV (Project: Davivienda Bank)',
-        description: 'Provided end-to-end application development services within a SOA-based architecture, contributing to the design, implementation, and support of solutions in the banking and financial services domain. Developed and unit-tested <strong>Java</strong> applications across multiple environments, while working closely with team leads and project managers to analyze requirements, produce functional mockups, and deliver high-quality, reliable features aligned with business needs.',
+        highlights: [
+          'Developed and unit-tested Java applications for a bank on an SOA architecture, across multiple environments.',
+          'Worked with team leads and project managers to analyze requirements and produce functional mockups.',
+        ],
       },
       sherwin: {
         title: 'Java EE Developer (Internship)',
         company: 'Sherwin Williams',
-        description: 'Collaborated with developers, managers, and stakeholders to define software requirements while participating in all phases of the software development lifecycle. Designed and implemented RESTful web services, built low-latency, scalable, and reliable <strong>Java</strong> Enterprise Beans, and developed <strong>Java</strong> web components including managed beans and XHTML/HTML5 interfaces. Ensured all designs aligned with specifications and project standards, performed thorough testing of developed components, and implemented both client-side and server-side validations.',
+        highlights: [
+          'Took part in every phase of the software lifecycle with developers, managers and stakeholders.',
+          'Implemented RESTful web services, low-latency Java Enterprise Beans and Java web components (managed beans, XHTML/HTML5), with client-side and server-side validation.',
+          'Tested the components I built and kept designs aligned with specifications.',
+        ],
       },
     },
   },
 
   // Skills
   skills: {
-    title: 'Technical',
-    titleHighlight: 'Skills',
+    title: 'Skills',
     categories: {
-      programming: 'Programming Languages',
-      testing: 'Testing Frameworks',
-      devops: 'DevOps & Tools',
-      frameworks: 'Frameworks & Libraries',
+      programming: 'Languages',
+      testing: 'Testing frameworks',
+      devops: 'DevOps and tools',
+      frameworks: 'Frameworks and libraries',
     },
-    continuousLearning: 'Continuous',
-    continuousLearningHighlight: 'Learning',
-    certifications: [
-      'MIT xPRO - Professional Certificate in Cybersecurity (2022-2023)',
-      'Currently learning: AI-powered development with Cursor & Claude Code',
-      'Focus areas: Modern React, Full-stack development, Test automation architecture',
+    learningTitle: 'Continuous learning',
+    learning: [
+      'MIT xPRO, Professional Certificate in Cybersecurity (2022 to 2023)',
+      'Currently learning: AI-powered development with Cursor and Claude Code',
+      'Focus areas: modern React, full-stack development, test automation architecture',
     ],
   },
 
   // Projects
   projects: {
-    title: 'Featured',
-    titleHighlight: 'Projects',
-    filterAll: 'All',
-    filterDev: 'Dev',
-    filterAutomation: 'Automation',
-    viewCode: 'View Code',
-    liveDemo: 'Live Demo',
-    viewMoreGithub: 'View More on GitHub',
-    automationComplete: 'Automation Complete',
-    automationPending: 'Automation Pending',
+    title: 'Projects',
+    code: 'Code',
+    liveDemo: 'Live demo',
+    ciRuns: 'CI runs',
+    newTab: 'opens in a new tab',
+    inProgress: 'In progress',
+    moreOnGithub: 'More on GitHub',
     items: {
       'playwright-assessment': {
         title: 'Playwright/Typescript Assessment for Software Mind',
@@ -172,35 +203,33 @@ export const en = {
 
   // Contact
   contact: {
-    title: 'Get In',
-    titleHighlight: 'Touch',
-    subtitle: "I'm always interested in discussing new opportunities, innovative projects, or how I can help improve your testing and development processes.",
-    letsConnect: "Let's Connect",
-    email: 'Email',
-    phone: 'Phone',
-    location: 'Location',
-    supportMessage: 'If you find my work helpful, consider supporting me!',
+    title: 'Contact',
+    subtitle: 'I’m always interested in discussing new opportunities, innovative projects, or how I can help improve your testing and development processes.',
+    details: {
+      email: 'Email',
+      linkedin: 'LinkedIn',
+      github: 'GitHub',
+      phone: 'Phone',
+      location: 'Location',
+      locationValue: 'San Salvador, El Salvador',
+    },
     form: {
-      name: 'Your Name',
-      namePlaceholder: 'John Doe',
-      email: 'Your Email',
-      emailPlaceholder: 'john@example.com',
+      name: 'Your name',
+      email: 'Your email',
       message: 'Message',
-      messagePlaceholder: 'Tell me about your project...',
-      send: 'Send Message',
+      send: 'Send message',
+      sending: 'Sending…',
+      sent: 'Message sent. I reply within two business days.',
+      error: 'Couldn’t send your message. Try again, or email hi@rcastaneda.dev.',
     },
   },
 
   // Footer
   footer: {
-    builtWith: 'Built with',
-    using: 'using Next.js & TypeScript',
     rights: 'All rights reserved.',
+    built: 'Built with Next.js and TypeScript.',
+    support: 'Support my work',
   },
-
-  // Loading
-  loading: 'Loading Portfolio...',
 };
 
 export type Translations = typeof en;
-

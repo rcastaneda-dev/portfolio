@@ -1,0 +1,25 @@
+// Facts that read the same in every language: contact details, links and the
+// tool lists shown in the hero datasheet and the skills section.
+
+export const profile = {
+  name: 'Ricardo Castaneda',
+  email: 'hi@rcastaneda.dev',
+  phone: '+503 7740-7075',
+  phoneHref: 'tel:+50377407075',
+  linkedin: 'https://www.linkedin.com/in/rcastaneda-dev/',
+  github: 'https://github.com/rcastaneda-dev',
+  resume: '/resume.pdf',
+  resumeFileName: 'Ricardo_Castaneda_Resume.pdf',
+  support: 'https://www.buymeacoffee.com/rcastaneda.dev',
+  frameworks: ['Cypress', 'Playwright', 'TestCafe', 'Selenium'],
+  pipelines: ['Azure Pipelines', 'Jenkins', 'TeamCity', 'GitHub Actions'],
+};
+
+export const skillGroups = {
+  programming: ['TypeScript', 'JavaScript', 'Java', 'Python'],
+  testing: ['Cypress', 'Playwright', 'TestCafe', 'Selenium', 'PyTest', 'Jest', 'K6'],
+  devops: ['Docker', 'Azure DevOps', 'Jenkins', 'Git and GitHub', 'TeamCity'],
+  frameworks: ['Node.js', 'REST APIs', 'React and Next.js', 'Express'],
+} as const;
+
+export type SkillGroupId = keyof typeof skillGroups;
