@@ -33,11 +33,9 @@ export const fr: Translations = {
       status: 'Statut',
       statusValue: 'Disponible pour des postes à distance et du conseil',
     },
-    strip: {
-      label: 'Parcours professionnel, 2013 à 2025',
-      summary: 'De développeur Java à ingénieur senior en automatisation QA, 2013 à 2025. Survolez une barre ou mettez-la au focus pour voir le poste.',
-      qa: 'Automatisation QA',
-      dev: 'Développement',
+    graph: {
+      label: 'Graphe des branches du parcours, 2013 à 2025',
+      summary: 'De développeur Java à ingénieur senior en automatisation QA, 2013 à 2025. Survolez un nœud ou mettez-le au focus pour voir la version.',
     },
   },
 

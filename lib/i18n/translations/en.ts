@@ -141,11 +141,9 @@ export const en = {
       status: 'Status',
       statusValue: 'Open to remote roles and consulting',
     },
-    strip: {
-      label: 'Career timeline, 2013 to 2025',
-      summary: 'From Java developer to senior QA automation engineer, 2013 to 2025. Hover or focus a bar for the role.',
-      qa: 'QA automation',
-      dev: 'Development',
+    graph: {
+      label: 'Career branch graph, 2013 to 2025',
+      summary: 'From Java developer to senior QA automation engineer, 2013 to 2025. Hover or focus a node to see the release.',
     },
   },
 

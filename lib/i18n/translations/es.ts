@@ -33,11 +33,9 @@ export const es: Translations = {
       status: 'Estado',
       statusValue: 'Disponible para roles remotos y consultoría',
     },
-    strip: {
-      label: 'Trayectoria profesional, 2013 a 2025',
-      summary: 'De desarrollador Java a ingeniero senior de automatización QA, 2013 a 2025. Pasa el cursor o enfoca una barra para ver el rol.',
-      qa: 'Automatización QA',
-      dev: 'Desarrollo',
+    graph: {
+      label: 'Gráfico de ramas de la trayectoria, 2013 a 2025',
+      summary: 'De desarrollador Java a ingeniero senior de automatización QA, 2013 a 2025. Pasa el cursor o enfoca un nodo para ver la versión.',
     },
   },
 

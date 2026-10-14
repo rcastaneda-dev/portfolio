@@ -3,7 +3,7 @@
 import { Download } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 import { profile } from '@/lib/data/profile';
-import CareerStrip from './CareerStrip';
+import BranchGraph from './BranchGraph';
 
 const Hero = () => {
   const { t } = useI18n();
@@ -62,7 +62,7 @@ const Hero = () => {
           </dl>
         </div>
 
-        <CareerStrip />
+        <BranchGraph />
       </div>
     </section>
   );
