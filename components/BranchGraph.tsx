@@ -47,13 +47,15 @@ const BranchGraph = () => {
     return `${versionById[id]}, ${role.shortName}, ${t.experience.jobs[id].title}, ${formatMonth(role.start)} ${t.experience.to} ${formatMonth(role.end)}`;
   };
 
-  // Re-clicking a node whose hash is already in the URL fires no hashchange, so
-  // announce it again: Experience reopens collapsed development roles on hashchange.
+  // Re-clicking a node whose hash is already in the URL fires no hashchange.
+  // A rendered row only needs scrolling; a collapsed development role is
+  // reopened by announcing the hash again (Experience listens for hashchange).
   const revisit = (event: React.MouseEvent, id: RoleId) => {
     if (window.location.hash !== `#exp-${id}`) return;
     event.preventDefault();
-    window.dispatchEvent(new HashChangeEvent('hashchange'));
-    document.getElementById(`exp-${id}`)?.scrollIntoView();
+    const row = document.getElementById(`exp-${id}`);
+    if (row) row.scrollIntoView();
+    else window.dispatchEvent(new HashChangeEvent('hashchange'));
   };
 
   // Names show only where the measured label fits inside the role's segment.
