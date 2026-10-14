@@ -16,9 +16,20 @@ A single-page portfolio for a senior QA automation engineer, built with Next.js 
 
 | Variable | Purpose |
 | --- | --- |
-| `NEXT_PUBLIC_FORMSPREE_ID` | Formspree form ID (the part after `/f/`). When empty, the contact section shows an email button instead of the form. |
+| `NEXT_PUBLIC_FORMSPREE_ID` | Formspree form ID (the part after `/f/`). When empty, the contact section shows an email button instead of the form. Inlined at build time. |
+| `GITHUB_TOKEN` | Optional. Raises the GitHub API rate limit when the prebuild step fetches pipeline runs. Without it the build falls back to `lib/data/ci-snapshot.json`. |
+| `CI_API_BASE` | Testing only. Points the pipeline fetch at another host to force the snapshot fallback. |
 
-Copy `.env.example` to `.env.local` for local testing, and set the same variable in the Vercel project. It is inlined at build time, so redeploy after changing it.
+Copy `.env.example` to `.env.local` for the Formspree ID. `GITHUB_TOKEN` is read from the shell or the Vercel project, not from `.env.local`.
+
+## 🔁 CI and pipeline data
+
+![CI](https://github.com/rcastaneda-dev/portfolio/actions/workflows/ci.yml/badge.svg)
+
+- `npm run build` first runs `scripts/fetch-ci.mjs`, which fetches the latest GitHub Actions runs for the projects listed with a `ciRepo` in `lib/data/projects.ts` and for this repo, and writes `lib/data/ci-build.json` (gitignored). The page is static, so the panels refresh on each deploy.
+- `npm run ci:snapshot` also refreshes the committed fallback, `lib/data/ci-snapshot.json`.
+- `.github/workflows/ci.yml` type-checks, lints and builds every push and pull request to `main`. The footer shows the latest result on `main`.
+- Release notes live in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## ✏️ Editing content
 

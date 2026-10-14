@@ -7,6 +7,7 @@ import Projects from '@/components/Projects';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import { loadCiBundle } from '@/lib/data/ci-load';
+import pkg from '../package.json';
 
 // Content renders straight into the static HTML. Pipeline runs come from
 // lib/data/ci-build.json (written by the prebuild step) or the committed snapshot.
@@ -24,7 +25,7 @@ export default function Home() {
         <Projects ci={ci.projects} />
         <Contact />
       </main>
-      <Footer />
+      <Footer version={pkg.version} siteCi={ci.site} />
     </>
   );
 }

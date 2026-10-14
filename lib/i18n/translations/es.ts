@@ -278,5 +278,11 @@ export const es: Translations = {
     rights: 'Todos los derechos reservados.',
     built: 'Hecho con Next.js y TypeScript.',
     support: 'Apoya mi trabajo',
+    build: {
+      passed: 'Build exitoso',
+      failed: 'Build fallido',
+      running: 'Build en curso',
+      cancelled: 'Build cancelado',
+    },
   },
 };

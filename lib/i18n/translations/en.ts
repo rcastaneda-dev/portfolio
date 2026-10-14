@@ -288,6 +288,12 @@ export const en = {
     rights: 'All rights reserved.',
     built: 'Built with Next.js and TypeScript.',
     support: 'Support my work',
+    build: {
+      passed: 'Build passing',
+      failed: 'Build failing',
+      running: 'Build running',
+      cancelled: 'Build cancelled',
+    },
   },
 };
 
