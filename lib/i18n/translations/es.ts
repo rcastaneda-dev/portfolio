@@ -17,25 +17,27 @@ export const es: Translations = {
 
   // Hero
   hero: {
-    title: 'Ingeniero senior de automatización QA',
-    lede: 'Consultor en ingeniería de calidad que ayuda a equipos remotos a escalar la automatización de pruebas, estabilizar CI/CD y entregar con confianza.',
+    title: 'SDET senior',
+    lede: 'Ingeniero QA AI-first con más de 10 años en automatización de pruebas y desarrollo de software, que ayuda a equipos remotos a escalar las pruebas web y móviles, estabilizar CI/CD y entregar con confianza.',
     emailMe: 'Escríbeme',
     downloadResume: 'Descargar CV',
     sheet: {
       focus: 'Enfoque',
-      focusValue: 'Automatización de pruebas E2E y de componentes, estabilización de CI/CD',
+      focusValue: 'Pruebas E2E, de API y cross-browser, estabilización de CI/CD',
       frameworks: 'Frameworks',
       pipelines: 'Pipelines',
       industries: 'Industrias',
-      industriesValue: 'Servicios financieros, eCommerce, ciberseguridad, marítimo, logística',
+      industriesValue: 'Servicios financieros (contracargos, gestión de disputas, fraude), eCommerce, ciberseguridad (gestión de vulnerabilidades), marítimo, logística, gestión deportiva',
       basedIn: 'Ubicación',
       basedInValue: 'San Salvador, El Salvador, trabajo remoto',
+      languages: 'Idiomas',
+      languagesValue: 'Inglés (profesional completo), español (nativo), francés (básico)',
       status: 'Estado',
       statusValue: 'Disponible para roles remotos y consultoría',
     },
     graph: {
-      label: 'Gráfico de ramas de la trayectoria, 2013 a 2025',
-      summary: 'De desarrollador Java a ingeniero senior de automatización QA, 2013 a 2025.',
+      label: 'Gráfico de ramas de la trayectoria, de 2013 a la actualidad',
+      summary: 'De desarrollador Java a SDET senior, de 2013 a la actualidad.',
     },
   },
 
@@ -45,8 +47,8 @@ export const es: Translations = {
     lede: 'Ayudo a equipos de ingeniería a construir software confiable y escalable. En más de una década he entregado trabajo crítico para producción en servicios financieros, eCommerce, ciberseguridad, sistemas marítimos, y transporte terrestre y logística.',
     paragraphs: [
       'Trabajo como consultor en ingeniería de calidad con equipos distribuidos: diseño, escalo y opero la automatización de pruebas de sistemas complejos. Colaboro con líderes de producto e ingeniería para lograr entregas confiables, feedback rápido y confianza en producción, sin ralentizar a los equipos.',
-      'Mi perfil combina desarrollo de software, arquitectura de automatización y habilitación de CI/CD. Construyo frameworks de automatización desde cero, modernizo suites de pruebas heredadas y estabilizo pipelines inestables con Cypress, Playwright, TypeScript, Selenium, Docker y plataformas de CI/CD en la nube.',
-      'Uso herramientas de IA como Cursor y Claude Code para acelerar el desarrollo y el trabajo de QA, y exploro prácticas como la ingeniería del caos con Gremlin para reforzar la resiliencia y la preparación para producción.',
+      'Mi perfil combina desarrollo de software, arquitectura de automatización y habilitación de CI/CD. Construyo frameworks de automatización desde cero, migro y modernizo suites de pruebas heredadas y estabilizo pipelines inestables con Playwright, Cypress, TypeScript, Selenium, BrowserStack, Docker y plataformas de CI/CD en la nube.',
+      'Trabajo con un enfoque AI-first. Creo skills de OpenAI Codex, con subagentes explorador, trabajador y revisor, que migran suites de pruebas y detectan brechas de cobertura en TestRail, y uso agentes de Playwright para pruebas autorreparables, y Claude Code y Cursor para acelerar el desarrollo. También exploro la ingeniería del caos con Gremlin para reforzar la resiliencia y la preparación para producción.',
     ],
     capabilities: {
       automation: {
@@ -72,6 +74,7 @@ export const es: Translations = {
   experience: {
     title: 'Experiencia',
     to: 'a',
+    present: 'la actualidad',
     showDev: 'Mostrar roles de desarrollo',
     hideDev: 'Ocultar roles de desarrollo',
     groups: {
@@ -85,6 +88,23 @@ export const es: Translations = {
       onsite: 'Presencial',
     },
     jobs: {
+      willdom: {
+        title: 'Ingeniero Senior de Automatización QA',
+        company: 'WillDom',
+        changes: {
+          added: [
+            'Responsabilidad de calidad de nuevas funcionalidades, desde su concepción hasta el despliegue en producción, como líder de QA interino.',
+            'Skill reutilizable de OpenAI Codex para migrar pruebas de forma incremental, con subagentes explorador, trabajador y revisor para el análisis, la implementación y la revisión del código.',
+            'Skills de Codex que analizan repositorios de TestRail, detectan brechas de cobertura, proponen escenarios límite y los convierten en tareas de prueba accionables para tickets de JIRA.',
+            'Cobertura automatizada para integraciones de pago complejas con Stripe.',
+            'Agentes de Playwright para pruebas autorreparables y una cobertura más rápida de nuevas funcionalidades.',
+            'Plan de pruebas móviles para una app nativa de iOS.',
+            'Pruebas en distintos navegadores y dispositivos con BrowserStack.',
+          ],
+          changed: ['Dos repositorios de pruebas end-to-end migrados de Cypress a Playwright para mejorar la estabilidad del CI.'],
+          fixed: [],
+        },
+      },
       lumenalta: {
         title: 'Ingeniero Senior de Automatización QA',
         company: 'Lumenalta LLC (anteriormente Clevertech)',
@@ -93,9 +113,10 @@ export const es: Translations = {
             'Plataforma de automatización end-to-end con Cypress y TypeScript, que cubre pruebas E2E y de componentes para aplicaciones React críticas para el negocio.',
             'Estrategia de datos de prueba, con integraciones para pruebas condicionales, simulación de datos y filtrado de pruebas.',
             'Contribuciones a pruebas de rendimiento con Postman y verificación de la consistencia de datos entre sistemas nuevos y heredados con SQL y Databricks, en una plataforma grande de transporte y logística.',
+            'Reportes HTML (Mochawesome) y XML (JUnit), agregados desde varios contenedores Docker para dar visibilidad en el CI.',
           ],
           changed: [
-            'Framework containerizado y trasladado a Azure Pipelines con ejecución en paralelo y reportes consolidados.',
+            'Framework containerizado y trasladado a Azure Pipelines con ejecución en paralelo.',
           ],
           fixed: ['Pipelines inestables estabilizados.'],
         },
@@ -114,9 +135,9 @@ export const es: Translations = {
           ],
         },
       },
-      encora: {
+      avantica: {
         title: 'Ingeniero de Automatización QA',
-        company: 'Encora (anteriormente Avantica)',
+        company: 'Avantica',
         changes: {
           added: [
             'Automatización de UI y API con TestCafe, PyTest y Postman para una nueva plataforma de ciberseguridad crítica para producción, junto a ingeniería, producto y DevOps.',
@@ -151,15 +172,16 @@ export const es: Translations = {
           added: [
             'Suites de regresión automatizadas con Selenium WebDriver y TestNG para aplicaciones Java y basadas en Pega.',
             'Pruebas basadas en datos.',
+            'Clases utilitarias que consumen, analizan y validan endpoints de APIs RESTful para pruebas de UI y de backend.',
             'Planes y casos de prueba trazables, alineados con requisitos funcionales y de negocio, para plataformas de disputas y pagos digitales.',
           ],
           changed: ['Page Object Model y capas de configuración refactorizados para reducir la duplicación.'],
           fixed: [],
         },
       },
-      synergyca: {
+      davivienda: {
         title: 'Desarrollador Java',
-        company: 'Synergyca SA de CV (Proyecto: Banco Davivienda)',
+        company: 'Banco Davivienda (a través de Synergyca S.A. de C.V.)',
         changes: {
           added: [
             'Aplicaciones Java para un banco sobre una arquitectura SOA, desarrolladas y probadas unitariamente en múltiples entornos.',
@@ -170,8 +192,8 @@ export const es: Translations = {
         },
       },
       sherwin: {
-        title: 'Desarrollador Java EE (Pasantía)',
-        company: 'Sherwin Williams',
+        title: 'Desarrollador Java',
+        company: 'Sherwin-Williams de Centroamérica',
         changes: {
           added: [
             'Participación en todas las fases del ciclo de vida del software, junto a desarrolladores, gerentes y stakeholders.',
@@ -190,15 +212,19 @@ export const es: Translations = {
     title: 'Habilidades',
     categories: {
       programming: 'Lenguajes',
-      testing: 'Frameworks de testing',
+      testing: 'Pruebas',
       devops: 'DevOps y herramientas',
       frameworks: 'Frameworks y librerías',
     },
-    learningTitle: 'Aprendizaje continuo',
+    learningTitle: 'Formación y certificaciones',
     learning: [
+      'Universidad Don Bosco, Ingeniería en Ciencias de la Computación (2014 a 2021)',
       'MIT xPRO, Certificado Profesional en Ciberseguridad (2022 a 2023)',
-      'Aprendiendo actualmente: desarrollo con IA usando Cursor y Claude Code',
-      'Áreas de enfoque: React moderno, desarrollo full-stack, arquitectura de automatización de pruebas',
+      'Claude Academy: Claude Code 101',
+      'Python Automation and Testing',
+      'Behavior-Driven Development',
+      'Curso Avanzado de Java SE',
+      'CASAS (Proficient Skills)',
     ],
   },
 

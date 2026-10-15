@@ -9,6 +9,23 @@ interface Job {
 
 // Typed explicitly so a role can have an empty group in any language.
 const jobs: Record<RoleId, Job> = {
+  willdom: {
+    title: 'Senior Quality Assurance Automation Engineer',
+    company: 'WillDom',
+    changes: {
+      added: [
+        'Quality ownership of new features from inception through production deployment, as acting QA lead.',
+        'Reusable OpenAI Codex skill for incremental test migration, with explorer, worker and reviewer sub-agents for code analysis, implementation and review.',
+        'Codex skills that analyze TestRail repositories, find coverage gaps, propose edge-case scenarios and turn them into actionable test items for JIRA tickets.',
+        'Automated coverage for complex Stripe payment integrations.',
+        'Playwright agents for self-healing tests and faster coverage of new features.',
+        'Mobile testing plan for a native iOS app.',
+        'Cross-browser and cross-device testing with BrowserStack.',
+      ],
+      changed: ['Two end-to-end test repositories migrated from Cypress to Playwright to improve CI stability.'],
+      fixed: [],
+    },
+  },
   lumenalta: {
     title: 'Senior QA Automation Engineer',
     company: 'Lumenalta LLC (formerly Clevertech)',
@@ -17,9 +34,10 @@ const jobs: Record<RoleId, Job> = {
         'End-to-end automation platform with Cypress and TypeScript, covering E2E and component tests for business-critical React applications.',
         'Test data strategy, with integrations for conditional testing, data mocking and test filtering.',
         'Contributions to performance testing with Postman, and data consistency checks between new and legacy systems with SQL and Databricks, on a large transportation and logistics platform.',
+        'HTML (Mochawesome) and XML (JUnit) reports, aggregated across Docker containers for CI visibility.',
       ],
       changed: [
-        'Containerized the framework and moved it into Azure Pipelines with parallel execution and consolidated reporting.',
+        'Containerized the framework and moved it into Azure Pipelines with parallel execution.',
       ],
       fixed: ['Flaky pipelines stabilized.'],
     },
@@ -38,9 +56,9 @@ const jobs: Record<RoleId, Job> = {
       ],
     },
   },
-  encora: {
+  avantica: {
     title: 'QA Automation Engineer',
-    company: 'Encora (formerly Avantica)',
+    company: 'Avantica',
     changes: {
       added: [
         'UI and API automation with TestCafe, PyTest and Postman for a new, production-critical cybersecurity platform, working with engineering, product and DevOps.',
@@ -75,15 +93,16 @@ const jobs: Record<RoleId, Job> = {
       added: [
         'Automated regression suites with Selenium WebDriver and TestNG for Java and Pega-based applications.',
         'Data-driven testing.',
+        'Utility classes that consume, parse and validate RESTful API endpoints for UI and backend tests.',
         'Traceable test plans and test cases aligned with functional and business requirements, for disputes and digital payments platforms.',
       ],
       changed: ['Page Object Model and configuration layers refactored to cut duplication.'],
       fixed: [],
     },
   },
-  synergyca: {
+  davivienda: {
     title: 'Java Developer',
-    company: 'Synergyca SA de CV (Project: Davivienda Bank)',
+    company: 'Davivienda Bank (via Synergyca S.A. de C.V.)',
     changes: {
       added: [
         'Java applications for a bank on an SOA architecture, developed and unit-tested across multiple environments.',
@@ -94,8 +113,8 @@ const jobs: Record<RoleId, Job> = {
     },
   },
   sherwin: {
-    title: 'Java EE Developer (Internship)',
-    company: 'Sherwin Williams',
+    title: 'Java Developer',
+    company: 'Sherwin-Williams de Centroamérica',
     changes: {
       added: [
         'Work across every phase of the software lifecycle, with developers, managers and stakeholders.',
@@ -125,8 +144,8 @@ export const en = {
 
   // Hero
   hero: {
-    title: 'Senior QA automation engineer',
-    lede: 'Quality engineering consultant helping remote teams scale test automation, stabilize CI/CD and ship with confidence.',
+    title: 'Senior SDET',
+    lede: 'AI-first QA engineer with 10+ years in test automation and software development, helping remote teams scale web and mobile testing, stabilize CI/CD and ship with confidence.',
     emailMe: 'Email me',
     downloadResume: 'Download résumé',
     sheet: {
@@ -138,12 +157,14 @@ export const en = {
       industriesValue: 'Financial Services (Chargeback, Dispute Management, Fraud), eCommerce, Cybersecurity (Vulnerability Management), Maritime, Logistics, Sports Management',
       basedIn: 'Based in',
       basedInValue: 'San Salvador, El Salvador, working remotely',
+      languages: 'Languages',
+      languagesValue: 'English (full professional), Spanish (native), French (elementary)',
       status: 'Status',
       statusValue: 'Open to remote roles and consulting',
     },
     graph: {
-      label: 'Career branch graph, 2013 to 2025',
-      summary: 'From Java developer to senior QA automation engineer, 2013 to 2025.',
+      label: 'Career branch graph, 2013 to present',
+      summary: 'From Java developer to senior SDET, 2013 to present.',
     },
   },
 
@@ -153,8 +174,8 @@ export const en = {
     lede: 'I help engineering teams build reliable, scalable software. Over a decade, I have delivered production-critical work in financial services, eCommerce, cybersecurity, maritime systems, and ground transportation and logistics.',
     paragraphs: [
       'I work as a quality engineering consultant with distributed teams, designing, scaling and operating test automation for complex systems. I partner with product and engineering leaders for reliable delivery, fast feedback and confidence in production, without slowing teams down.',
-      'My background combines software development, automation architecture and CI/CD enablement. I build automation frameworks from scratch, modernize legacy test suites and stabilize flaky pipelines, using Cypress, Playwright, TypeScript, Selenium, Docker and cloud CI/CD platforms.',
-      'I use AI tools such as Cursor and Claude Code to speed up development and QA work, and I explore practices like chaos engineering with Gremlin to strengthen resilience and production readiness.',
+      'My background combines software development, automation architecture and CI/CD enablement. I build automation frameworks from scratch, migrate and modernize legacy test suites and stabilize flaky pipelines, using Playwright, Cypress, TypeScript, Selenium, BrowserStack, Docker and cloud CI/CD platforms.',
+      'I work AI-first. I build OpenAI Codex skills, with explorer, worker and reviewer sub-agents, that migrate test suites and find coverage gaps in TestRail, and I use Playwright agents for self-healing tests and Claude Code and Cursor to speed up development. I also explore chaos engineering with Gremlin to strengthen resilience and production readiness.',
     ],
     capabilities: {
       automation: {
@@ -180,6 +201,7 @@ export const en = {
   experience: {
     title: 'Experience',
     to: 'to',
+    present: 'present',
     showDev: 'Show development roles',
     hideDev: 'Hide development roles',
     groups: {
@@ -200,15 +222,19 @@ export const en = {
     title: 'Skills',
     categories: {
       programming: 'Languages',
-      testing: 'Testing frameworks',
+      testing: 'Testing',
       devops: 'DevOps and tools',
       frameworks: 'Frameworks and libraries',
     },
-    learningTitle: 'Continuous learning',
+    learningTitle: 'Education and certifications',
     learning: [
+      'Universidad Don Bosco, Engineer’s degree in Computer Science (2014 to 2021)',
       'MIT xPRO, Professional Certificate in Cybersecurity (2022 to 2023)',
-      'Currently learning: AI-powered development with Cursor and Claude Code',
-      'Focus areas: modern React, full-stack development, test automation architecture',
+      'Claude Academy: Claude Code 101',
+      'Python Automation and Testing',
+      'Behavior-Driven Development',
+      'Curso Avanzado de Java SE (advanced Java SE)',
+      'CASAS (Proficient Skills)',
     ],
   },
 

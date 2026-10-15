@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useI18n } from '@/lib/i18n';
-import { qaRoles, devRoles, formatMonth, versionById, type Role } from '@/lib/data/career';
+import { qaRoles, devRoles, formatSpan, versionById, type Role } from '@/lib/data/career';
 import { visibleGroups } from '@/lib/data/changelog';
 import Section from './Section';
 
@@ -27,9 +27,7 @@ const RoleRow = ({ role }: { role: Role }) => {
             {role.kind}
           </span>
         </p>
-        <p className="mt-2">
-          {formatMonth(role.start)} {t.experience.to} {formatMonth(role.end)}
-        </p>
+        <p className="mt-2">{formatSpan(role, t.experience.to, t.experience.present)}</p>
         <p className="mt-1">{place}</p>
       </div>
 

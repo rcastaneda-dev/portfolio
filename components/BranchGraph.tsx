@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useI18n } from '@/lib/i18n';
-import { chronologicalRoles, formatMonth, versionById, type RoleId } from '@/lib/data/career';
+import { chronologicalRoles, formatSpan, versionById, type RoleId } from '@/lib/data/career';
 import { LABEL_OFFSET, LANE_Y, VIEW_H, VIEW_W, labelLefts, rolePath, segmentOf, segmentPx, yearTicks } from '@/lib/data/graph';
 
 // The room a label keeps before the end of its segment, and the gap before the company name.
@@ -44,7 +44,7 @@ const BranchGraph = () => {
   const describe = (id: RoleId) => {
     const role = chronologicalRoles.find((r) => r.id === id);
     if (!role) return '';
-    return `${versionById[id]}, ${role.shortName}, ${t.experience.jobs[id].title}, ${formatMonth(role.start)} ${t.experience.to} ${formatMonth(role.end)}`;
+    return `${versionById[id]}, ${role.shortName}, ${t.experience.jobs[id].title}, ${formatSpan(role, t.experience.to, t.experience.present)}`;
   };
 
   // Re-clicking a node whose hash is already in the URL fires no hashchange.

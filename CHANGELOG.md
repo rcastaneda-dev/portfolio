@@ -15,6 +15,7 @@ All notable changes to this site are documented here. The format follows [Keep a
 - Redesigned the site in a light document style with Archivo and Source Serif 4, and dark panels for the graph and pipeline runs.
 - Content renders in the static HTML, with no loading screen.
 - Rewrote the copy in English, Spanish and French.
+- Updated the profile from LinkedIn: the current WillDom role, the Senior SDET headline, company names, languages, and education and certifications.
 
 ### Removed
 - Neon theme, particle background, typing animation and scroll-to-top button.

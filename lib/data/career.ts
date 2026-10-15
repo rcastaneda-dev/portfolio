@@ -2,21 +2,23 @@
 // the i18n dictionaries under `experience.jobs[id]`.
 
 export type RoleId =
+  | 'willdom'
   | 'lumenalta'
   | 'avenueCode'
-  | 'encora'
+  | 'avantica'
   | 'ruleswareQa'
   | 'pegaDev'
-  | 'synergyca'
+  | 'davivienda'
   | 'sherwin';
 
 export type EmployerId =
   | 'sherwin'
-  | 'synergyca'
+  | 'davivienda'
   | 'rulesware'
-  | 'encora'
+  | 'avantica'
   | 'avenueCode'
-  | 'lumenalta';
+  | 'lumenalta'
+  | 'willdom';
 
 export type RoleKind = 'qa' | 'dev';
 export type WorkMode = 'remote' | 'hybrid' | 'onsite';
@@ -30,8 +32,8 @@ export interface Role {
   shortName: string;
   /** First month worked, as YYYY-MM. */
   start: string;
-  /** Last month worked, as YYYY-MM. */
-  end: string;
+  /** Last month worked, as YYYY-MM, or null for the current role. */
+  end: string | null;
   workMode: WorkMode;
   /** Country shown next to on-site and hybrid roles. */
   country?: string;
@@ -42,6 +44,16 @@ export interface Role {
 // Pega developer dates overlap on purpose: both roles ran in parallel during the
 // transition (05/2018 to 07/2018).
 export const roles: Role[] = [
+  {
+    id: 'willdom',
+    employer: 'willdom',
+    kind: 'qa',
+    shortName: 'WillDom',
+    start: '2026-03',
+    end: null,
+    workMode: 'remote',
+    stack: ['Playwright', 'Cypress', 'TypeScript', 'OpenAI Codex', 'BrowserStack', 'Stripe', 'TestRail', 'iOS'],
+  },
   {
     id: 'lumenalta',
     employer: 'lumenalta',
@@ -63,10 +75,10 @@ export const roles: Role[] = [
     stack: ['Playwright', 'TestCafe', 'TypeScript', 'Node.js', 'Jenkins', 'GitHub Actions', 'API testing', 'JIRA'],
   },
   {
-    id: 'encora',
-    employer: 'encora',
+    id: 'avantica',
+    employer: 'avantica',
     kind: 'qa',
-    shortName: 'Encora',
+    shortName: 'Avantica',
     start: '2019-11',
     end: '2022-03',
     workMode: 'remote',
@@ -95,10 +107,10 @@ export const roles: Role[] = [
     stack: ['Selenium WebDriver', 'Java', 'TestNG', 'Postman', 'SoapUI', 'SQL', 'Jenkins', 'Git'],
   },
   {
-    id: 'synergyca',
-    employer: 'synergyca',
+    id: 'davivienda',
+    employer: 'davivienda',
     kind: 'dev',
-    shortName: 'Synergyca',
+    shortName: 'Davivienda',
     start: '2015-03',
     end: '2015-07',
     workMode: 'onsite',
@@ -127,10 +139,24 @@ export function monthIndex(ym: string): number {
   return year * 12 + (month - 1);
 }
 
+/**
+ * The month a current role runs to. Next inlines BUILD_MONTH at build time, so
+ * the server-rendered page and the browser agree on it.
+ */
+export const AS_OF = process.env.BUILD_MONTH ?? new Date().toISOString().slice(0, 7);
+
+/** Last month of a role, counting a current role up to AS_OF. */
+export const endMonth = (role: Role): string => role.end ?? AS_OF;
+
 /** Display form used in the changelog and the graph readout: MM/YYYY. */
 export function formatMonth(ym: string): string {
   const [year, month] = ym.split('-');
   return `${month}/${year}`;
+}
+
+/** A role's dates in the reader's language: "05/2023 to 11/2025", or "03/2026 to present". */
+export function formatSpan(role: Role, to: string, present: string): string {
+  return `${formatMonth(role.start)} ${to} ${role.end ? formatMonth(role.end) : present}`;
 }
 
 /** Roles ordered by first month worked. The sort is stable, so ties keep list order. */

@@ -21,15 +21,15 @@ const SITE_URL = "https://rcastaneda.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Ricardo Castaneda | Senior QA Automation Engineer and SDET",
+  title: "Ricardo Castaneda | Senior SDET",
   description:
-    "Experienced QA Automation Engineer with 10+ years delivering high-quality solutions across Financial services, eCommerce, Cybersecurity, Maritime, Ground transportation & Logistics. Skilled in JavaScript/TypeScript, Java, and modern testing frameworks.",
+    "Senior SDET with 10+ years in test automation and software development. AI-first QA with Playwright, Cypress, TypeScript, mobile testing and CI/CD, across financial services, eCommerce, cybersecurity, maritime, and ground transportation and logistics.",
   keywords:
-    "QA Automation, SDET, Quality Engineering, TypeScript, JavaScript, Cypress, Playwright, Testing, El Salvador",
+    "Senior SDET, QA Automation, AI-first QA, Quality Engineering, Playwright, Cypress, TypeScript, Mobile Testing, BrowserStack, CI/CD, El Salvador",
   authors: [{ name: "Ricardo Castaneda" }],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Ricardo Castaneda | Senior QA Automation Engineer",
+    title: "Ricardo Castaneda | Senior SDET",
     description:
       "Bridging development and testing to drive efficiency and reliability",
     type: "website",
@@ -41,7 +41,7 @@ const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Ricardo Castaneda",
-  jobTitle: "Senior QA Automation Engineer",
+  jobTitle: "Senior SDET",
   url: SITE_URL,
   email: "hi@rcastaneda.dev",
   address: {

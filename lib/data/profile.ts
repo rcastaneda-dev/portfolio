@@ -15,14 +15,14 @@ export const profile = {
   // visitor's browser sends it, and it only lets the form deliver to this inbox.
   // Leave it empty to replace the form with an "Email me" button.
   web3formsKey: 'cef9d5d5-9c13-450f-ac93-f5deadfadadf',
-  frameworks: ['Cypress', 'Playwright', 'TestCafe', 'Selenium'],
+  frameworks: ['Playwright', 'Cypress', 'TestCafe', 'Selenium'],
   pipelines: ['Azure Pipelines', 'Jenkins', 'TeamCity', 'GitHub Actions'],
 };
 
 export const skillGroups = {
   programming: ['TypeScript', 'JavaScript', 'Java', 'Python'],
-  testing: ['Cypress', 'Playwright', 'TestCafe', 'Selenium', 'PyTest', 'Jest', 'K6'],
-  devops: ['Docker', 'Azure DevOps', 'Jenkins', 'Git and GitHub', 'TeamCity'],
+  testing: ['Playwright', 'Cypress', 'TestCafe', 'Selenium', 'PyTest', 'Jest', 'K6', 'BrowserStack', 'Mobile testing (iOS)'],
+  devops: ['Docker', 'Azure DevOps', 'Jenkins', 'Git and GitHub', 'TeamCity', 'OpenAI Codex', 'Claude Code'],
   frameworks: ['Node.js', 'REST APIs', 'React and Next.js', 'Express'],
 } as const;
 

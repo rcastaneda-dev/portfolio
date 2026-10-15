@@ -16,6 +16,7 @@ const Hero = () => {
     { label: sheet.pipelines, value: profile.pipelines.join(', ') },
     { label: sheet.industries, value: sheet.industriesValue },
     { label: sheet.basedIn, value: sheet.basedInValue },
+    { label: sheet.languages, value: sheet.languagesValue },
   ];
 
   return (
