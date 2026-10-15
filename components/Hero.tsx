@@ -1,7 +1,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { Check, CheckCircle2, Download, GitPullRequest } from 'lucide-react';
+import { Check, Download, GitPullRequest } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 import { profile } from '@/lib/data/profile';
 import BranchGraph from './BranchGraph';
@@ -81,16 +81,6 @@ const Hero = () => {
           </div>
 
           <div className="self-start rounded-[2px] border border-rule bg-sheet text-[0.9375rem] lg:col-span-6">
-            <div className="flex items-center gap-3 border-b border-rule px-5 py-4 md:px-6">
-              <CheckCircle2 size={24} aria-hidden className="shrink-0 text-pass" />
-              <div>
-                <p className="font-semibold">{sheet.checksPassed}</p>
-                <p className="text-[0.875rem] text-graphite">
-                  {sheet.checksCount.replace('{count}', String(checks.length))}
-                </p>
-              </div>
-            </div>
-
             <dl className="grid gap-5 px-5 py-5 md:px-6">
               {checks.map(({ label, content }) => (
                 <div key={label}>

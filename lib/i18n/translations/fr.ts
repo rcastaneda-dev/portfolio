@@ -22,8 +22,6 @@ export const fr: Translations = {
     emailMe: 'Écrivez-moi',
     downloadResume: 'Télécharger le CV',
     sheet: {
-      checksPassed: 'Toutes les vérifications sont passées',
-      checksCount: '{count} vérifications réussies',
       focus: 'Spécialité',
       focusItems: ['Tests E2E', 'Tests d’API', 'Tests multinavigateurs', 'Stabilisation du CI/CD'],
       frameworks: 'Frameworks',

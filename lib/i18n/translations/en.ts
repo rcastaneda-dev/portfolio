@@ -149,8 +149,6 @@ export const en = {
     emailMe: 'Email me',
     downloadResume: 'Download résumé',
     sheet: {
-      checksPassed: 'All checks have passed',
-      checksCount: '{count} successful checks',
       focus: 'Focus',
       focusItems: ['E2E testing', 'API testing', 'Cross-browser testing', 'CI/CD stabilization'],
       frameworks: 'Frameworks',

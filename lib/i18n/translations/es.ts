@@ -22,8 +22,6 @@ export const es: Translations = {
     emailMe: 'Escríbeme',
     downloadResume: 'Descargar CV',
     sheet: {
-      checksPassed: 'Todas las comprobaciones pasaron',
-      checksCount: '{count} comprobaciones exitosas',
       focus: 'Enfoque',
       focusItems: ['Pruebas E2E', 'Pruebas de API', 'Pruebas cross-browser', 'Estabilización de CI/CD'],
       frameworks: 'Frameworks',
