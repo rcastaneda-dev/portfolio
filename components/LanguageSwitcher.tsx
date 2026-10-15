@@ -4,11 +4,11 @@ import { useI18n, locales } from '@/lib/i18n';
 
 // Three always-visible buttons: with only three languages a dropdown hides
 // information for no gain.
-const LanguageSwitcher = () => {
+const LanguageSwitcher = ({ className = '' }: { className?: string }) => {
   const { locale, setLocale, t } = useI18n();
 
   return (
-    <div role="group" aria-label={t.nav.language} className="flex items-center">
+    <div role="group" aria-label={t.nav.language} className={`flex items-center ${className}`}>
       {locales.map(({ code, name }) => {
         const active = locale === code;
         return (
@@ -19,7 +19,7 @@ const LanguageSwitcher = () => {
             aria-label={name}
             aria-pressed={active}
             onClick={() => setLocale(code)}
-            className={`inline-flex h-11 min-w-10 items-center justify-center px-1 text-[0.8125rem] font-medium md:min-w-11 ${
+            className={`inline-flex h-11 min-w-9 items-center justify-center px-1 text-[0.8125rem] font-medium md:min-w-11 ${
               active
                 ? 'text-ink underline decoration-pass decoration-2 underline-offset-[10px]'
                 : 'text-graphite hover:text-ink'

@@ -38,7 +38,7 @@ const Navigation = () => {
       </a>
 
       <header className="sticky top-0 z-50 border-b border-rule bg-bench">
-        <div className="wrap flex h-16 items-center justify-between gap-4">
+        <div className="wrap flex h-16 items-center justify-between gap-2 md:gap-4">
           <a
             href="#top"
             className="whitespace-nowrap font-display text-base font-semibold md:text-[1.0625rem]"
@@ -59,7 +59,8 @@ const Navigation = () => {
           </nav>
 
           <div className="flex items-center gap-1 md:gap-4">
-            <LanguageSwitcher />
+            {/* Below 360px the name, languages and menu button don't fit in one row. */}
+            <LanguageSwitcher className="max-[359px]:hidden" />
             <a
               href={profile.resume}
               download={profile.resumeFileName}
@@ -104,6 +105,13 @@ const Navigation = () => {
               >
                 {t.nav.resume}
               </a>
+              {/* The languages move here when the header is too narrow for them. */}
+              <div className="flex min-h-12 items-center justify-between min-[360px]:hidden">
+                <span aria-hidden className="text-[1.0625rem]">
+                  {t.nav.language}
+                </span>
+                <LanguageSwitcher />
+              </div>
             </div>
           </nav>
         )}
