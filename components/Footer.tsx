@@ -3,6 +3,7 @@
 import { CheckCircle2, CircleDot, MinusCircle, XCircle, type LucideIcon } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 import { profile } from '@/lib/data/profile';
+import { AS_OF } from '@/lib/data/career';
 import type { CiPanelData, RunStatus } from '@/lib/data/ci';
 
 const BUILD_STATUS: Record<RunStatus, { Icon: LucideIcon; className: string }> = {
@@ -20,7 +21,9 @@ interface FooterProps {
 
 const Footer = ({ version, siteCi }: FooterProps) => {
   const { t } = useI18n();
-  const year = new Date().getFullYear();
+  // The build year, not the visitor's clock: the page is prerendered, so a year
+  // read at render time would mismatch the static HTML after New Year.
+  const year = AS_OF.slice(0, 4);
   // Only a status fetched for this build is shown; a saved snapshot could be stale.
   const latest = siteCi?.source === 'github' ? siteCi.runs[0] : undefined;
   const status = latest ? BUILD_STATUS[latest.status] : null;
