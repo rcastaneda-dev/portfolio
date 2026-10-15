@@ -11,6 +11,10 @@ export const profile = {
   resume: '/resume.pdf',
   resumeFileName: 'Ricardo_Castaneda_Resume.pdf',
   support: 'https://www.buymeacoffee.com/rcastaneda.dev',
+  // Web3Forms access key for the contact form. It is public by design: every
+  // visitor's browser sends it, and it only lets the form deliver to this inbox.
+  // Leave it empty to replace the form with an "Email me" button.
+  web3formsKey: 'cef9d5d5-9c13-450f-ac93-f5deadfadadf',
   frameworks: ['Cypress', 'Playwright', 'TestCafe', 'Selenium'],
   pipelines: ['Azure Pipelines', 'Jenkins', 'TeamCity', 'GitHub Actions'],
 };

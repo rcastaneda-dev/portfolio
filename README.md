@@ -9,18 +9,17 @@ A single-page portfolio for a senior QA automation engineer, built with Next.js 
 - **Responsive and accessible**: skip link, visible keyboard focus, reduced-motion support
 - **Three languages**: English, Spanish and French, typed so every dictionary must stay in sync
 - **Content in the HTML**: no loading screen, so crawlers and slow connections see the full page
-- **Contact form**: posts to Formspree, with an email button as a fallback
+- **Contact form**: sends through Web3Forms (access key in `lib/data/profile.ts`), with an email button as a fallback
 - **Sections**: Hero, About, Experience, Skills, Projects, Contact
 
 ## 🔐 Environment variables
 
 | Variable | Purpose |
 | --- | --- |
-| `NEXT_PUBLIC_FORMSPREE_ID` | Formspree form ID (the part after `/f/`). When empty, the contact section shows an email button instead of the form. Inlined at build time. |
 | `GITHUB_TOKEN` | Optional. Raises the GitHub API rate limit when the prebuild step fetches pipeline runs. Without it the build falls back to `lib/data/ci-snapshot.json`. |
 | `CI_API_BASE` | Testing only. Points the pipeline fetch at another host to force the snapshot fallback. |
 
-Copy `.env.example` to `.env.local` for the Formspree ID. `GITHUB_TOKEN` is read from the shell or the Vercel project, not from `.env.local`. `NEXT_PUBLIC_FORMSPREE_ID` is inlined at build time, so set it in the Vercel project and redeploy after changing it.
+`GITHUB_TOKEN` is read from the shell or the Vercel project, not from `.env.local`. The contact form needs no variable: its Web3Forms access key is public by design and lives in `lib/data/profile.ts`; empty it to show an email button instead.
 
 ## 🔁 CI and pipeline data
 

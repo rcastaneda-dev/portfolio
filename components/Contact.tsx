@@ -5,9 +5,9 @@ import { profile } from '@/lib/data/profile';
 import ContactForm from './ContactForm';
 import Section from './Section';
 
-// Set in `.env.local` and in the Vercel project. When it is missing, the
+// The Web3Forms key lives in lib/data/profile.ts. If it is ever emptied, the
 // section falls back to a plain email button, so a dead form can never ship.
-const FORM_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+const FORM_KEY = profile.web3formsKey;
 
 const Contact = () => {
   const { t } = useI18n();
@@ -66,7 +66,7 @@ const Contact = () => {
 
   return (
     <Section id="contact" title={t.contact.title}>
-      <div className={`grid gap-12 ${FORM_ID ? 'lg:grid-cols-2 lg:gap-16' : ''}`}>
+      <div className={`grid gap-12 ${FORM_KEY ? 'lg:grid-cols-2 lg:gap-16' : ''}`}>
         <div>
           <p className="max-w-[40ch] font-serif text-[1.25rem] leading-[1.5]">
             {t.contact.subtitle}
@@ -81,14 +81,14 @@ const Contact = () => {
             ))}
           </dl>
 
-          {!FORM_ID && (
+          {!FORM_KEY && (
             <a href={`mailto:${profile.email}`} className="btn btn-solid mt-8">
               {t.hero.emailMe}
             </a>
           )}
         </div>
 
-        {FORM_ID && <ContactForm formId={FORM_ID} />}
+        {FORM_KEY && <ContactForm accessKey={FORM_KEY} />}
       </div>
     </Section>
   );

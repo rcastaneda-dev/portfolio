@@ -9,8 +9,9 @@ const fieldClass =
   'mt-2 block w-full rounded-[2px] border border-graphite bg-bench px-4 py-3 text-base';
 
 // The site is a static export, so there is no server to post to. The form
-// sends straight to Formspree, which forwards each message to the inbox.
-const ContactForm = ({ formId }: { formId: string }) => {
+// sends straight to Web3Forms, which emails each message to the inbox and
+// uses the visitor's address as the reply-to.
+const ContactForm = ({ accessKey }: { accessKey: string }) => {
   const { t } = useI18n();
   const [status, setStatus] = useState<Status>('idle');
 
@@ -20,12 +21,16 @@ const ContactForm = ({ formId }: { formId: string }) => {
     setStatus('sending');
 
     try {
-      const response = await fetch(`https://formspree.io/f/${formId}`, {
+      const body = new FormData(form);
+      body.append('access_key', accessKey);
+      body.append('subject', 'New message from rcastaneda.dev');
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { Accept: 'application/json' },
-        body: new FormData(form),
+        body,
       });
-      if (response.ok) {
+      const result = (await response.json().catch(() => null)) as { success?: boolean } | null;
+      if (response.ok && result?.success !== false) {
         form.reset();
         setStatus('sent');
       } else {
@@ -85,10 +90,10 @@ const ContactForm = ({ formId }: { formId: string }) => {
         />
       </div>
 
-      {/* Honeypot: people never see it, bots fill it, Formspree discards those. */}
+      {/* Honeypot: people never see it, bots tick it, Web3Forms discards those. */}
       <input
-        type="text"
-        name="_gotcha"
+        type="checkbox"
+        name="botcheck"
         tabIndex={-1}
         autoComplete="off"
         aria-hidden
