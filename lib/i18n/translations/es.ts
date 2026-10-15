@@ -35,7 +35,7 @@ export const es: Translations = {
     },
     graph: {
       label: 'Gráfico de ramas de la trayectoria, 2013 a 2025',
-      summary: 'De desarrollador Java a ingeniero senior de automatización QA, 2013 a 2025. Pasa el cursor o enfoca un nodo para ver la versión.',
+      summary: 'De desarrollador Java a ingeniero senior de automatización QA, 2013 a 2025.',
     },
   },
 
@@ -176,7 +176,7 @@ export const es: Translations = {
           added: [
             'Participación en todas las fases del ciclo de vida del software, junto a desarrolladores, gerentes y stakeholders.',
             'Servicios web RESTful, Enterprise Beans Java de baja latencia y componentes web Java (managed beans, XHTML/HTML5), con validaciones del lado del cliente y del servidor.',
-            'Pruebas de los componentes que desarrollé, alineadas con las especificaciones.',
+            'Pruebas de los componentes que desarrollé, con los diseños alineados con las especificaciones.',
           ],
           changed: [],
           fixed: [],

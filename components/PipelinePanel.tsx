@@ -42,7 +42,7 @@ const PipelinePanel = ({ data }: { data: CiPanelData }) => {
                   href={run.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline decoration-panel-edge underline-offset-4 hover:decoration-panel-ink focus-visible:outline-pass-dark"
+                  className="underline decoration-panel-muted underline-offset-4 hover:decoration-panel-ink focus-visible:outline-pass-dark"
                 >
                   {run.workflow} #{run.runNumber}
                   <span className="sr-only"> ({t.projects.newTab})</span>

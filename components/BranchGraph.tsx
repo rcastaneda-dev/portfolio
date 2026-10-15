@@ -51,6 +51,7 @@ const BranchGraph = () => {
   // A rendered row only needs scrolling; a collapsed development role is
   // reopened by announcing the hash again (Experience listens for hashchange).
   const revisit = (event: React.MouseEvent, id: RoleId) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
     if (window.location.hash !== `#exp-${id}`) return;
     event.preventDefault();
     const row = document.getElementById(`exp-${id}`);
@@ -128,7 +129,7 @@ const BranchGraph = () => {
                   <span
                     data-graph-label
                     aria-hidden
-                    className={`pointer-events-none absolute whitespace-nowrap text-[0.6875rem] font-medium transition-opacity md:text-[0.75rem] ${dimmed ? 'opacity-40' : ''}`}
+                    className={`pointer-events-none absolute whitespace-nowrap text-[0.6875rem] font-medium transition-opacity md:text-[0.75rem] ${dimmed ? 'opacity-70' : ''}`}
                     style={{
                       left: lefts ? `${lefts[role.id]}px` : `calc(${left} + ${LABEL_OFFSET}px)`,
                       top: role.kind === 'dev' ? y - 22 : y + 8,
@@ -150,7 +151,7 @@ const BranchGraph = () => {
                     <span
                       className={`h-3 w-3 rounded-full transition-opacity ${
                         role.kind === 'qa' ? 'bg-pass-dark' : 'border-2 border-panel-muted bg-panel'
-                      } ${activeId === role.id ? 'ring-2 ring-panel-ink ring-offset-2 ring-offset-panel' : ''} ${dimmed ? 'opacity-40' : ''}`}
+                      } ${activeId === role.id ? 'ring-2 ring-panel-ink ring-offset-2 ring-offset-panel' : ''} ${dimmed ? 'opacity-70' : ''}`}
                     />
                   </a>
                 </div>

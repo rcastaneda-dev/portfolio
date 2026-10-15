@@ -100,7 +100,7 @@ const jobs: Record<RoleId, Job> = {
       added: [
         'Work across every phase of the software lifecycle, with developers, managers and stakeholders.',
         'RESTful web services, low-latency Java Enterprise Beans and Java web components (managed beans, XHTML/HTML5), with client-side and server-side validation.',
-        'Tests for the components I built, kept aligned with specifications.',
+        'Tests for the components I built, with designs kept aligned with specifications.',
       ],
       changed: [],
       fixed: [],
@@ -143,7 +143,7 @@ export const en = {
     },
     graph: {
       label: 'Career branch graph, 2013 to 2025',
-      summary: 'From Java developer to senior QA automation engineer, 2013 to 2025. Hover or focus a node to see the release.',
+      summary: 'From Java developer to senior QA automation engineer, 2013 to 2025.',
     },
   },
 

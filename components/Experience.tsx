@@ -72,6 +72,8 @@ const Experience = () => {
     const openFromHash = () => {
       const id = window.location.hash.slice(1);
       if (!devRoles.some((role) => `exp-${role.id}` === id)) return;
+      // A rendered row is scrolled to by the browser; only a collapsed one needs opening.
+      if (document.getElementById(id)) return;
       pendingScrollId.current = id;
       setShowDev(true);
     };
