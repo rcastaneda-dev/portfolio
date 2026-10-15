@@ -1,15 +1,41 @@
 # Ricardo Castaneda - Portfolio Website
 
-A modern, animated portfolio website built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion. Features subtle anime-inspired animations and a professional design showcasing QA Automation and Full Stack development expertise.
+A single-page portfolio for a senior QA automation engineer, built with Next.js 14, TypeScript and Tailwind CSS. The design reads like a quality-engineering document: a light "inspection report" look, a versioned career branch graph, and ledger-style experience and project lists.
 
 ## 🚀 Features
 
-- **Modern Tech Stack**: Next.js 14, TypeScript, Tailwind CSS, Framer Motion
-- **Responsive Design**: Fully responsive across all devices
-- **Anime-Inspired Animations**: Subtle and professional animations throughout
-- **Performance Optimized**: Server-side rendering with Next.js
-- **Dark Theme**: Modern dark theme with gradient accents
-- **Interactive Sections**: Hero, About, Experience, Skills, Projects, Contact
+- **Tech Stack**: Next.js 14 (static export), TypeScript, Tailwind CSS
+- **Typography**: Archivo (variable width axis) for structure and Source Serif 4 for reading text, loaded with `next/font`
+- **Responsive and accessible**: skip link, visible keyboard focus, reduced-motion support
+- **Three languages**: English, Spanish and French, typed so every dictionary must stay in sync
+- **Content in the HTML**: no loading screen, so crawlers and slow connections see the full page
+- **Contact form**: sends through Web3Forms (access key in `lib/data/profile.ts`), with an email button as a fallback
+- **Sections**: Hero, About, Experience, Skills, Projects, Contact
+
+## 🔐 Environment variables
+
+| Variable | Purpose |
+| --- | --- |
+| `GITHUB_TOKEN` | Optional. Raises the GitHub API rate limit when the prebuild step fetches pipeline runs. Without it the build falls back to `lib/data/ci-snapshot.json`. |
+| `CI_API_BASE` | Testing only. Points the pipeline fetch at another host to force the snapshot fallback. |
+
+`GITHUB_TOKEN` is read from the shell or the Vercel project, not from `.env.local`. The contact form needs no variable: its Web3Forms access key is public by design and lives in `lib/data/profile.ts`; empty it to show an email button instead.
+
+## 🔁 CI and pipeline data
+
+![CI](https://github.com/rcastaneda-dev/portfolio/actions/workflows/ci.yml/badge.svg)
+
+- `npm run build` first runs `scripts/fetch-ci.mjs`, which fetches the latest GitHub Actions runs for the projects listed with a `ciRepo` in `lib/data/projects.ts` and for this repo, and writes `lib/data/ci-build.json` (gitignored). The page is static, so the panels refresh on each deploy.
+- `npm run ci:snapshot` also refreshes the committed fallback, `lib/data/ci-snapshot.json`.
+- `.github/workflows/ci.yml` type-checks, lints and builds every push and pull request to `main`. The footer shows the latest finished `ci.yml` run on `main`, fetched when the site is built, so it can lag the newest commit by one run.
+- Release notes live in [`CHANGELOG.md`](CHANGELOG.md).
+
+## ✏️ Editing content
+
+- Role dates, locations and tech lists: `lib/data/career.ts` (the branch graph reads the same data)
+- Projects: `lib/data/projects.ts`
+- Contact details and skill lists: `lib/data/profile.ts`
+- All visible text: `lib/i18n/translations/` (`en.ts` is the source of truth; `es.ts` and `fr.ts` must match its shape)
 
 ## 📦 Installation
 
@@ -38,8 +64,9 @@ npm run dev
 
 ```bash
 npm run build
-npm start
 ```
+
+`npm run build` writes a static site to `out/`, which can be previewed with any static file server, for example `npx serve out`. `next start` does not work with `output: 'export'`.
 
 ## 🚀 Deployment to Vercel
 
@@ -122,41 +149,28 @@ Create a page rule for www to non-www redirect:
 3. Check SSL certificate is working
 4. Verify both www and non-www work correctly
 
-## 📝 Environment Variables
+## 🎨 Colors and type
 
-Create a `.env.local` file for any environment variables:
+The palette lives in `tailwind.config.ts`:
 
-```env
-# Add any API keys or environment variables here
-NEXT_PUBLIC_SITE_URL=https://ricardocastaneda.dev
-```
+| Token | Value |
+| --- | --- |
+| `bench` | `#F1F4F5` |
+| `sheet` | `#FFFFFF` |
+| `ink` | `#13222D` |
+| `graphite` | `#4E5E69` |
+| `pass` | `#0B7A4B` |
+| `flag` | `#A8570A` |
+| `rule` | `rgb(19 34 45 / 0.18)` |
+| `panel` | `#0E1A23` |
+| `panel-ink` | `#E8EEF1` |
+| `panel-muted` | `#9FB0BB` |
+| `panel-edge` | `rgb(232 238 241 / 0.14)` |
+| `pass-dark` | `#3DBE82` |
+| `fail-dark` | `#F2877A` |
+| `run-dark` | `#E5A04A` |
 
-## 🎨 Customization
-
-### Colors
-
-Edit the color scheme in `tailwind.config.ts`:
-
-```typescript
-colors: {
-  'primary': '#00D9FF',
-  'secondary': '#7928CA',
-  'accent': '#FF0080',
-  'dark': '#0A0E27',
-  'darker': '#060815',
-}
-```
-
-### Content
-
-Update your information in:
-
-- `components/Hero.tsx` - Main introduction
-- `components/About.tsx` - About section
-- `components/Experience.tsx` - Work experience
-- `components/Skills.tsx` - Technical skills
-- `components/Projects.tsx` - Portfolio projects
-- `components/Contact.tsx` - Contact information
+Fonts are loaded in `app/layout.tsx` (Archivo and Source Serif 4).
 
 ## 📄 License
 

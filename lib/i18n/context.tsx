@@ -21,15 +21,19 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     // Load saved locale from localStorage on mount
     const savedLocale = localStorage.getItem(LOCALE_STORAGE_KEY) as Locale | null;
+    let initial: Locale = 'en';
     if (savedLocale && ['en', 'es', 'fr'].includes(savedLocale)) {
-      setLocaleState(savedLocale);
+      initial = savedLocale;
     } else {
       // Try to detect browser language
       const browserLang = navigator.language.split('-')[0];
       if (['en', 'es', 'fr'].includes(browserLang)) {
-        setLocaleState(browserLang as Locale);
+        initial = browserLang as Locale;
       }
     }
+    setLocaleState(initial);
+    // Keep <html lang> in step with the content on first load, not only after a switch.
+    document.documentElement.lang = initial;
     setMounted(true);
   }, []);
 

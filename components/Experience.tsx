@@ -1,223 +1,148 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { Briefcase, Calendar, MapPin } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import { useI18n } from '@/lib/i18n';
+import { qaRoles, devRoles, formatPlace, formatSpan, versionById, type Role } from '@/lib/data/career';
+import { visibleGroups, type ChangeGroup, type Changes } from '@/lib/data/changelog';
+import Section from './Section';
 
-const Experience = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { amount: 0.2 });
-  const [showDev, setShowDev] = useState(false);
-  const { t } = useI18n();
+// Commit dots: filled for additions, a dark ring for changes, a green ring for fixes.
+const dotClass: Record<ChangeGroup, string> = {
+  added: 'bg-pass',
+  changed: 'border-2 border-ink bg-bench',
+  fixed: 'border-2 border-pass bg-bench',
+};
 
-  const experiences = [
-    {
-      title: t.experience.jobs.lumenalta.title,
-      company: t.experience.jobs.lumenalta.company,
-      period: `05/2023 - 11/2025`,
-      location: 'Remote',
-      category: 'QA',
-      description: t.experience.jobs.lumenalta.description,
-      tech: [
-        'Cypress', 'TypeScript', 'Azure DevOps', 'Docker', 'Docker Compose', 'Postman','Performance Testing',
-        'Spike Testing', 'Component Testing', 'E2E Testing', 'React Testing Library', 'Fishery', 'Cypress Plugins',
-        'Bash', 'JSON', 'Nx', 'SQL', 'Cursor', 'Claude'
-      ]
-    },
-    {
-      title: t.experience.jobs.avenueCode.title,
-      company: t.experience.jobs.avenueCode.company,
-      period: '03/2022 - 02/2023',
-      location: 'Remote',
-      category: 'QA',
-      description: t.experience.jobs.avenueCode.description,
-      tech: [
-        'Playwright', 'TestCafe', 'TypeScript', 'Node.js', 'API Testing', 'E2E Testing', 'JIRA', 
-        'Jenkins', 'GitHub', 'GitHub Actions', 'Github Copilot', 'VSCode'
-      ]
-    },
-    {
-      title: t.experience.jobs.encora.title,
-      company: t.experience.jobs.encora.company,
-      period: '11/2019 - 03/2022',
-      location: 'Remote',
-      category: 'QA',
-      description: t.experience.jobs.encora.description,
-      tech: [
-        'TestCafe', 'JavaScript', 'Node.js', 'ESLint', 'Prettier', 'Gulp', 'Npm',
-        'Postman', 'Python', 'PyTest', 'Jest', 'Docker', 'Kubernetes', 'RabbitMQ',
-        'TeamCity', 'TestRail', 'BDD', 'JIRA', 'Datadog', 'Splunk', 'VSCode', 'PyCharm'
-      ]
-    },
-    {
-      title: t.experience.jobs.pegaDev.title,
-      company: t.experience.jobs.pegaDev.company,
-      period: '05/2018 - 10/2019',
-      location: 'El Salvador (Hybrid)',
-      category: 'Dev',
-      description: t.experience.jobs.pegaDev.description,
-      tech: ['Pega PRPC', 'BPM', 'JAXB', 'JSON', 'Postman', 'XML', 'JSP', 'SoapUI', 'Java', 'Unit Testing']
-    },
-    {
-      title: t.experience.jobs.ruleswareQa.title,
-      company: t.experience.jobs.ruleswareQa.company,
-      period: '08/2015 - 07/2018',
-      location: 'El Salvador (Onsite)',
-      category: 'QA',
-      description: t.experience.jobs.ruleswareQa.description,
-      tech: [
-        'Selenium WebDriver', 'Java', 'TestNG', 'JAXB', 'E2E Testing', 'API Testing', 'Regression Testing',
-        'Postman', 'Git', 'SoapUI', 'SQL', 'Jenkins'
-      ]
-    },
-    {
-      title: t.experience.jobs.synergyca.title,
-      company: t.experience.jobs.synergyca.company,
-      period: '03/2015 - 07/2015',
-      location: 'El Salvador (Onsite)',
-      category: 'Dev',
-      description: t.experience.jobs.synergyca.description,
-      tech: [
-        'Java', 'JPA', 'PrimeFaces', 'JSON', 'JSP', 'SQL', 'Bash', '.NET'
-      ]
-    },
-    {
-      title: t.experience.jobs.sherwin.title,
-      company: t.experience.jobs.sherwin.company,
-      period: '12/2013 - 03/2015',
-      location: 'El Salvador (Onsite)',
-      category: 'Dev',
-      description: t.experience.jobs.sherwin.description,
-      tech: [
-        'Java EE5', 'JPA', 'JMS', 'JSF', 'Icefaces', 'PrimeFaces', 'Knockout.js', 
-        'JavaScript', 'HTML5', 'jQuery Mobile', 'JSON', 'PL/SQL', 'Oracle', 
-        'Glassfish', 'iReport', 'NetBeans', 'Subversion'
-      ]
-    }
-  ];
-
-  const filteredExperiences = experiences.filter(exp => showDev || exp.category === 'QA');
+// A role's changes read as a short commit log: each group label sits on the
+// branch line like a git ref, and every entry is a commit on it.
+const CommitLog = ({ changes, labels }: { changes: Changes; labels: Record<ChangeGroup, string> }) => {
+  const groups = visibleGroups(changes);
+  const lastGroup = groups[groups.length - 1];
 
   return (
-    <section id="experience" className="py-12 md:py-20 relative">
-      <div className="container mx-auto px-4 md:px-6" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 md:mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            {t.experience.title} <span className="gradient-text">{t.experience.titleHighlight}</span>
-          </h2>
-          <div className="w-20 md:w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 md:mb-8"></div>
-
-          {/* Toggle Switch */}
-          <div className="flex items-center justify-center gap-3 md:gap-4 mb-6 md:mb-8 px-4">
-            <span className={`text-xs md:text-sm font-semibold ${!showDev ? 'text-primary' : 'text-gray-400'}`}>
-              {t.experience.qaToggle}
-            </span>
-            <button
-              onClick={() => setShowDev(!showDev)}
-              className={`relative w-12 h-6 md:w-14 md:h-7 rounded-full transition-colors duration-300 focus:outline-none ${
-                showDev ? 'bg-primary' : 'bg-gray-600'
-              }`}
-            >
-              <motion.div
-                className="absolute top-0.5 left-0.5 md:top-1 md:left-1 w-5 h-5 bg-white rounded-full shadow-md"
-                animate={{ x: showDev ? 24 : 0 }}
-                transition={{ type: "spring", stiffness: 500, damping: 30 }}
-              />
-            </button>
-            <span className={`text-xs md:text-sm font-semibold ${showDev ? 'text-primary' : 'text-gray-400'}`}>
-              {t.experience.devToggle}
-            </span>
+    <div className="relative mt-4 max-w-[68ch]">
+      <span aria-hidden className="absolute bottom-0 left-[5px] top-0 w-0.5 bg-ink/30" />
+      <dl className="relative space-y-4">
+        {groups.map((group) => (
+          <div key={group} className="space-y-2">
+            <dt className="flex">
+              <span className="rounded-[2px] border border-rule bg-bench px-1.5 text-[0.75rem] font-medium leading-5 text-graphite">
+                {labels[group]}
+              </span>
+            </dt>
+            <dd>
+              <ul className="space-y-2 font-serif text-[1.0625rem] leading-[1.65]">
+                {changes[group].map((item, index) => (
+                  <li key={item} className="relative pl-7">
+                    <span aria-hidden className={`absolute left-0 top-2 h-3 w-3 rounded-full ${dotClass[group]}`} />
+                    {/* The branch line ends at the last commit. */}
+                    {group === lastGroup && index === changes[group].length - 1 && (
+                      <span aria-hidden className="absolute bottom-0 left-0 top-5 w-3 bg-bench" />
+                    )}
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </dd>
           </div>
-        </motion.div>
+        ))}
+      </dl>
+    </div>
+  );
+};
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-primary to-accent"></div>
+// One release entry: version and branch, dates, then Added / Changed / Fixed.
+const RoleRow = ({ role }: { role: Role }) => {
+  const { t } = useI18n();
+  const job = t.experience.jobs[role.id];
+  const place = formatPlace(role, t.experience.workMode[role.workMode]);
 
-          {filteredExperiences.map((exp, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className={`relative mb-8 md:mb-12 ${
-                index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8 md:ml-auto'
-              } md:w-1/2`}
-            >
-              {/* Timeline dot */}
-              <motion.div
-                whileHover={{ scale: 1.2 }}
-                className={`absolute left-6 md:left-auto md:right-[-2.5rem] transform md:translate-x-1/2 w-3 h-3 md:w-4 md:h-4 rounded-full border-2 md:border-4 border-darker ${
-                  exp.category === 'Dev' ? 'bg-accent' : 'bg-primary'
-                }`}
-              ></motion.div>
-
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className={`glass-effect rounded-lg p-4 md:p-6 ml-12 md:ml-0 hover:neon-glow transition-all ${
-                  exp.category === 'Dev' ? 'border-l-4 border-accent' : ''
-                }`}
-              >
-                <div className={`flex items-center gap-2 mb-2 ${
-                  index % 2 === 0 ? 'md:justify-end' : ''
-                }`}>
-                  <Briefcase className={`w-3 h-3 md:w-4 md:h-4 ${exp.category === 'Dev' ? 'text-accent' : 'text-primary'}`} />
-                  <h3 className={`text-base md:text-lg lg:text-xl font-bold ${exp.category === 'Dev' ? 'text-accent' : 'text-primary'}`}>
-                    {exp.title}
-                  </h3>
-                </div>
-
-                <h4 className="text-sm md:text-base lg:text-lg font-semibold mb-2">{exp.company}</h4>
-
-                <div className={`flex flex-wrap items-center gap-2 md:gap-4 text-xs md:text-sm text-gray-400 mb-3 md:mb-4 ${
-                  index % 2 === 0 ? 'md:justify-end' : ''
-                }`}>
-                  <span className="flex items-center gap-1">
-                    <Calendar className="w-3 h-3" />
-                    {exp.period}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <MapPin className="w-3 h-3" />
-                    {exp.location}
-                  </span>
-                </div>
-
-                <p 
-                  className={`text-xs md:text-sm text-gray-300 mb-3 md:mb-4 leading-relaxed whitespace-pre-line ${
-                    index % 2 === 0 ? 'md:text-right' : ''
-                  }`}
-                  dangerouslySetInnerHTML={{ __html: exp.description }}
-                />
-
-                <div className={`flex flex-wrap gap-1.5 md:gap-2 ${
-                  index % 2 === 0 ? 'md:justify-end' : ''
-                }`}>
-                  {exp.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className={`px-2 py-0.5 md:py-1 text-[10px] md:text-xs border rounded ${
-                        exp.category === 'Dev'
-                          ? 'bg-accent/10 border-accent/30 text-accent-light'
-                          : 'bg-primary/10 border-primary/30 text-primary-light'
-                      }`}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            </motion.div>
-          ))}
-        </div>
+  return (
+    <li
+      id={`exp-${role.id}`}
+      className="grid gap-3 border-t border-rule py-8 md:grid-cols-[11rem_1fr] md:gap-10"
+    >
+      <div className="text-[0.9375rem] tabular-nums text-graphite">
+        <p className="flex items-center gap-2">
+          <span className="font-display text-[1.125rem] font-semibold text-ink">
+            {versionById[role.id]}
+          </span>
+          <span className="rounded-[2px] border border-rule px-1.5 text-[0.75rem] leading-5">
+            {role.kind}
+          </span>
+        </p>
+        <p className="mt-2">{formatSpan(role, t.experience.to, t.experience.present)}</p>
+        <p className="mt-1">{place}</p>
       </div>
-    </section>
+
+      <div className="min-w-0">
+        <h3 className="font-display text-[1.125rem] font-semibold leading-snug">{job.title}</h3>
+        <p className="mt-0.5 text-[0.9375rem] font-medium">{job.company}</p>
+        <CommitLog changes={job.changes} labels={t.experience.groups} />
+
+        <p className="mt-4 text-[0.875rem] text-graphite">{role.stack.join(', ')}</p>
+      </div>
+    </li>
+  );
+};
+
+// The first row of each list sits flush under the heading or the button.
+const listClass = '[&>li:first-child]:border-t-0 [&>li:first-child]:pt-0';
+
+const Experience = () => {
+  const { t } = useI18n();
+  const [showDev, setShowDev] = useState(false);
+  const pendingScrollId = useRef<string | null>(null);
+
+  // Graph nodes link to `#exp-<id>`. Development roles start collapsed, so
+  // open them when the URL hash points at one.
+  useEffect(() => {
+    const openFromHash = () => {
+      const id = window.location.hash.slice(1);
+      if (!devRoles.some((role) => `exp-${role.id}` === id)) return;
+      // A rendered row is scrolled to by the browser; only a collapsed one needs opening.
+      if (document.getElementById(id)) return;
+      pendingScrollId.current = id;
+      setShowDev(true);
+    };
+    openFromHash();
+    window.addEventListener('hashchange', openFromHash);
+    return () => window.removeEventListener('hashchange', openFromHash);
+  }, []);
+
+  // The row only exists once the list has rendered, so scroll after the commit.
+  useEffect(() => {
+    if (!showDev || !pendingScrollId.current) return;
+    document.getElementById(pendingScrollId.current)?.scrollIntoView();
+    pendingScrollId.current = null;
+  }, [showDev]);
+
+  return (
+    <Section id="experience" title={t.experience.title}>
+      <ol className={listClass}>
+        {qaRoles.map((role) => (
+          <RoleRow key={role.id} role={role} />
+        ))}
+      </ol>
+
+      <button
+        type="button"
+        onClick={() => setShowDev((open) => !open)}
+        aria-expanded={showDev}
+        aria-controls="dev-roles"
+        className="link mt-4 inline-flex min-h-11 items-center font-medium"
+      >
+        {showDev ? t.experience.hideDev : `${t.experience.showDev} (${devRoles.length})`}
+      </button>
+
+      {showDev && (
+        <ol id="dev-roles" className="mt-4">
+          {devRoles.map((role) => (
+            <RoleRow key={role.id} role={role} />
+          ))}
+        </ol>
+      )}
+    </Section>
   );
 };
 

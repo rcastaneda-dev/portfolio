@@ -9,36 +9,27 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'primary': '#00D9FF',
-        'secondary': '#7928CA',
-        'accent': '#FF0080',
-        'dark': '#0A0E27',
-        'darker': '#060815',
-      },
-      animation: {
-        'float': 'float 6s ease-in-out infinite',
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'gradient': 'gradient 8s ease infinite',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
-        gradient: {
-          '0%, 100%': {
-            'background-size': '200% 200%',
-            'background-position': 'left center'
-          },
-          '50%': {
-            'background-size': '200% 200%',
-            'background-position': 'right center'
-          },
-        },
+        bench: '#F1F4F5',
+        sheet: '#FFFFFF',
+        ink: '#13222D',
+        graphite: '#4E5E69',
+        pass: '#0B7A4B',
+        flag: '#A8570A',
+        rule: 'rgb(19 34 45 / 0.18)',
+        // Dark instrument panels (branch graph, pipeline runs). Text contrast
+        // on `panel`: ink 15.1:1, muted 7.9:1, pass 7.5:1, fail 7.2:1, run 7.9:1.
+        panel: '#0E1A23',
+        'panel-ink': '#E8EEF1',
+        'panel-muted': '#9FB0BB',
+        'panel-edge': 'rgb(232 238 241 / 0.14)',
+        'pass-dark': '#3DBE82',
+        'fail-dark': '#F2877A',
+        'run-dark': '#E5A04A',
       },
       fontFamily: {
-        'mono': ['VT323', 'monospace'],
-        'retro': ['VT323', 'monospace'],
+        sans: ['var(--font-archivo)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-archivo)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-source-serif)', 'Georgia', 'serif'],
       },
     },
   },

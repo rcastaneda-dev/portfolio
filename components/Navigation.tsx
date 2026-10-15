@@ -1,10 +1,9 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import Image from 'next/image';
 import { useI18n } from '@/lib/i18n';
+import { profile } from '@/lib/data/profile';
 import LanguageSwitcher from './LanguageSwitcher';
 
 const Navigation = () => {
@@ -12,7 +11,6 @@ const Navigation = () => {
   const { t } = useI18n();
 
   const navItems = [
-    { name: t.nav.home, href: '#home' },
     { name: t.nav.about, href: '#about' },
     { name: t.nav.experience, href: '#experience' },
     { name: t.nav.skills, href: '#skills' },
@@ -20,101 +18,105 @@ const Navigation = () => {
     { name: t.nav.contact, href: '#contact' },
   ];
 
-  return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="absolute w-full z-50 pt-8 pb-6 md:pt-10"
-    >
-      <div className="container mx-auto px-4 md:px-6 relative">
-        {/* Language Switcher - Always top-right */}
-        <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-6">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-          >
-            <LanguageSwitcher />
-          </motion.div>
-        </div>
+  // Escape closes the mobile menu.
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [isOpen]);
 
-        {/* Centered Navigation */}
-        <div className="flex items-center justify-center">
-          {/* Desktop Menu - Centered */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item, index) => (
-              <motion.a
+  return (
+    <>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-[2px] focus:bg-ink focus:px-4 focus:py-3 focus:text-bench"
+      >
+        {t.nav.skip}
+      </a>
+
+      <header className="sticky top-0 z-50 border-b border-rule bg-bench">
+        <div className="wrap flex h-16 items-center justify-between gap-2 md:gap-4">
+          <a
+            href="#top"
+            className="whitespace-nowrap font-display text-base font-semibold md:text-[1.0625rem]"
+          >
+            {profile.name}
+          </a>
+
+          <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
+            {navItems.map((item) => (
+              <a
                 key={item.href}
                 href={item.href}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ 
-                  y: -3, 
-                  scale: 1.05,
-                  transition: { duration: 0.2 }
-                }}
-                className="text-base text-gray-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(139,92,246,0.5)] transition-all duration-300 relative group px-2 py-1"
+                className="whitespace-nowrap py-2 text-[0.9375rem] underline-offset-8 hover:underline hover:decoration-pass hover:decoration-2"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-purple-400 group-hover:w-full transition-all duration-300 ease-out shadow-[0_0_8px_rgba(139,92,246,0.6)]"></span>
-              </motion.a>
+              </a>
             ))}
-          </div>
+          </nav>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <motion.button
-              whileHover={{ 
-                scale: 1.1,
-                rotate: isOpen ? 90 : 0,
-                transition: { duration: 0.2 }
-              }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(139,92,246,0.5)] transition-colors duration-300"
+          <div className="flex items-center gap-1 md:gap-4">
+            {/* Below 360px the name, languages and menu button don't fit in one row. */}
+            <LanguageSwitcher className="max-[359px]:hidden" />
+            <a
+              href={profile.resume}
+              download={profile.resumeFileName}
+              className="btn btn-outline hidden min-h-11 px-4 lg:inline-flex"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </motion.button>
+              {t.nav.resume}
+            </a>
+            <button
+              type="button"
+              onClick={() => setIsOpen((open) => !open)}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
+              aria-label={isOpen ? t.nav.closeMenu : t.nav.menu}
+              className="inline-flex h-11 w-11 items-center justify-center lg:hidden"
+            >
+              {isOpen ? <X size={24} aria-hidden /> : <Menu size={24} aria-hidden />}
+            </button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden mt-4"
-            >
-              <div className="glass-effect rounded-lg p-4">
-                {navItems.map((item, index) => (
-                  <motion.a
-                    key={item.href}
-                    href={item.href}
-                    initial={{ x: -50, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: index * 0.1 }}
-                    onClick={() => setIsOpen(false)}
-                    whileHover={{ 
-                      x: 8,
-                      scale: 1.02,
-                      transition: { duration: 0.2 }
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                    className="block py-3 px-3 -mx-3 rounded-md text-base text-gray-300 hover:text-primary hover:bg-primary/10 hover:drop-shadow-[0_0_6px_rgba(139,92,246,0.3)] transition-all duration-300"
-                  >
-                    {item.name}
-                  </motion.a>
-                ))}
+        {isOpen && (
+          <nav
+            id="mobile-menu"
+            aria-label="Primary mobile"
+            className="border-t border-rule bg-bench lg:hidden"
+          >
+            <div className="wrap flex flex-col py-2">
+              {navItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="flex min-h-12 items-center text-[1.0625rem]"
+                >
+                  {item.name}
+                </a>
+              ))}
+              <a
+                href={profile.resume}
+                download={profile.resumeFileName}
+                className="flex min-h-12 items-center text-[1.0625rem] font-medium"
+              >
+                {t.nav.resume}
+              </a>
+              {/* The languages move here when the header is too narrow for them. */}
+              <div className="flex min-h-12 items-center justify-between min-[360px]:hidden">
+                <span aria-hidden className="text-[1.0625rem]">
+                  {t.nav.language}
+                </span>
+                <LanguageSwitcher />
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </motion.nav>
+            </div>
+          </nav>
+        )}
+      </header>
+    </>
   );
 };
 

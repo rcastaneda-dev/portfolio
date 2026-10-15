@@ -1,108 +1,233 @@
 import type { Translations } from './en';
 
 export const fr: Translations = {
-  // Navigation
+  // Navigation and site chrome
   nav: {
-    home: 'Accueil',
+    skip: 'Aller au contenu',
     about: 'À propos',
     experience: 'Expérience',
     skills: 'Compétences',
     projects: 'Projets',
     contact: 'Contact',
+    resume: 'CV',
+    menu: 'Menu',
+    closeMenu: 'Fermer le menu',
+    language: 'Langue',
   },
 
   // Hero
   hero: {
-    roles: [
-      'Ingénieur Senior Automatisation QA',
-      'Senior SDET',
-      'Ancien Développeur Java',
-      'Passionné de Développement Full Stack',
-      'Expert en Pipelines CI/CD',
-      'Consultant en Ingenierie de Qualité',
-    ],
-    tagline: 'Senior Quality Engineering Consultant helping remote teams scale automation, stabilize CI/CD, and ship with confidence.',
+    title: 'SDET senior',
+    lede: "Ingénieur QA AI-first, fort de plus de 10 ans en automatisation des tests et en développement logiciel, qui aide les équipes à distance à étendre les tests web et mobiles, à stabiliser le CI/CD et à livrer en confiance.",
+    emailMe: 'Écrivez-moi',
     downloadResume: 'Télécharger le CV',
+    sheet: {
+      focus: 'Spécialité',
+      focusItems: ['Tests E2E', 'Tests d’API', 'Tests multinavigateurs', 'Stabilisation du CI/CD'],
+      frameworks: 'Frameworks',
+      pipelines: 'Pipelines',
+      industries: 'Secteurs',
+      industryItems: [
+        { name: 'Services financiers', detail: 'Rétrofacturations, gestion des litiges, fraude' },
+        { name: 'eCommerce' },
+        { name: 'Cybersécurité', detail: 'Gestion des vulnérabilités' },
+        { name: 'Maritime' },
+        { name: 'Logistique' },
+        { name: 'Gestion sportive' },
+      ],
+      basedIn: 'Basé à',
+      basedInValue: 'San Salvador, Salvador, en télétravail',
+      languages: 'Langues',
+      languageItems: [
+        { name: 'Anglais', level: 'professionnel complet' },
+        { name: 'Espagnol', level: 'langue maternelle' },
+        { name: 'Français', level: 'élémentaire' },
+      ],
+      status: 'Statut',
+      statusValue: 'Disponible pour des postes à distance et du conseil',
+      readyToMerge: 'Prêt à fusionner',
+    },
+    graph: {
+      label: "Graphe des branches du parcours, de 2013 à aujourd'hui",
+      summary: "De développeur Java à SDET senior, de 2013 à aujourd'hui.",
+      hint: 'Survolez un nœud pour voir les détails',
+      tapHint: 'Touchez un nœud pour ouvrir le poste',
+      qaRole: 'Poste QA',
+      devRole: 'Poste de développement',
+      latest: 'Dernière',
+    },
   },
 
   // About
   about: {
-    title: 'À propos de',
-    titleHighlight: 'Moi',
-    subtitle: 'Ingénierie de Qualité dans les Systèmes de Software Scalables',
-    intro: "Je aide les équipes d'ingénierie à construire des logiciels fiables et scalables. Avec plus de 10 ans d'expérience, j'ai aidé des équipes à livrer des solutions critiques de production dans des industries complexes et réglementées comme:",
-    industries: [
-      'Services Financiers (Litiges, Réclamations, Paiements, Rétrofacturations)',
-      'eCommerce et Retail',
-      'Cybersécurité',
-      'Systèmes Maritimes',
-      'Transport Terrestre et Logistique',
+    title: 'À propos',
+    lede: "J'aide les équipes d'ingénierie à construire des logiciels fiables et évolutifs. En plus de dix ans, j'ai livré des projets critiques en production dans les services financiers, l'eCommerce, la cybersécurité, les systèmes maritimes, ainsi que le transport terrestre et la logistique.",
+    paragraphs: [
+      "Je travaille comme consultant en ingénierie de la qualité auprès d'équipes distribuées : je conçois, étends et exploite l'automatisation des tests pour des systèmes complexes. Je collabore avec les responsables produit et ingénierie pour obtenir des livraisons fiables, un retour rapide et de la confiance en production, sans ralentir les équipes.",
+      "Mon parcours combine développement logiciel, architecture d'automatisation et mise en place du CI/CD. Je construis des frameworks d'automatisation à partir de zéro, je migre et modernise les suites de tests existantes et je stabilise les pipelines instables avec Playwright, Cypress, TypeScript, Selenium, BrowserStack, Docker et des plateformes de CI/CD dans le cloud.",
+      "Je travaille avec une approche AI-first. Je crée des skills OpenAI Codex, avec des sous-agents explorateur, exécutant et relecteur, qui migrent des suites de tests et repèrent les lacunes de couverture dans TestRail, et j'utilise des agents Playwright pour des tests auto-réparants, ainsi que Claude Code et Cursor pour accélérer le développement. J'explore aussi l'ingénierie du chaos avec Gremlin pour renforcer la résilience et la préparation à la production.",
     ],
-    description1: "Je suis un Consultant Senior en Ingénierie de Qualité aidant des équipes distribuées à concevoir, étendre et opérer l'automatisation des tests pour des systèmes de software complexes. Je travaille avec les leaders de produit et d'ingénierie qui ont besoin de livraisons fiables, de feedback rapide et de confiance en production—sans ralentir les équipes.\n\nMon background combine le développement de software pratique, l'architecture de l'automatisation et l'activation de CI/CD. Je spécialise dans la construction de frameworks d'automatisation à partir de zéro, la modernisation des suites de tests héritées, la stabilisation des pipelines instables et l'intégration de la qualité dans les flux de travail de développement.",
-    description2: "Je adopte activement des outils propulsés par l'IA comme Cursor et Claude Code pour améliorer la productivité en développement et QA, tout en explorant des pratiques d'ingénierie modernes comme l'ingénierie du chaos avec des outils comme Gremlin pour renforcer la résilience et la préparation de production de manière proactive.",
-    features: {
+    capabilities: {
       automation: {
-        title: 'Architecture de l\'Automatisation',
-        description: 'Conception et mise en œuvre de frameworks d\'automatisation scalables et de pipelines CI/CD de production',
+        title: "Architecture de l'automatisation",
+        description: "Frameworks d'automatisation évolutifs et pipelines CI/CD de niveau production.",
       },
       ai: {
-        title: 'Ingénierie avec IA',
-        description: 'Application de workflows assistés par IA pour accélérer le développement, les tests et la déboguage',
+        title: 'Ingénierie assistée par IA',
+        description: 'Des workflows assistés par IA pour accélérer le développement, les tests et le débogage.',
       },
       fullstack: {
-        title: 'Développement Full Stack',
-        description: 'Compétence en développement frontend et backend avec les frameworks modernes',
+        title: "Parcours d'ingénierie",
+        description: 'Expérience en développement frontend et backend pour valider les systèmes de bout en bout.',
       },
       crossfunctional: {
-        title: 'Partenaire Multifonctionnel',
-        description: 'Pont entre les équipes de produit, d\'ingénierie et QA pour aligner la qualité avec le risque du business',
+        title: 'Partenaire transverse',
+        description: 'Un pont entre produit, ingénierie et QA qui aligne la qualité sur le risque métier.',
       },
     },
-    techStack: 'Stack Technologique',
   },
 
   // Experience
   experience: {
     title: 'Expérience',
-    titleHighlight: 'Professionnelle',
-    qaToggle: 'Expérience Automatisation QA',
-    devToggle: 'Expérience Développeur',
-    present: 'Présent',
+    to: 'à',
+    present: "aujourd'hui",
+    showDev: 'Afficher les postes de développement',
+    hideDev: 'Masquer les postes de développement',
+    groups: {
+      added: 'Ajouté',
+      changed: 'Modifié',
+      fixed: 'Corrigé',
+    },
+    workMode: {
+      remote: 'À distance',
+      hybrid: 'Hybride',
+      onsite: 'Sur site',
+    },
     jobs: {
+      willdom: {
+        title: 'Ingénieur senior en automatisation QA',
+        company: 'WillDom',
+        industry: 'Gestion sportive',
+        changes: {
+          added: [
+            "Responsabilité qualité de nouvelles fonctionnalités, de leur conception à la mise en production, en tant que responsable QA par intérim.",
+            "Skill OpenAI Codex réutilisable pour migrer les tests de façon incrémentale, avec des sous-agents explorateur, exécutant et relecteur pour l'analyse, l'implémentation et la revue du code.",
+            'Skills Codex qui analysent les référentiels TestRail, repèrent les lacunes de couverture, proposent des cas limites et les transforment en actions de test pour les tickets JIRA.',
+            'Couverture automatisée pour des intégrations de paiement Stripe complexes.',
+            'Agents Playwright pour des tests auto-réparants et une couverture plus rapide des nouvelles fonctionnalités.',
+            'Plan de tests mobiles pour une application iOS native.',
+            'Tests multinavigateurs et multiappareils avec BrowserStack.',
+          ],
+          changed: ['Deux dépôts de tests de bout en bout migrés de Cypress vers Playwright pour améliorer la stabilité du CI.'],
+          fixed: [],
+        },
+      },
       lumenalta: {
-        title: 'Ingénieur Senior Automatisation QA',
+        title: 'Ingénieur senior en automatisation QA',
         company: 'Lumenalta LLC (anciennement Clevertech)',
-        description: 'Conçu et implémenté un framework d\'automatisation de tests robuste et de pipelines CI/CD à partir de zéro à l\'aide de Cypress et TypeScript. Établi une stratégie de données de test robuste et fiable à l\'aide de fixtures, faker.js, et des modèles de fabrique via Fishery, et étendu le framework grâce à l\'intégration stratégique de plugins Cypress pour les tests conditionnels, la simulation de données, le filtrage des tests, et la gestion des dialogues. Permis les tests E2E et les tests de composants en configurant Cypress pour la couverture des composants React, améliorant la détection précoce des défauts et l\'efficacité globale des tests. \n\n Collaboré de près avec les Product Managers et les ingénieurs QA pour définir des scénarios E2E robustes et des plans de tests détaillés qui garantissent une validation approfondie des fonctionnalités critiques pour le domaine des services financiers.',
+        industry: 'Transport terrestre et logistique',
+        changes: {
+          added: [
+            "Plateforme d'automatisation de bout en bout avec Cypress et TypeScript, couvrant les tests E2E et de composants pour des applications React critiques pour l'entreprise.",
+            'Stratégie de données de test, avec des intégrations pour les tests conditionnels, la simulation de données et le filtrage des tests.',
+            'Contributions aux tests de performance avec Postman, et contrôles de cohérence des données entre systèmes récents et anciens avec SQL et Databricks, sur une grande plateforme de transport et de logistique.',
+            'Rapports HTML (Mochawesome) et XML (JUnit), agrégés depuis plusieurs conteneurs Docker pour la visibilité dans le CI.',
+          ],
+          changed: [
+            'Framework conteneurisé et déplacé dans Azure Pipelines, avec exécution parallèle.',
+          ],
+          fixed: ['Pipelines instables stabilisés.'],
+        },
       },
       avenueCode: {
-        title: 'Ingénieur Senior Automatisation QA',
+        title: 'Ingénieur senior en automatisation QA',
         company: 'Avenue Code',
-        description: 'Unie à une équipe établie pour accélérer la maturité de l\'automatisation et élever la qualité du logiciel grâce à une collaboration étroite avec les stakeholders de différentes fonctions. Contribué au développement de suites de tests automatiques fiables en utilisant Playwright et TestCafe (JavaScript/TypeScript), tout en maintenant et refactorisant les tests intégrés dans les pipelines Jenkins pour soutenir les releases stables et de haute qualité. Signalé, validé et trié les bugs dans plusieurs environnements, et appliqué les normes d\'automatisation et de qualité du code grâce à des revues de pull request rigoureuses dans un domaine rapide et dynamique de commerce électronique et retail.',
+        industry: 'eCommerce et commerce de détail',
+        changes: {
+          added: [
+            "Suites automatisées fiables avec Playwright et TestCafe, qui ont fait progresser la maturité de l'automatisation et la confiance dans les releases d'une équipe e-commerce établie.",
+          ],
+          changed: ["Normes d'automatisation et de qualité du code appliquées par des revues de pull request."],
+          fixed: [
+            'Pipelines CI sous Jenkins stabilisés pour garantir des releases régulières.',
+            'Défauts triés dans plusieurs environnements.',
+          ],
+        },
       },
-      encora: {
-        title: 'Ingénieur de Automatisation QA',
-        company: 'Encora (anciennement Avantica)',
-        description: 'Unie à une équipe en croissance pour soutenir la stratégie de qualité d\'une nouvelle plateforme en développement, en collaborant étroitement avec l\'ingénierie, le produit et le DevOps pour développer une compréhension profonde de l\'architecture du système et des exigences du domaine. Conçu et maintenu des suites d\'automatisation UI à l\'aide de TestCafe (JavaScript), complété par l\'automatisation API en Python avec PyTest et Postman, tout en continuant à refactoriser et à renforcer les suites d\'automatisation existantes. Appliqué les normes d\'ingénierie et d\'automatisation grâce à des revues de pull request GitHub rigoureuses et un triage proactif des bugs, validation et documentation dans les environnements de développement, testing et production. \n\n Pris en charge les activités de gestion des tests en créant et maintenant des plans de tests et des cas de tests dans TestRail, assurant une couverture forte et une traçabilité pour les nouvelles et les fonctionnalités existantes. Surveillé, stabilisé et optimisé les pipelines CI de TeamCity pour garantir des retours rapides et fiables pour les tests automatiques, et validé des workflows complexes basés sur les messages et les événements en utilisant RabbitMQ dans plusieurs services principaux pour soutenir la qualité du système asynchrone. Agi comme Capitaine de Release QA, en conduisant les releases quincenales de production, en coordonnant les stakeholders de différentes fonctions, et en appliquant les portes de qualité préalables au déploiement. En outre, évalué et adopté des outils modernes de DevOps et d\'infrastructure comme Docker et Kubernetes pour améliorer les environnements de test, la fiabilité du déploiement, et l\'efficacité générale de QA dans le domaine de la cybersécurité.',
+      avantica: {
+        title: 'Ingénieur en automatisation QA',
+        company: 'Avantica',
+        industry: 'Cybersécurité',
+        changes: {
+          added: [
+            "Automatisation UI et API avec TestCafe, PyTest et Postman pour une nouvelle plateforme de cybersécurité critique en production, avec l'ingénierie, le produit et le DevOps.",
+            'Plans et cas de test pour assurer la couverture et la traçabilité.',
+            'Validation de workflows asynchrones entre services distribués.',
+            'Portes de qualité pour les déploiements en production toutes les deux semaines, en tant que capitaine de release QA.',
+            'Docker et Kubernetes, introduits pour améliorer les environnements de test.',
+          ],
+          changed: [
+            "Suites d'automatisation refactorisées en continu pour plus de fiabilité et de maintenabilité.",
+            'Pipelines TeamCity optimisés pour un retour rapide et fiable.',
+          ],
+          fixed: ['Pipelines TeamCity stabilisés.'],
+        },
       },
       pegaDev: {
         title: 'Développeur PEGA | Architecte de Systèmes PEGA',
         company: 'Rulesware LLC',
-        description: 'Traduis les exigences de domaine complexes en exigences fonctionnelles techniques en utilisant la méthodologie SmartBPM de PegaSystems tout en gérant les tâches d\'implémentation technique pour assurer la livraison à temps et dans le budget. Résolu efficacement les problèmes techniques tout au long du cycle de vie du projet et étais responsable de la codification et des tests unitaires en utilisant les fonctionnalités OOTB de Pega basées sur les designs fournis par l\'Architecte de Systèmes Léad.',
+        industry: 'Fraude, litiges et fintech',
+        changes: {
+          added: [
+            "Exigences techniques fonctionnelles tirées des exigences métier, avec la méthodologie SmartBPM de PegaSystems, et tâches d'implémentation gérées pour livrer à temps et dans le budget.",
+            "Fonctionnalités codées et testées unitairement avec les capacités natives de Pega, d'après les conceptions de l'architecte système principal.",
+          ],
+          changed: [],
+          fixed: ['Problèmes techniques résolus tout au long du cycle de vie du projet.'],
+        },
       },
       ruleswareQa: {
-        title: 'Ingénieur de Automatisation QA',
+        title: 'Ingénieur en automatisation QA',
         company: 'Rulesware LLC',
-        description: 'Conçu et maintenu des suites d\'automatisation de regression robustes en utilisant Selenium WebDriver et TestNG pour les applications Java et Pega, assurant une couverture cohérente sur les flux critiques de domaine. Implémenté des stratégies de tests évoluées et basées sur les données en utilisant Excel et les fournisseurs de données TestNG pour améliorer la réutilisation et réduire la charge de maintenance, tout en refactorisant les configurations YAML et les structures Page Object Model pour améliorer la qualité du code et éliminer la duplication. Autoré des plans de tests et des cas de tests clairs et structurés avec une traçabilité complète aux exigences fonctionnelles et de domaine, soutenant la livraison de haute qualité dans le domaine des litiges et des paiements numériques.',
+        industry: 'Litiges et paiements numériques',
+        changes: {
+          added: [
+            'Suites de régression automatisées avec Selenium WebDriver et TestNG pour des applications Java et basées sur Pega.',
+            'Tests pilotés par les données.',
+            "Classes utilitaires qui appellent, analysent et valident des endpoints d'API RESTful pour les tests UI et backend.",
+            'Plans et cas de test traçables, alignés sur les exigences fonctionnelles et métier, pour des plateformes de litiges et de paiements numériques.',
+          ],
+          changed: ['Page Object Model et couches de configuration refactorisés pour réduire la duplication.'],
+          fixed: [],
+        },
       },
-      synergyca: {
+      davivienda: {
         title: 'Développeur Java',
-        company: 'Synergyca SA de CV (Projet: Banco Davivienda)',
-        description: 'Fourni des services de développement d\'applications de bout en bout dans une architecture SOA, contribuant au design, à l\'implémentation et au support de solutions dans le domaine des services financiers et de paiement. Développé et testé des applications Java de bout en bout dans plusieurs environnements, tout en travaillant de près avec les responsables de l\'équipe et les gestionnaires de projet pour analyser les exigences, produire des mockups fonctionnels, et livrer des fonctionnalités de haute qualité et fiables alignées avec les besoins du domaine.',
+        company: 'Banque Davivienda (via Synergyca S.A. de C.V.)',
+        industry: 'Banque et services financiers',
+        changes: {
+          added: [
+            'Applications Java pour une banque, sur une architecture SOA, développées et testées unitairement dans plusieurs environnements.',
+            "Maquettes fonctionnelles, réalisées avec les responsables d'équipe et les chefs de projet à partir de l'analyse des exigences.",
+          ],
+          changed: [],
+          fixed: [],
+        },
       },
       sherwin: {
-        title: 'Développeur Java EE (Stage)',
-        company: 'Sherwin Williams',
-        description: 'Collaboré avec les développeurs, les gestionnaires et les stakeholders pour définir les exigences de logiciel tout en participant à toutes les phases du cycle de vie du développement de logiciel. Conçu et implémenté des services web RESTful, construit des Enterprise Beans Java de faible latence, scalables et fiables, et développé des composants web Java incluant des managed beans et des interfaces XHTML/HTML5. Assuré que tous les designs soient alignés avec les spécifications et les normes du projet, effectué des tests exhaustifs des composants développés, et implémenté des validations du côté client et du côté serveur.',
+        title: 'Développeur Java',
+        company: 'Sherwin-Williams de Centroamérica',
+        industry: 'Industrie manufacturière',
+        changes: {
+          added: [
+            'Participation à toutes les phases du cycle de vie logiciel, avec les développeurs, les managers et les parties prenantes.',
+            'Services web RESTful, Enterprise Beans Java à faible latence et composants web Java (managed beans, XHTML/HTML5), avec validation côté client et côté serveur.',
+            "Tests des composants que j'ai développés, avec des conceptions alignées sur les spécifications.",
+          ],
+          changed: [],
+          fixed: [],
+        },
       },
     },
   },
@@ -110,34 +235,45 @@ export const fr: Translations = {
   // Skills
   skills: {
     title: 'Compétences',
-    titleHighlight: 'Techniques',
     categories: {
-      programming: 'Langages de Programmation',
-      testing: 'Frameworks de Test',
-      devops: 'DevOps et Outils',
-      frameworks: 'Frameworks et Bibliothèques',
+      programming: 'Langages',
+      testing: 'Tests',
+      ai: 'Outils d’IA',
+      devops: 'DevOps et outils',
+      frameworks: 'Frameworks et bibliothèques',
     },
-    continuousLearning: 'Apprentissage',
-    continuousLearningHighlight: 'Continu',
-    certifications: [
-      'MIT xPRO - Certificat Professionnel en Cybersécurité (2022-2023)',
-      "Actuellement en apprentissage: Développement propulsé par l'IA avec Cursor et Claude Code",
-      "Domaines de focus: React moderne, Développement full-stack, Architecture d'automatisation de tests",
+    learningTitle: 'Formation et certifications',
+    learning: [
+      "Universidad Don Bosco, diplôme d'ingénieur en informatique (2014 à 2021)",
+      'MIT xPRO, certificat professionnel en cybersécurité (2022 à 2023)',
+      'Claude Academy : Claude Code 101',
+      'Python Automation and Testing',
+      'Behavior-Driven Development',
+      'Curso Avanzado de Java SE (Java SE avancé)',
+      'CASAS (Proficient Skills)',
     ],
   },
 
   // Projects
   projects: {
     title: 'Projets',
-    titleHighlight: 'En Vedette',
-    filterAll: 'Tous',
-    filterDev: 'Dev',
-    filterAutomation: 'Automatisation',
-    viewCode: 'Voir le Code',
-    liveDemo: 'Démo Live',
-    viewMoreGithub: 'Voir Plus sur GitHub',
-    automationComplete: 'Automatisation Complète',
-    automationPending: 'Automatisation en Attente',
+    code: 'Code',
+    liveDemo: 'Démo en ligne',
+    ciRuns: 'Exécutions CI',
+    newTab: "s'ouvre dans un nouvel onglet",
+    inProgress: 'En cours',
+    moreOnGithub: 'Plus sur GitHub',
+    pipeline: {
+      label: 'Exécutions du pipeline',
+      status: {
+        passed: 'Réussie',
+        failed: 'Échouée',
+        running: 'En cours',
+        cancelled: 'Annulée',
+      },
+      fetched: 'Depuis GitHub Actions, récupéré le',
+      snapshot: 'Instantané enregistré de GitHub Actions,',
+    },
     items: {
       'playwright-assessment': {
         title: 'Évaluation Playwright/Typescript pour Software Mind',
@@ -145,7 +281,7 @@ export const fr: Translations = {
       },
       'playwright-platzi-challenge2': {
         title: 'Challenge de Code E2E Playwright/Typescript pour Platzi',
-        description: 'Challenge d\'automatisation end-to-end montrant des patterns d\'implémentation avancés en Playwright et Typescript, développée originellement comme évaluation technique pour l\'école de Platzi en décembre 2025',
+        description: "Challenge d'automatisation end-to-end montrant des patterns d'implémentation avancés en Playwright et Typescript, développée originellement comme évaluation technique pour l'école de Platzi en décembre 2025",
       },
       inventory: {
         title: "SPA d'Inventaire avec LocalStorage en React + TypeScript",
@@ -168,33 +304,37 @@ export const fr: Translations = {
 
   // Contact
   contact: {
-    title: 'Entrer en',
-    titleHighlight: 'Contact',
+    title: 'Contact',
     subtitle: "Je suis toujours intéressé à discuter de nouvelles opportunités, de projets innovants, ou comment je peux aider à améliorer vos processus de test et développement.",
-    letsConnect: 'Connectons-nous',
-    email: 'Email',
-    phone: 'Téléphone',
-    location: 'Localisation',
-    supportMessage: 'Si vous trouvez mon travail utile, envisagez de me soutenir!',
+    details: {
+      email: 'E-mail',
+      linkedin: 'LinkedIn',
+      github: 'GitHub',
+      phone: 'Téléphone',
+      location: 'Localisation',
+      locationValue: 'San Salvador, Salvador',
+    },
     form: {
-      name: 'Votre Nom',
-      namePlaceholder: 'Jean Dupont',
-      email: 'Votre Email',
-      emailPlaceholder: 'jean@exemple.com',
+      name: 'Votre nom',
+      email: 'Votre e-mail',
       message: 'Message',
-      messagePlaceholder: 'Parlez-moi de votre projet...',
-      send: 'Envoyer le Message',
+      send: 'Envoyer le message',
+      sending: 'Envoi…',
+      sent: 'Message envoyé. Je réponds sous deux jours ouvrés.',
+      error: "Impossible d'envoyer votre message. Réessayez, ou écrivez à hi@rcastaneda.dev.",
     },
   },
 
   // Footer
   footer: {
-    builtWith: 'Construit avec',
-    using: 'en utilisant Next.js et TypeScript',
     rights: 'Tous droits réservés.',
+    built: 'Réalisé avec Next.js et TypeScript.',
+    support: 'Soutenir mon travail',
+    build: {
+      passed: 'Build réussi',
+      failed: 'Build en échec',
+      running: 'Build en cours',
+      cancelled: 'Build annulé',
+    },
   },
-
-  // Loading
-  loading: 'Chargement du Portfolio...',
 };
-

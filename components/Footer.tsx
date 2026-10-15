@@ -1,38 +1,68 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Code2, Heart } from 'lucide-react';
+import { CheckCircle2, CircleDot, MinusCircle, XCircle, type LucideIcon } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
+import { profile } from '@/lib/data/profile';
+import { AS_OF } from '@/lib/data/career';
+import type { CiPanelData, RunStatus } from '@/lib/data/ci';
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
+const BUILD_STATUS: Record<RunStatus, { Icon: LucideIcon; className: string }> = {
+  passed: { Icon: CheckCircle2, className: 'text-pass' },
+  failed: { Icon: XCircle, className: 'text-flag' },
+  running: { Icon: CircleDot, className: 'text-flag' },
+  cancelled: { Icon: MinusCircle, className: 'text-graphite' },
+};
+
+interface FooterProps {
+  version: string;
+  /** Latest finished run of this repo's ci.yml workflow on main; null until it has run once. */
+  siteCi: CiPanelData | null;
+}
+
+const Footer = ({ version, siteCi }: FooterProps) => {
   const { t } = useI18n();
+  // The build year, not the visitor's clock: the page is prerendered, so a year
+  // read at render time would mismatch the static HTML after New Year.
+  const year = AS_OF.slice(0, 4);
+  // Only a status fetched for this build is shown; a saved snapshot could be stale.
+  const latest = siteCi?.source === 'github' ? siteCi.runs[0] : undefined;
+  const status = latest ? BUILD_STATUS[latest.status] : null;
 
   return (
-    <footer className="py-6 md:py-8 border-t border-white/10">
-      <div className="container mx-auto px-4 md:px-6">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <div className="flex flex-wrap items-center justify-center gap-1.5 md:gap-2 mb-3 md:mb-4">
-            <Code2 className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-            <span className="text-xs md:text-sm text-gray-400">{t.footer.builtWith}</span>
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              <Heart className="w-4 h-4 md:w-5 md:h-5 text-accent fill-accent" />
-            </motion.div>
-            <span className="text-xs md:text-sm text-gray-400">{t.footer.using}</span>
-          </div>
-
-          <p className="text-xs md:text-sm text-gray-500">
-            © {currentYear} Ricardo Castaneda. {t.footer.rights}
+    <footer>
+      <div className="wrap flex flex-col gap-2 pb-12 pt-4 text-[0.875rem] text-graphite md:flex-row md:justify-between md:gap-8">
+        <div>
+          <p>
+            © {year} {profile.name}. {t.footer.rights}
           </p>
-        </motion.div>
+          <p className="flex flex-wrap items-center gap-x-4">
+            <span className="tabular-nums">{`v${version}`}</span>
+            {latest && status && (
+              <a
+                href={latest.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link inline-flex items-center gap-1.5 py-2"
+              >
+                <status.Icon size={14} aria-hidden className={status.className} />
+                {t.footer.build[latest.status]}
+                <span className="sr-only"> ({t.projects.newTab})</span>
+              </a>
+            )}
+          </p>
+        </div>
+        <p>
+          {t.footer.built}{' '}
+          <a
+            href={profile.support}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link inline-block py-2"
+          >
+            {t.footer.support}
+            <span className="sr-only"> ({t.projects.newTab})</span>
+          </a>
+        </p>
       </div>
     </footer>
   );
