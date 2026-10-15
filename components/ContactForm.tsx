@@ -30,7 +30,8 @@ const ContactForm = ({ accessKey }: { accessKey: string }) => {
         body,
       });
       const result = (await response.json().catch(() => null)) as { success?: boolean } | null;
-      if (response.ok && result?.success !== false) {
+      // Only an explicit success counts, so the form never claims a send that failed.
+      if (response.ok && result?.success === true) {
         form.reset();
         setStatus('sent');
       } else {
