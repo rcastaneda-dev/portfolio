@@ -1,29 +1,66 @@
 'use client';
 
-import { Download } from 'lucide-react';
+import type { ReactNode } from 'react';
+import { Check, CheckCircle2, Download, GitPullRequest } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 import { profile } from '@/lib/data/profile';
 import BranchGraph from './BranchGraph';
+
+// Short values read as tags, like topics on a GitHub repository.
+const Tags = ({ items }: { items: readonly string[] }) => (
+  <ul className="flex flex-wrap gap-1.5">
+    {items.map((item) => (
+      <li key={item} className="rounded-[2px] border border-rule px-2 text-[0.875rem] leading-6">
+        {item}
+      </li>
+    ))}
+  </ul>
+);
 
 const Hero = () => {
   const { t } = useI18n();
   const sheet = t.hero.sheet;
 
-  // The datasheet reads like a spec sheet: a key and a value per line.
-  const rows = [
-    { label: sheet.focus, value: sheet.focusValue },
-    { label: sheet.frameworks, value: profile.frameworks.join(', ') },
-    { label: sheet.pipelines, value: profile.pipelines.join(', ') },
-    { label: sheet.industries, value: sheet.industriesValue },
-    { label: sheet.basedIn, value: sheet.basedInValue },
-    { label: sheet.languages, value: sheet.languagesValue },
+  // The datasheet reads like the checks box on a pull request: every category
+  // is a passing check, and the status sits where the merge box would be.
+  const checks: { label: string; content: ReactNode }[] = [
+    { label: sheet.focus, content: <Tags items={sheet.focusItems} /> },
+    { label: sheet.frameworks, content: <Tags items={profile.frameworks} /> },
+    { label: sheet.pipelines, content: <Tags items={profile.pipelines} /> },
+    {
+      label: sheet.industries,
+      content: (
+        <ul className="grid list-disc gap-x-8 gap-y-1.5 pl-5 marker:text-graphite sm:grid-cols-2">
+          {sheet.industryItems.map(({ name, detail }) => (
+            <li key={name}>
+              {name}
+              {detail && <span className="block text-[0.875rem] text-graphite">{detail}</span>}
+            </li>
+          ))}
+        </ul>
+      ),
+    },
+    { label: sheet.basedIn, content: <p>{sheet.basedInValue}</p> },
+    {
+      label: sheet.languages,
+      content: (
+        <ul className="list-disc space-y-1 pl-5 marker:text-graphite">
+          {sheet.languageItems.map(({ name, level }) => (
+            <li key={name}>
+              {name}
+              <span className="text-graphite">, {level}</span>
+            </li>
+          ))}
+        </ul>
+      ),
+    },
   ];
 
   return (
     <section id="top" className="pb-16 pt-12 md:pb-24 md:pt-20">
       <div className="wrap">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-6">
             <h1 className="display">{t.hero.title}</h1>
             <p className="mt-8 max-w-[40ch] font-serif text-[1.375rem] leading-[1.4] md:text-[1.625rem]">
               {t.hero.lede}
@@ -43,24 +80,40 @@ const Hero = () => {
             </div>
           </div>
 
-          <dl className="grid content-start gap-5 rounded-[2px] border border-rule bg-sheet p-6 md:p-8 lg:col-span-5">
-            {rows.map(({ label, value }) => (
-              <div key={label} className="grid gap-1 sm:grid-cols-[7rem_1fr] sm:gap-4">
-                <dt className="text-[0.9375rem] text-graphite">{label}</dt>
-                <dd className="text-[0.9375rem]">{value}</dd>
+          <div className="self-start rounded-[2px] border border-rule bg-sheet text-[0.9375rem] lg:col-span-6">
+            <div className="flex items-center gap-3 border-b border-rule px-5 py-4 md:px-6">
+              <CheckCircle2 size={24} aria-hidden className="shrink-0 text-pass" />
+              <div>
+                <p className="font-semibold">{sheet.checksPassed}</p>
+                <p className="text-[0.875rem] text-graphite">
+                  {sheet.checksCount.replace('{count}', String(checks.length))}
+                </p>
               </div>
-            ))}
-            <div className="grid gap-1 sm:grid-cols-[7rem_1fr] sm:gap-4">
-              <dt className="text-[0.9375rem] text-graphite">{sheet.status}</dt>
-              <dd className="flex items-start gap-2 text-[0.9375rem]">
-                <span
-                  aria-hidden
-                  className="mt-[0.45rem] h-2 w-2 shrink-0 rounded-full bg-pass"
-                />
-                {sheet.statusValue}
-              </dd>
             </div>
-          </dl>
+
+            <dl className="grid gap-5 px-5 py-5 md:px-6">
+              {checks.map(({ label, content }) => (
+                <div key={label}>
+                  <dt className="flex items-center gap-3 font-medium">
+                    <Check size={16} strokeWidth={2.5} aria-hidden className="shrink-0 text-pass" />
+                    {label}
+                  </dt>
+                  <dd className="mt-2 pl-7">{content}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <div className="flex items-center gap-3 border-t border-rule px-5 py-4 md:px-6">
+              <GitPullRequest size={24} aria-hidden className="shrink-0 text-pass" />
+              <div>
+                <p className="font-semibold">
+                  <span className="sr-only">{sheet.status}: </span>
+                  {sheet.statusValue}
+                </p>
+                <p className="text-[0.875rem] text-graphite">{sheet.readyToMerge}</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <BranchGraph />

@@ -3,8 +3,53 @@
 import { useEffect, useRef, useState } from 'react';
 import { useI18n } from '@/lib/i18n';
 import { qaRoles, devRoles, formatSpan, versionById, type Role } from '@/lib/data/career';
-import { visibleGroups } from '@/lib/data/changelog';
+import { visibleGroups, type ChangeGroup, type Changes } from '@/lib/data/changelog';
 import Section from './Section';
+
+// Commit dots: filled for additions, a dark ring for changes, a green ring for fixes.
+const dotClass: Record<ChangeGroup, string> = {
+  added: 'bg-pass',
+  changed: 'border-2 border-ink bg-bench',
+  fixed: 'border-2 border-pass bg-bench',
+};
+
+// A role's changes read as a short commit log: each group label sits on the
+// branch line like a git ref, and every entry is a commit on it.
+const CommitLog = ({ changes, labels }: { changes: Changes; labels: Record<ChangeGroup, string> }) => {
+  const groups = visibleGroups(changes);
+  const lastGroup = groups[groups.length - 1];
+
+  return (
+    <div className="relative mt-4 max-w-[68ch]">
+      <span aria-hidden className="absolute bottom-0 left-[5px] top-0 w-0.5 bg-ink/30" />
+      <dl className="relative space-y-4">
+        {groups.map((group) => (
+          <div key={group} className="space-y-2">
+            <dt className="flex">
+              <span className="rounded-[2px] border border-rule bg-bench px-1.5 text-[0.75rem] font-medium leading-5 text-graphite">
+                {labels[group]}
+              </span>
+            </dt>
+            <dd>
+              <ul className="space-y-2 font-serif text-[1.0625rem] leading-[1.65]">
+                {changes[group].map((item, index) => (
+                  <li key={item} className="relative pl-7">
+                    <span aria-hidden className={`absolute left-0 top-2 h-3 w-3 rounded-full ${dotClass[group]}`} />
+                    {/* The branch line ends at the last commit. */}
+                    {group === lastGroup && index === changes[group].length - 1 && (
+                      <span aria-hidden className="absolute bottom-0 left-0 top-5 w-3 bg-bench" />
+                    )}
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  );
+};
 
 // One release entry: version and branch, dates, then Added / Changed / Fixed.
 const RoleRow = ({ role }: { role: Role }) => {
@@ -34,22 +79,8 @@ const RoleRow = ({ role }: { role: Role }) => {
       <div className="min-w-0">
         <h3 className="font-display text-[1.125rem] font-semibold leading-snug">{job.title}</h3>
         <p className="mt-0.5 text-[0.9375rem] font-medium">{job.company}</p>
-        <dl className="mt-4 grid max-w-[68ch] gap-y-3 sm:grid-cols-[6.5rem_1fr] sm:gap-x-4">
-          {visibleGroups(job.changes).map((group) => (
-            <div key={group} className="contents">
-              <dt className="pt-0.5 text-[0.875rem] font-medium text-graphite">
-                {t.experience.groups[group]}
-              </dt>
-              <dd>
-                <ul className="space-y-2 font-serif text-[1.0625rem] leading-[1.65]">
-                  {job.changes[group].map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </dd>
-            </div>
-          ))}
-        </dl>
+        <CommitLog changes={job.changes} labels={t.experience.groups} />
+
         <p className="mt-4 text-[0.875rem] text-graphite">{role.stack.join(', ')}</p>
       </div>
     </li>
