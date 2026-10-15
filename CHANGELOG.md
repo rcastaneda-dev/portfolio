@@ -7,7 +7,7 @@ All notable changes to this site are documented here. The format follows [Keep a
 ### Added
 - Career branch graph with versioned releases, and an Experience section written as a changelog with Added, Changed and Fixed groups.
 - Pipeline panels for projects that have GitHub Actions runs, fetched before each build with a committed snapshot as fallback.
-- Working contact form through Formspree, with an email fallback.
+- Contact form through Formspree, shown once `NEXT_PUBLIC_FORMSPREE_ID` is set, with an email button as the fallback.
 - GitHub Actions workflow that type-checks, lints and builds every push and pull request to `main`.
 - Site version and latest build status in the footer.
 
