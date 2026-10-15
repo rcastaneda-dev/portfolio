@@ -131,11 +131,11 @@ export const en = {
     downloadResume: 'Download résumé',
     sheet: {
       focus: 'Focus',
-      focusValue: 'E2E and component test automation, CI/CD stabilization',
+      focusValue: 'E2E, API and Cross-browser testing, CI/CD stabilization',
       frameworks: 'Frameworks',
       pipelines: 'Pipelines',
       industries: 'Industries',
-      industriesValue: 'Financial services, eCommerce, cybersecurity, maritime, logistics',
+      industriesValue: 'Financial Services (Chargeback, Dispute Management, Fraud), eCommerce, Cybersecurity (Vulnerability Management), Maritime, Logistics, Sports Management',
       basedIn: 'Based in',
       basedInValue: 'San Salvador, El Salvador, working remotely',
       status: 'Status',
