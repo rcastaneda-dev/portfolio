@@ -159,6 +159,11 @@ export function formatSpan(role: Role, to: string, present: string): string {
   return `${formatMonth(role.start)} ${to} ${role.end ? formatMonth(role.end) : present}`;
 }
 
+/** Where a role was worked, in the reader's language: "Remote", or "El Salvador, on-site". */
+export function formatPlace(role: Role, mode: string): string {
+  return role.country ? `${role.country}, ${mode.toLowerCase()}` : mode;
+}
+
 /** Roles ordered by first month worked. The sort is stable, so ties keep list order. */
 export function chronological(list: Role[]): Role[] {
   return [...list].sort((a, b) => monthIndex(a.start) - monthIndex(b.start));

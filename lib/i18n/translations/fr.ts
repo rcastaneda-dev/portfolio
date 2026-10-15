@@ -50,6 +50,11 @@ export const fr: Translations = {
     graph: {
       label: "Graphe des branches du parcours, de 2013 à aujourd'hui",
       summary: "De développeur Java à SDET senior, de 2013 à aujourd'hui.",
+      hint: 'Survolez un nœud pour voir les détails',
+      tapHint: 'Touchez un nœud pour ouvrir le poste',
+      qaRole: 'Poste QA',
+      devRole: 'Poste de développement',
+      latest: 'Dernière',
     },
   },
 
@@ -103,6 +108,7 @@ export const fr: Translations = {
       willdom: {
         title: 'Ingénieur senior en automatisation QA',
         company: 'WillDom',
+        industry: 'Gestion sportive',
         changes: {
           added: [
             "Responsabilité qualité de nouvelles fonctionnalités, de leur conception à la mise en production, en tant que responsable QA par intérim.",
@@ -120,6 +126,7 @@ export const fr: Translations = {
       lumenalta: {
         title: 'Ingénieur senior en automatisation QA',
         company: 'Lumenalta LLC (anciennement Clevertech)',
+        industry: 'Transport terrestre et logistique',
         changes: {
           added: [
             "Plateforme d'automatisation de bout en bout avec Cypress et TypeScript, couvrant les tests E2E et de composants pour des applications React critiques pour l'entreprise.",
@@ -136,6 +143,7 @@ export const fr: Translations = {
       avenueCode: {
         title: 'Ingénieur senior en automatisation QA',
         company: 'Avenue Code',
+        industry: 'eCommerce et commerce de détail',
         changes: {
           added: [
             "Suites automatisées fiables avec Playwright et TestCafe, qui ont fait progresser la maturité de l'automatisation et la confiance dans les releases d'une équipe e-commerce établie.",
@@ -150,6 +158,7 @@ export const fr: Translations = {
       avantica: {
         title: 'Ingénieur en automatisation QA',
         company: 'Avantica',
+        industry: 'Cybersécurité',
         changes: {
           added: [
             "Automatisation UI et API avec TestCafe, PyTest et Postman pour une nouvelle plateforme de cybersécurité critique en production, avec l'ingénierie, le produit et le DevOps.",
@@ -168,6 +177,7 @@ export const fr: Translations = {
       pegaDev: {
         title: 'Développeur PEGA | Architecte de Systèmes PEGA',
         company: 'Rulesware LLC',
+        industry: 'Fraude, litiges et fintech',
         changes: {
           added: [
             "Exigences techniques fonctionnelles tirées des exigences métier, avec la méthodologie SmartBPM de PegaSystems, et tâches d'implémentation gérées pour livrer à temps et dans le budget.",
@@ -180,6 +190,7 @@ export const fr: Translations = {
       ruleswareQa: {
         title: 'Ingénieur en automatisation QA',
         company: 'Rulesware LLC',
+        industry: 'Litiges et paiements numériques',
         changes: {
           added: [
             'Suites de régression automatisées avec Selenium WebDriver et TestNG pour des applications Java et basées sur Pega.',
@@ -194,6 +205,7 @@ export const fr: Translations = {
       davivienda: {
         title: 'Développeur Java',
         company: 'Banque Davivienda (via Synergyca S.A. de C.V.)',
+        industry: 'Banque et services financiers',
         changes: {
           added: [
             'Applications Java pour une banque, sur une architecture SOA, développées et testées unitairement dans plusieurs environnements.',
@@ -206,6 +218,7 @@ export const fr: Translations = {
       sherwin: {
         title: 'Développeur Java',
         company: 'Sherwin-Williams de Centroamérica',
+        industry: 'Industrie manufacturière',
         changes: {
           added: [
             'Participation à toutes les phases du cycle de vie logiciel, avec les développeurs, les managers et les parties prenantes.',

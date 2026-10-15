@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useI18n } from '@/lib/i18n';
-import { qaRoles, devRoles, formatSpan, versionById, type Role } from '@/lib/data/career';
+import { qaRoles, devRoles, formatPlace, formatSpan, versionById, type Role } from '@/lib/data/career';
 import { visibleGroups, type ChangeGroup, type Changes } from '@/lib/data/changelog';
 import Section from './Section';
 
@@ -55,8 +55,7 @@ const CommitLog = ({ changes, labels }: { changes: Changes; labels: Record<Chang
 const RoleRow = ({ role }: { role: Role }) => {
   const { t } = useI18n();
   const job = t.experience.jobs[role.id];
-  const mode = t.experience.workMode[role.workMode];
-  const place = role.country ? `${role.country}, ${mode.toLowerCase()}` : mode;
+  const place = formatPlace(role, t.experience.workMode[role.workMode]);
 
   return (
     <li

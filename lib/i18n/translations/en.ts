@@ -4,6 +4,7 @@ import type { Changes } from '../../data/changelog';
 interface Job {
   title: string;
   company: string;
+  industry: string;
   changes: Changes;
 }
 
@@ -12,6 +13,7 @@ const jobs: Record<RoleId, Job> = {
   willdom: {
     title: 'Senior Quality Assurance Automation Engineer',
     company: 'WillDom',
+    industry: 'Sports management',
     changes: {
       added: [
         'Quality ownership of new features from inception through production deployment, as acting QA lead.',
@@ -29,6 +31,7 @@ const jobs: Record<RoleId, Job> = {
   lumenalta: {
     title: 'Senior QA Automation Engineer',
     company: 'Lumenalta LLC (formerly Clevertech)',
+    industry: 'Ground transportation and logistics',
     changes: {
       added: [
         'End-to-end automation platform with Cypress and TypeScript, covering E2E and component tests for business-critical React applications.',
@@ -45,6 +48,7 @@ const jobs: Record<RoleId, Job> = {
   avenueCode: {
     title: 'Senior QA Automation Engineer',
     company: 'Avenue Code',
+    industry: 'eCommerce and retail',
     changes: {
       added: [
         'Reliable automated suites with Playwright and TestCafe, raising automation maturity and release confidence for an established e-commerce team.',
@@ -59,6 +63,7 @@ const jobs: Record<RoleId, Job> = {
   avantica: {
     title: 'QA Automation Engineer',
     company: 'Avantica',
+    industry: 'Cybersecurity',
     changes: {
       added: [
         'UI and API automation with TestCafe, PyTest and Postman for a new, production-critical cybersecurity platform, working with engineering, product and DevOps.',
@@ -77,6 +82,7 @@ const jobs: Record<RoleId, Job> = {
   pegaDev: {
     title: 'PEGA Developer | PEGA System Architect',
     company: 'Rulesware LLC',
+    industry: 'Fraud, disputes and fintech',
     changes: {
       added: [
         'Functional technical requirements from business requirements, using the PegaSystems SmartBPM methodology, with implementation tasks managed for on-time, on-budget delivery.',
@@ -89,6 +95,7 @@ const jobs: Record<RoleId, Job> = {
   ruleswareQa: {
     title: 'QA Automation Engineer',
     company: 'Rulesware LLC',
+    industry: 'Disputes and digital payments',
     changes: {
       added: [
         'Automated regression suites with Selenium WebDriver and TestNG for Java and Pega-based applications.',
@@ -103,6 +110,7 @@ const jobs: Record<RoleId, Job> = {
   davivienda: {
     title: 'Java Developer',
     company: 'Davivienda Bank (via Synergyca S.A. de C.V.)',
+    industry: 'Banking and financial services',
     changes: {
       added: [
         'Java applications for a bank on an SOA architecture, developed and unit-tested across multiple environments.',
@@ -115,6 +123,7 @@ const jobs: Record<RoleId, Job> = {
   sherwin: {
     title: 'Java Developer',
     company: 'Sherwin-Williams de Centroamérica',
+    industry: 'Manufacturing',
     changes: {
       added: [
         'Work across every phase of the software lifecycle, with developers, managers and stakeholders.',
@@ -177,6 +186,11 @@ export const en = {
     graph: {
       label: 'Career branch graph, 2013 to present',
       summary: 'From Java developer to senior SDET, 2013 to present.',
+      hint: 'Hover over a node for details',
+      tapHint: 'Tap a node to open its role',
+      qaRole: 'QA role',
+      devRole: 'Development role',
+      latest: 'Latest',
     },
   },
 

@@ -1,13 +1,73 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { Building2, CalendarDays, MapPin, MousePointer2, Pointer, Tag } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
-import { chronologicalRoles, formatSpan, versionById, type RoleId } from '@/lib/data/career';
+import { chronologicalRoles, formatPlace, formatSpan, versionById, type Role, type RoleId } from '@/lib/data/career';
 import { LABEL_OFFSET, LANE_Y, VIEW_H, VIEW_W, labelLefts, rolePath, segmentOf, segmentPx, yearTicks } from '@/lib/data/graph';
 
 // The room a label keeps before the end of its segment, and the gap before the company name.
 const LABEL_MARGIN = 8;
 const NAME_GAP = 8;
+
+// The hover card may spill into the lane labels and the panel padding on its
+// left, and into the panel padding on its right, but never past the panel.
+const CARD_WIDTH = 288;
+const CARD_SPILL_LEFT = 56;
+const CARD_SPILL_RIGHT = 16;
+
+const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
+
+// A GitHub-style hovercard for one release: tag, role, company, then dates,
+// industry and place. Screen readers get the same facts from the node's label.
+const HoverCard = ({ role, areaWidth }: { role: Role; areaWidth: number }) => {
+  const { t } = useI18n();
+  const job = t.experience.jobs[role.id];
+  const { x0, y } = segmentOf(role);
+  const nodeX = (x0 / VIEW_W) * areaWidth;
+  const width = Math.min(CARD_WIDTH, areaWidth + CARD_SPILL_LEFT + CARD_SPILL_RIGHT);
+  const left = clamp(nodeX - 24, -CARD_SPILL_LEFT, areaWidth + CARD_SPILL_RIGHT - width);
+  const details = [
+    { icon: CalendarDays, text: formatSpan(role, t.experience.to, t.experience.present) },
+    { icon: Building2, text: job.industry },
+    { icon: MapPin, text: formatPlace(role, t.experience.workMode[role.workMode]) },
+  ];
+
+  return (
+    <div
+      aria-hidden
+      className="pointer-events-none absolute z-20 rounded-md border border-rule bg-sheet p-4 text-ink"
+      style={{ left, top: y + 20, width }}
+    >
+      <span
+        className="absolute -top-[7px] h-3 w-3 -translate-x-1/2 rotate-45 border-l border-t border-rule bg-sheet"
+        style={{ left: clamp(nodeX - left, 16, width - 16) }}
+      />
+      <div className="flex items-center gap-2 text-[0.875rem]">
+        <Tag size={16} className="shrink-0 text-graphite" />
+        <span className="font-display font-semibold">{versionById[role.id]}</span>
+        <span className="rounded-[2px] border border-rule px-1.5 text-[0.75rem] leading-5 text-graphite">
+          {role.kind}
+        </span>
+        {role.end === null && (
+          <span className="ml-auto rounded-full border border-pass px-2 text-[0.75rem] font-medium leading-5 text-pass">
+            {t.hero.graph.latest}
+          </span>
+        )}
+      </div>
+      <p className="mt-2 font-display font-semibold leading-snug">{job.title}</p>
+      <p className="text-[0.875rem] text-graphite">{job.company}</p>
+      <ul className="mt-3 space-y-1.5 border-t border-rule pt-3 text-[0.875rem] text-graphite">
+        {details.map(({ icon: Icon, text }) => (
+          <li key={text} className="flex items-center gap-2">
+            <Icon size={14} className="shrink-0" />
+            {text}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 const BranchGraph = () => {
   const { t } = useI18n();
@@ -44,7 +104,8 @@ const BranchGraph = () => {
   const describe = (id: RoleId) => {
     const role = chronologicalRoles.find((r) => r.id === id);
     if (!role) return '';
-    return `${versionById[id]}, ${role.shortName}, ${t.experience.jobs[id].title}, ${formatSpan(role, t.experience.to, t.experience.present)}`;
+    const job = t.experience.jobs[id];
+    return `${versionById[id]}, ${role.shortName}, ${job.title}, ${formatSpan(role, t.experience.to, t.experience.present)}, ${job.industry}`;
   };
 
   // Re-clicking a node whose hash is already in the URL fires no hashchange.
@@ -65,6 +126,7 @@ const BranchGraph = () => {
     LABEL_OFFSET + measure(versionById[role.id]) + NAME_GAP + measure(role.shortName) + LABEL_MARGIN <=
       segmentPx(role, areaWidth);
   // Once fonts are measured, labels are laid out so neighbours on a lane never overlap.
+  const activeRole = chronologicalRoles.find((role) => role.id === activeId);
   const lefts =
     measure !== null && areaWidth > 0
       ? labelLefts(areaWidth, (role) =>
@@ -88,9 +150,10 @@ const BranchGraph = () => {
             ref={areaRef}
             role="group"
             aria-label={t.hero.graph.label}
+            aria-describedby="graph-summary"
             className="graph-draw relative"
             style={{ height: VIEW_H }}
-            onMouseLeave={() => setActiveId(null)}
+            onPointerLeave={(event) => event.pointerType === 'mouse' && setActiveId(null)}
           >
             <svg
               aria-hidden
@@ -142,8 +205,9 @@ const BranchGraph = () => {
                     href={`#exp-${role.id}`}
                     aria-label={describe(role.id)}
                     onClick={(event) => revisit(event, role.id)}
-                    onMouseEnter={() => setActiveId(role.id)}
-                    onFocus={() => setActiveId(role.id)}
+                    // A tap opens the role instead, so only a mouse or keyboard shows the card.
+                    onPointerEnter={(event) => event.pointerType === 'mouse' && setActiveId(role.id)}
+                    onFocus={(event) => event.currentTarget.matches(':focus-visible') && setActiveId(role.id)}
                     onBlur={() => setActiveId(null)}
                     className="absolute flex h-7 w-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full focus-visible:outline-pass-dark"
                     style={{ left, top: y }}
@@ -157,6 +221,8 @@ const BranchGraph = () => {
                 </div>
               );
             })}
+
+            {activeRole && areaWidth > 0 && <HoverCard role={activeRole} areaWidth={areaWidth} />}
           </div>
 
           <div aria-hidden className="relative mt-2 h-5 text-[0.75rem] tabular-nums text-panel-muted">
@@ -173,9 +239,27 @@ const BranchGraph = () => {
         </div>
       </div>
 
-      <p aria-live="polite" className="mt-4 min-h-[3rem] max-w-[62ch] text-[0.9375rem] md:min-h-[1.5rem]">
-        {activeId ? describe(activeId) : t.hero.graph.summary}
+      <p id="graph-summary" className="sr-only">
+        {t.hero.graph.summary}
       </p>
+      <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-[0.875rem] text-panel-muted">
+        <span className="flex items-center gap-2">
+          <span aria-hidden className="h-3 w-3 rounded-full bg-pass-dark" />
+          {t.hero.graph.qaRole}
+        </span>
+        <span className="flex items-center gap-2">
+          <span aria-hidden className="h-3 w-3 rounded-full border-2 border-panel-muted bg-panel" />
+          {t.hero.graph.devRole}
+        </span>
+        <span className="flex items-center gap-2 [@media(hover:none)]:hidden md:ml-auto">
+          <MousePointer2 size={14} aria-hidden />
+          {t.hero.graph.hint}
+        </span>
+        <span className="hidden items-center gap-2 [@media(hover:none)]:flex md:ml-auto">
+          <Pointer size={14} aria-hidden />
+          {t.hero.graph.tapHint}
+        </span>
+      </div>
     </div>
   );
 };
