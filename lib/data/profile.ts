@@ -22,7 +22,8 @@ export const profile = {
 export const skillGroups = {
   programming: ['TypeScript', 'JavaScript', 'Java', 'Python'],
   testing: ['Playwright', 'Cypress', 'TestCafe', 'Selenium', 'PyTest', 'Jest', 'K6', 'BrowserStack', 'Mobile testing (iOS)'],
-  devops: ['Docker', 'Azure DevOps', 'Jenkins', 'Git and GitHub', 'TeamCity', 'OpenAI Codex', 'Claude Code'],
+  ai: ['OpenAI Codex', 'Claude Code', 'Playwright agents', 'Sub-agents', 'MCP servers', 'DeepEval'],
+  devops: ['Docker', 'Azure DevOps', 'Jenkins', 'Git and GitHub', 'TeamCity'],
   frameworks: ['Node.js', 'REST APIs', 'React and Next.js', 'Express'],
 } as const;
 

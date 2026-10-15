@@ -11,7 +11,7 @@ const Skills = () => {
 
   return (
     <Section id="skills" title={t.skills.title} tone="band">
-      <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
         {groupIds.map((id) => (
           <div key={id}>
             <h3 className="font-display text-[1.125rem] font-semibold">

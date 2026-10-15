@@ -235,6 +235,7 @@ export const en = {
     categories: {
       programming: 'Languages',
       testing: 'Testing',
+      ai: 'AI tools',
       devops: 'DevOps and tools',
       frameworks: 'Frameworks and libraries',
     },

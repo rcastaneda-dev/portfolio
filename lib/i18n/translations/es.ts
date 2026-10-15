@@ -225,6 +225,7 @@ export const es: Translations = {
     categories: {
       programming: 'Lenguajes',
       testing: 'Pruebas',
+      ai: 'Herramientas de IA',
       devops: 'DevOps y herramientas',
       frameworks: 'Frameworks y librerías',
     },
