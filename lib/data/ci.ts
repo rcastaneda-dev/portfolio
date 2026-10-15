@@ -37,6 +37,8 @@ export interface CiSource {
   workflow?: string;
   /** Only finished runs, so a build never reports its own in-progress run. */
   completedOnly?: boolean;
+  /** Only runs triggered by this event (e.g. 'push'), so fork pull requests never count. */
+  event?: string;
   perPage: number;
 }
 
@@ -52,7 +54,7 @@ export function ciSources(): CiSource[] {
   const fromProjects: CiSource[] = projects
     .filter((p) => p.ciRepo)
     .map((p) => ({ repo: p.ciRepo as string, projectId: p.id, perPage: 5 }));
-  return [...fromProjects, { repo: SITE_REPO, workflow: 'ci.yml', branch: 'main', completedOnly: true, perPage: 1 }];
+  return [...fromProjects, { repo: SITE_REPO, workflow: 'ci.yml', branch: 'main', completedOnly: true, event: 'push', perPage: 1 }];
 }
 
 interface RawRun {
@@ -130,6 +132,7 @@ interface ResolveOptions {
   branch?: string;
   workflow?: string;
   completedOnly?: boolean;
+  event?: string;
   perPage?: number;
   now?: Date;
   apiBase?: string;
@@ -144,6 +147,7 @@ export async function resolveRuns(repo: string, options: ResolveOptions): Promis
     branch,
     workflow,
     completedOnly,
+    event,
     perPage = 5,
     now = new Date(),
     apiBase = 'https://api.github.com',
@@ -152,6 +156,7 @@ export async function resolveRuns(repo: string, options: ResolveOptions): Promis
   const query = new URLSearchParams({ per_page: String(perPage) });
   if (branch) query.set('branch', branch);
   if (completedOnly) query.set('status', 'completed');
+  if (event) query.set('event', event);
   const runsPath = workflow ? `actions/workflows/${workflow}/runs` : 'actions/runs';
   const headers: Record<string, string> = {
     Accept: 'application/vnd.github+json',
@@ -160,7 +165,7 @@ export async function resolveRuns(repo: string, options: ResolveOptions): Promis
   if (token) headers.Authorization = `Bearer ${token}`;
 
   try {
-    const response = await fetchImpl(`${apiBase}/repos/${repo}/${runsPath}?${query.toString()}`, { headers });
+    const response = await fetchImpl(`${apiBase}/repos/${repo}/${runsPath}?${query.toString()}`, { headers, signal: AbortSignal.timeout(10_000) });
     if (response.ok) {
       const runs = parseRuns(await response.json());
       if (runs && runs.length > 0) return { repo, source: 'github', fetchedAt: now.toISOString(), runs };

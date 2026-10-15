@@ -39,6 +39,7 @@ for (const source of ci.ciSources()) {
     branch: source.branch,
     workflow: source.workflow,
     completedOnly: source.completedOnly,
+    event: source.event,
     perPage: source.perPage,
     token: process.env.GITHUB_TOKEN || undefined,
     apiBase: process.env.CI_API_BASE || undefined,
