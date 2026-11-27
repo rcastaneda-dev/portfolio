@@ -108,5 +108,60 @@
         "url": "https://github.com/rcastaneda-dev/AutomationPractice-Theorem/actions/runs/19584007268"
       }
     ]
+  },
+  "rcastaneda-dev/deepeval-cardiology-rag": {
+    "fetchedAt": "2026-11-27T18:29:17.283Z",
+    "runs": [
+      {
+        "id": 46049343929,
+        "workflow": "eval",
+        "runNumber": 61,
+        "branch": "feat/interview-tradeoff-note-da9dc5",
+        "status": "cancelled",
+        "durationSec": 97,
+        "startedAt": "2026-11-27T18:25:21Z",
+        "url": "https://github.com/rcastaneda-dev/deepeval-cardiology-rag/actions/runs/46049343929"
+      },
+      {
+        "id": 46046284132,
+        "workflow": "eval",
+        "runNumber": 60,
+        "branch": "main",
+        "status": "passed",
+        "durationSec": 30,
+        "startedAt": "2026-11-27T18:01:22Z",
+        "url": "https://github.com/rcastaneda-dev/deepeval-cardiology-rag/actions/runs/46046284132"
+      },
+      {
+        "id": 46042264332,
+        "workflow": "eval",
+        "runNumber": 59,
+        "branch": "feat/readme-docs-toc-9063dd",
+        "status": "passed",
+        "durationSec": 573,
+        "startedAt": "2026-11-27T17:29:42Z",
+        "url": "https://github.com/rcastaneda-dev/deepeval-cardiology-rag/actions/runs/46042264332"
+      },
+      {
+        "id": 45923260632,
+        "workflow": "eval",
+        "runNumber": 58,
+        "branch": "main",
+        "status": "passed",
+        "durationSec": 30,
+        "startedAt": "2026-11-27T01:33:45Z",
+        "url": "https://github.com/rcastaneda-dev/deepeval-cardiology-rag/actions/runs/45923260632"
+      },
+      {
+        "id": 45922514805,
+        "workflow": "eval",
+        "runNumber": 57,
+        "branch": "feat/readme-professional-refactor-944472",
+        "status": "passed",
+        "durationSec": 474,
+        "startedAt": "2026-11-27T01:25:42Z",
+        "url": "https://github.com/rcastaneda-dev/deepeval-cardiology-rag/actions/runs/45922514805"
+      }
+    ]
   }
 }
