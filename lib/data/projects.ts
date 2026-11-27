@@ -2,6 +2,7 @@
 // dictionaries under `projects.items[id]`.
 
 export type ProjectId =
+  | 'deepeval-cardiology-rag'
   | 'playwright-assessment'
   | 'inventory'
   | 'playwright-platzi-challenge2'
@@ -22,6 +23,17 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    id: 'deepeval-cardiology-rag',
+    year: '2026',
+    stack: ['Python', 'DeepEval', 'pytest', 'GitHub Actions'],
+    codeUrl: 'https://github.com/rcastaneda-dev/deepeval-cardiology-rag',
+    ciRepo: 'rcastaneda-dev/deepeval-cardiology-rag',
+    live: {
+      url: 'https://github.com/rcastaneda-dev/deepeval-cardiology-rag/actions',
+      kind: 'ci',
+    },
+  },
   {
     id: 'playwright-assessment',
     year: '2026',

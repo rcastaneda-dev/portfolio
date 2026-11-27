@@ -286,6 +286,10 @@ export const en = {
       snapshot: 'Saved snapshot from GitHub Actions,',
     },
     items: {
+      'deepeval-cardiology-rag': {
+        title: 'DeepEval/Python quality gate for a cardiology RAG assistant',
+        description: 'A cardiology Q&A assistant over US federal health documents, with a DeepEval suite that gates every pull request on faithfulness, hallucination, retrieval, abstention, medical safety and bias. Ships a QA report on whether the gate itself can be trusted: seeded faults, judge reliability and defect reports.',
+      },
       'playwright-assessment': {
         title: 'Playwright/Typescript Assessment for Software Mind',
         description: '4-hour assessment project to evaluate my skills in Playwright and TypeScript for a Senior QA Automation Engineer position',

@@ -275,6 +275,10 @@ export const es: Translations = {
       snapshot: 'Instantánea guardada de GitHub Actions,',
     },
     items: {
+      'deepeval-cardiology-rag': {
+        title: 'Quality gate DeepEval/Python para un asistente RAG de cardiología',
+        description: 'Asistente de preguntas y respuestas sobre cardiología basado en documentos federales de salud de EE. UU., con una suite de DeepEval que bloquea cada pull request según fidelidad, alucinación, recuperación, abstención, seguridad médica y sesgo. Incluye un informe de QA sobre si el propio gate es confiable: fallas sembradas, fiabilidad del juez y reportes de defectos.',
+      },
       'playwright-assessment': {
         title: 'Evaluación Playwright/Typescript para Software Mind',
         description: 'Evaluación técnica de 4 horas para la posición de Ingeniero Senior de Automatización QA para la empresa Software Mind',
